@@ -10,11 +10,13 @@ type NumberRange<F extends number, T extends number> = Exclude<Enumerate<T>, Enu
 interface MapState {
     zoom: NumberRange<8, 21>,
     center: [number, number],
+    map: ymaps.Map | undefined,
 }
 
 const initialState: MapState = {
     zoom: 10,
     center: [55.751574, 37.573856],
+    map: undefined,
 }
 
 const mapSlice = createSlice({
@@ -57,6 +59,10 @@ const mapSlice = createSlice({
         updateLongitude(state, action: PayloadAction<number>) {
             state.center[1] += action.payload;
         },
+        changeMap(state, action: PayloadAction<ymaps.Map | undefined>) {
+            state.map = action.payload;
+            console.log(state.map);
+        },
         changeState(state, action: PayloadAction<{zoom: number, center: Array<number>}>) {
             state.center[0] = action.payload.center[0];
             state.center[1] = action.payload.center[1];
@@ -72,5 +78,6 @@ export const {
     changeZoom,
     updateLatitude,
     updateLongitude,
+    changeMap,
     changeState } = mapSlice.actions;
 export default mapSlice.reducer;

@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, useEffect } from "react";
 
 import './Main.scss';
 import { Header } from "../../containers/Header/Header";
@@ -30,6 +30,15 @@ export const Main: React.FC = () => {
         strokeStyle: 'solid',
     }
 
+    useEffect(() => {
+        if (map.current) {
+            dispatch(changeState({
+                zoom: map.current.getZoom(),
+                center: map.current.getCenter(),
+            }));
+        }
+    }, [map]);
+
     return (
         <div className='main-page'>
             <Header />
@@ -56,6 +65,20 @@ export const Main: React.FC = () => {
                                     key={index}
                                     geometry={[polygon.points]}
                                     options={polygonOptions}
+                                    onDblClick={(e: any) => {
+                                        if (map.current) {
+                                            const arrayX = polygon.points.map((element) => element[0]);
+                                            const arrayY = polygon.points.map((element) => element[1]);
+                                            const minX = Math.min(...arrayX);
+                                            const maxX = Math.max(...arrayX);
+                                            const minY = Math.min(...arrayY);
+                                            const maxY = Math.max(...arrayY);
+                                            map.current.setBounds([[minX, minY], [maxX, maxY]], {
+                                                checkZoomRange: true,
+                                                duration: 500,
+                                            });
+                                        }
+                                    }}
                                 />
                             )
                         })}

@@ -11,9 +11,7 @@ export type WoodType = {
     wood_type: string,
 }
 
-export type PointType = {
-    point: [number, number],
-}
+export type PointType = [number, number];
 
 export type PolygonType = {
     id: number,
