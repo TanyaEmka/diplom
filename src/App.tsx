@@ -9,7 +9,7 @@ function App() {
   return (
     <YMaps query={{ 
       lang: 'en_RU',
-      apikey: '8a02a3f3-5318-46db-b569-db079f86b715',
+      apikey: process.env.GEO_API_KEY,
     }}>      
       <Main />            
     </YMaps>

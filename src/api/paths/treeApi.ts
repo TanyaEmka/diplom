@@ -1,8 +1,10 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
+import { getFullUrl } from "../../utils/urls";
+import { TreeType } from "../types";
 
 export const treeApi = createApi({
     reducerPath: 'treeApi',
-    baseQuery: fetchBaseQuery({ baseUrl: '/gis/api/v1/trees/' }),
+    baseQuery: fetchBaseQuery({ baseUrl: getFullUrl() + 'trees/' }),
     endpoints: (builder) => ({
         getTrees: builder.query<Array<TreeType>, void>({
             query: () => 'get/',

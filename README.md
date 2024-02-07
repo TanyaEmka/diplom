@@ -14,4 +14,4 @@
 
 Запуск моков:
 
-### `npx json-server src/api/mocks/db.json`
+### `npx json-server -p 3001 src/api/mocks/db.json`

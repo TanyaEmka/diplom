@@ -1,4 +1,4 @@
-type TreeType = {
+export type TreeType = {
     id: number,
     veight: number,
     x: number,
@@ -6,30 +6,31 @@ type TreeType = {
     wood_id: number,
 }
 
-type WoodType = {
+export type WoodType = {
     id: number,
     wood_type: string,
 }
 
-type PointType = {
+export type PointType = {
     point: [number, number],
 }
 
-type PolygonType = {
+export type PolygonType = {
     id: number,
     points: Array<PointType>,
+    name: string,
 }
 
-type PolygonTreesType = {
+export type PolygonTreesType = {
     trees: Array<TreeType>,
 }
 
-type SigninType = {
+export type SigninType = {
     login: string,
     password: string,
 }
 
-type SignupType = {
+export type SignupType = {
     login: string,
     password: string,
 }
