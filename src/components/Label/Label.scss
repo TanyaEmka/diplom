@@ -1,0 +1,15 @@
+@use '../../assets/css/colors.scss';
+
+$map-label-border-radius: 9px;
+$map-label-padding: 6px;
+
+.map-label {
+    color: colors.$second-color;
+    border-radius: $map-label-border-radius;
+    padding: $map-label-padding;
+    background: radial-gradient(#FFFFFF, #DFDFDF 200%);
+
+    -webkit-box-shadow: 0px 4px 4px 0px colors.$shadow-color;
+    -moz-box-shadow: 0px 4px 4px 0px colors.$shadow-color;
+    box-shadow: 0px 4px 4px 0px colors.$shadow-color;
+}

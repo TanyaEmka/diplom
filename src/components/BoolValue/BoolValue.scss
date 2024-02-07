@@ -1,0 +1,11 @@
+.boolvalue {
+    display: flex;
+    gap: 12px;
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
+
+    &-text {
+        flex: 1;
+    }
+}

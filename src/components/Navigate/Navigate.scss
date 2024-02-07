@@ -1,0 +1,86 @@
+@use '../../assets/css/colors.scss';
+
+$navigate-size: 137px;
+$navigate-form-width: 53px;
+$navigate-form-height: 42px;
+$navigate-radius: 26px;
+
+.navigate {
+    position: relative;
+    width: $navigate-size;
+    height: $navigate-size;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &-shadow {
+        position: relative;
+        width: 100%;
+        height: 100%;
+
+        &-vblock, &-hblock {
+            -webkit-box-shadow: 0px 4px 9px 0px colors.$dark-shadow-color;
+            -moz-box-shadow: 0px 4px 9px 0px colors.$dark-shadow-color;
+            box-shadow: 0px 4px 9px 0px colors.$dark-shadow-color;
+        }
+
+        &-vblock {
+            position: absolute;
+            height: 100%;
+            width: $navigate-form-width;
+            border-radius: $navigate-radius;
+            left: 50%;
+            transform: translate(-50%, 0);
+        }
+
+        &-hblock {
+            position: absolute;
+            height: $navigate-form-width;
+            width: 100%;
+            border-radius: $navigate-radius;
+            top: 50%;
+            transform: translate(0, -50%);
+        }
+    }
+
+    &-form {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: grid;
+        grid-template-rows: $navigate-form-height $navigate-form-width $navigate-form-height;
+        gap: 0;
+        align-items: center;
+        align-content: center;
+        justify-content: center;
+        
+        &-block {
+            display: grid;
+            grid-template-columns: $navigate-form-height $navigate-form-width $navigate-form-height;
+            align-items: center;
+            align-content: center;
+            margin: 0 auto;
+            padding: 0;
+            height: 100%;
+
+            div {
+                display: flex;
+                height: 100%;
+                width: 100%;
+                justify-content: center;
+                align-items: center;
+                align-content: center;
+                position: relative;
+
+                button {
+                    position: absolute;
+                }
+            }
+        }
+
+        &-middle {
+            background-color: colors.$background-color;
+            border-radius: $navigate-radius;
+        }
+    }
+}

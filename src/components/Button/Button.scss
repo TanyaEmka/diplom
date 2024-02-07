@@ -1,0 +1,23 @@
+@use '../../assets/css/colors.scss';
+@use '../../assets/css/sizes.scss';
+
+.blue-button, .white-button, .accent-button {
+    padding: sizes.$padding-vertical sizes.$padding-horizontal;
+    border-radius: sizes.$border-radius-component;
+}
+
+.blue-button {
+    color: colors.$background-color;
+    background-color: colors.$second-color;
+}
+
+.white-button {
+    color: colors.$base-text-color;
+    background-color: colors.$background-color;
+    border: 1px solid colors.$shadow-color;
+}
+
+.accent-button {
+    color: colors.$background-color;
+    background-color: colors.$accent-color;
+}

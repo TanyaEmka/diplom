@@ -1,0 +1,41 @@
+.main-page {
+    width: 100vw;
+    height: 100vh;
+    display: grid;
+    grid-template-rows: 110px 1fr;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: 0;
+
+    nav, &-content {
+        width: 100vw;
+    }
+
+    &-content {
+        flex: 1;
+        position: relative;
+        height: 100%;
+
+        .map {
+            height: 100%;
+            width: 100vw;
+            &-inner {
+                height: 100%;
+                width: 100vw;
+            }
+        }
+
+        .page-tools {
+            width: 0;
+            height: 0;
+
+            &-map {
+                position: absolute;
+                right: 0;
+                top: 100px;
+                padding-right: 30px;
+            }
+        }
+    }
+}
