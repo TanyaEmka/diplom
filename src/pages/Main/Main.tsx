@@ -23,10 +23,6 @@ export const Main: React.FC = () => {
         zoom: mapStore.zoom
     }
 
-    const defaultState = {
-        // zoom: mapStore.zoom,
-    }
-
     const polygonOptions = {
         fillColor: "rgba(164, 85, 201, 0.2)",
         strokeColor: "#A455C9",
@@ -64,11 +60,12 @@ export const Main: React.FC = () => {
                                 }));
                             }
                         }}
-                        defaultState={defaultState}
                         state={mapState}
                         width={'100vw'}
                         height={'100vh'}
                         className='map-inner'
+                        // для вывода подсказок и названий
+                        modules={["geoObject.addon.balloon", "geoObject.addon.hint"]}
                     >
                         {data.map((polygon, index) => {
                             return (
@@ -76,6 +73,9 @@ export const Main: React.FC = () => {
                                     key={index}
                                     geometry={[polygon.points]}
                                     options={polygonOptions}
+                                    properties={{
+                                        hintContent: polygon.name,
+                                    }}
                                     onDblClick={(e: any) => {
                                         if (map.current) {
                                             const arrayX = polygon.points.map((element) => element[0]);
