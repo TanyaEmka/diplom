@@ -10,27 +10,30 @@ type NumberRange<F extends number, T extends number> = Exclude<Enumerate<T>, Enu
 interface MapState {
     zoom: NumberRange<8, 21>,
     center: [number, number],
-    map: ymaps.Map | undefined,
+    clickEvent: 'INC ZOOM' | 'DEC ZOOM' | 'NONE',
 }
 
 const initialState: MapState = {
     zoom: 10,
     center: [55.751574, 37.573856],
-    map: undefined,
+    clickEvent: 'NONE',
 }
 
 const mapSlice = createSlice({
     name: 'map',
     initialState,
     reducers: {
+        // первые две функции здесь - это функции при нажатии на кнопки изменения масштаба
+        // в этом случае нужно менять не сам zoom, а обозначить событие
+        // так как для плавного изменения масштаба нужно вызвать внутреннюю функцию карты
         incrementZoom(state) {
             if (state.zoom < 20) {
-                state.zoom++;
+                state.clickEvent = 'INC ZOOM';
             }
         },
         decrementZoom(state) {
             if (state.zoom > 8) {
-                state.zoom--;
+                state.clickEvent = 'DEC ZOOM';
             }
         },
         updateZoom(state, action: PayloadAction<number>) {
@@ -42,6 +45,7 @@ const mapSlice = createSlice({
             } else {
                 state.zoom = newZoom as NumberRange<8, 21>;
             }
+            state.clickEvent = 'NONE';
         },
         changeZoom(state, action: PayloadAction<number>) {
             const newZoom = action.payload;
@@ -52,6 +56,7 @@ const mapSlice = createSlice({
             } else {
                 state.zoom = newZoom as NumberRange<8, 21>;
             }
+            state.clickEvent = 'NONE';
         },
         updateLatitude(state, action: PayloadAction<number>) {
             state.center[0] += action.payload;
@@ -59,14 +64,11 @@ const mapSlice = createSlice({
         updateLongitude(state, action: PayloadAction<number>) {
             state.center[1] += action.payload;
         },
-        changeMap(state, action: PayloadAction<ymaps.Map | undefined>) {
-            state.map = action.payload;
-            console.log(state.map);
-        },
         changeState(state, action: PayloadAction<{zoom: number, center: Array<number>}>) {
             state.center[0] = action.payload.center[0];
             state.center[1] = action.payload.center[1];
             state.zoom = action.payload.zoom as NumberRange<8, 21>;
+            state.clickEvent = 'NONE';
         },
     },
 })
@@ -78,6 +80,5 @@ export const {
     changeZoom,
     updateLatitude,
     updateLongitude,
-    changeMap,
     changeState } = mapSlice.actions;
 export default mapSlice.reducer;

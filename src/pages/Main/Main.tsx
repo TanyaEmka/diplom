@@ -18,9 +18,13 @@ export const Main: React.FC = () => {
 
     const { data = [] } = useGetPolygonsQuery();
 
-    const defaultState = {
+    const mapState = {
         center: mapStore.center,
         zoom: mapStore.zoom
+    }
+
+    const defaultState = {
+        // zoom: mapStore.zoom,
     }
 
     const polygonOptions = {
@@ -32,12 +36,18 @@ export const Main: React.FC = () => {
 
     useEffect(() => {
         if (map.current) {
-            dispatch(changeState({
-                zoom: map.current.getZoom(),
-                center: map.current.getCenter(),
-            }));
+            if (mapStore.clickEvent == 'INC ZOOM') {
+                map.current.setZoom(mapStore.zoom + 1, { duration: 500 });
+            } else if (mapStore.clickEvent == 'DEC ZOOM') {
+                map.current.setZoom(mapStore.zoom - 1, { duration: 500 });
+            } else {
+                dispatch(changeState({
+                    zoom: map.current.getZoom(),
+                    center: map.current.getCenter(),
+                }));
+            }
         }
-    }, [map]);
+    }, [map, mapStore.clickEvent]);
 
     return (
         <div className='main-page'>
@@ -54,7 +64,8 @@ export const Main: React.FC = () => {
                                 }));
                             }
                         }}
-                        state={defaultState}
+                        defaultState={defaultState}
+                        state={mapState}
                         width={'100vw'}
                         height={'100vh'}
                         className='map-inner'
