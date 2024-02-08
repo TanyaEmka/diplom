@@ -1,3 +1,5 @@
+$menu-width: 398px;
+
 .main-page {
     width: 100vw;
     height: 100vh;
@@ -35,6 +37,21 @@
                 left: 0;
                 top: 0;
                 height: 100%;
+                width: $menu-width;
+            }
+
+            &-menu-show {
+                left: 0;
+                visibility: visible;
+                // animation-timing-function: ease-out;
+                transition-duration: 0.3s;
+            }
+
+            &-menu-hidden {
+                left: -50%;
+                visibility: hidden;
+                // animation-timing-function: ease-out;
+                transition-duration: 0.3s;
             }
 
             &-map {
@@ -46,3 +63,4 @@
         }
     }
 }
+

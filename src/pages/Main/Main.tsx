@@ -108,9 +108,7 @@ export const Main: React.FC = () => {
                     </Map>
                 </div>
                 <div className='page-tools'>
-                    <div className='page-tools-menu' style={{
-                        visibility: appStore.menuVisible ? 'visible' : 'hidden',
-                    }}>
+                    <div className={'page-tools-menu page-tools-menu-' + (appStore.menuVisible ? 'show' : 'hidden')}>
                         <Menu />
                     </div>
                     <div className='page-tools-map'>
