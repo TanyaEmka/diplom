@@ -8,7 +8,7 @@ type Enumerate<N extends number, Acc extends number[] = []> = Acc['length'] exte
 type NumberRange<F extends number, T extends number> = Exclude<Enumerate<T>, Enumerate<F>>
 
 interface MapState {
-    zoom: NumberRange<8, 21>,
+    zoom: NumberRange<9, 18>,
     center: [number, number],
     clickEvent: 'INC ZOOM' | 'DEC ZOOM' | 'NONE',
 }
@@ -27,34 +27,34 @@ const mapSlice = createSlice({
         // в этом случае нужно менять не сам zoom, а обозначить событие
         // так как для плавного изменения масштаба нужно вызвать внутреннюю функцию карты
         incrementZoom(state) {
-            if (state.zoom < 20) {
+            if (state.zoom < 17) {
                 state.clickEvent = 'INC ZOOM';
             }
         },
         decrementZoom(state) {
-            if (state.zoom > 8) {
+            if (state.zoom > 9) {
                 state.clickEvent = 'DEC ZOOM';
             }
         },
         updateZoom(state, action: PayloadAction<number>) {
             const newZoom = state.zoom + action.payload;
-            if (newZoom < 8) {
-                state.zoom = 8;
-            } else if (newZoom > 20) {
-                state.zoom = 20;
+            if (newZoom < 9) {
+                state.zoom = 9;
+            } else if (newZoom > 17) {
+                state.zoom = 17;
             } else {
-                state.zoom = newZoom as NumberRange<8, 21>;
+                state.zoom = newZoom as NumberRange<9, 18>;
             }
             state.clickEvent = 'NONE';
         },
         changeZoom(state, action: PayloadAction<number>) {
             const newZoom = action.payload;
-            if (newZoom < 8) {
-                state.zoom = 8;
-            } else if (newZoom > 20) {
-                state.zoom = 20;
+            if (newZoom < 9) {
+                state.zoom = 9;
+            } else if (newZoom > 17) {
+                state.zoom = 17;
             } else {
-                state.zoom = newZoom as NumberRange<8, 21>;
+                state.zoom = newZoom as NumberRange<9, 18>;
             }
             state.clickEvent = 'NONE';
         },
@@ -67,7 +67,7 @@ const mapSlice = createSlice({
         changeState(state, action: PayloadAction<{zoom: number, center: Array<number>}>) {
             state.center[0] = action.payload.center[0];
             state.center[1] = action.payload.center[1];
-            state.zoom = action.payload.zoom as NumberRange<8, 21>;
+            state.zoom = action.payload.zoom as NumberRange<9, 18>;
             state.clickEvent = 'NONE';
         },
     },

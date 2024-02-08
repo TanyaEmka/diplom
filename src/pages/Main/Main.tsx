@@ -4,9 +4,11 @@ import './Main.scss';
 import { Header } from "../../containers/Header/Header";
 import { Map, Polygon } from "@pbe/react-yandex-maps";
 import { MapTools } from "../../containers/MapTools/MapTools";
+import { Menu } from "../../containers/Menu/Menu";
 
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
 import { changeState } from "../../store/features/map";
+import { showMenu, hiddenMenu } from "../../store/features/app";
 
 import { useGetPolygonsQuery } from "../../api/paths/polygonApi";
 
@@ -15,6 +17,7 @@ export const Main: React.FC = () => {
     const dispatch = useAppDispatch();
     const map = useRef<ymaps.Map | undefined>(undefined);
     const mapStore = useAppSelector((state) => state.map);
+    const appStore = useAppSelector((state) => state.app);
 
     const { data = [] } = useGetPolygonsQuery();
 
@@ -32,9 +35,9 @@ export const Main: React.FC = () => {
 
     useEffect(() => {
         if (map.current) {
-            if (mapStore.clickEvent == 'INC ZOOM') {
+            if (mapStore.clickEvent === 'INC ZOOM') {
                 map.current.setZoom(mapStore.zoom + 1, { duration: 500 });
-            } else if (mapStore.clickEvent == 'DEC ZOOM') {
+            } else if (mapStore.clickEvent === 'DEC ZOOM') {
                 map.current.setZoom(mapStore.zoom - 1, { duration: 500 });
             } else {
                 dispatch(changeState({
@@ -60,6 +63,9 @@ export const Main: React.FC = () => {
                                 }));
                             }
                         }}
+                        onClick={() => {
+                            dispatch(hiddenMenu());
+                        }}
                         state={mapState}
                         width={'100vw'}
                         height={'100vh'}
@@ -84,9 +90,15 @@ export const Main: React.FC = () => {
                                             const maxX = Math.max(...arrayX);
                                             const minY = Math.min(...arrayY);
                                             const maxY = Math.max(...arrayY);
+                                            const oldZoom = map.current.getZoom();
                                             map.current.setBounds([[minX, minY], [maxX, maxY]], {
                                                 checkZoomRange: true,
                                                 duration: 500,
+                                            }).then(() => {
+                                                const newZoom = map.current?.getZoom();
+                                                if (newZoom !== oldZoom) {
+                                                    dispatch(showMenu());
+                                                }
                                             });
                                         }
                                     }}
@@ -96,6 +108,11 @@ export const Main: React.FC = () => {
                     </Map>
                 </div>
                 <div className='page-tools'>
+                    <div className='page-tools-menu' style={{
+                        visibility: appStore.menuVisible ? 'visible' : 'hidden',
+                    }}>
+                        <Menu />
+                    </div>
                     <div className='page-tools-map'>
                         <MapTools />
                     </div>

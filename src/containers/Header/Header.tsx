@@ -4,18 +4,20 @@ import './Header.scss';
 import { Input } from "../../components/Input/Input";
 import { Text } from "../../components/Text/Text";
 
-import { useAppSelector } from "../../store/hooks";
+import { useAppSelector, useAppDispatch } from "../../store/hooks";
+import { changeMenuVisible } from "../../store/features/app";
 
 import menu from '../../assets/icons/header/menu.svg';
 
 export const Header: React.FC = () => {
 
     const map = useAppSelector((state) => state.map);
+    const dispatch = useAppDispatch();
 
     return (
         <nav className='header'>
             <div className='header-left'>
-                <button>
+                <button onClick={() => { dispatch(changeMenuVisible()); }}>
                     <img src={menu} alt='menu' />
                 </button>
                 <Input inputType='search' placeholder='Поиск' />

@@ -1,0 +1,38 @@
+@use '../../assets/css/colors.scss';
+
+$menu-width: 398px;
+$menu-padding-horizontal: 10%;
+$menu-padding-top: 13%;
+$menu-padding-bottom: 8%;
+$menu-gap: 24px;
+
+.menu {
+    width: $menu-width;
+    height: 100%;
+    background-color: colors.$background-color;
+    padding-left: $menu-padding-horizontal;
+    padding-right: $menu-padding-horizontal;
+    padding-top: $menu-padding-top;
+    padding-bottom: $menu-padding-bottom;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    gap: $menu-gap;
+
+    &-content {
+        width: 100%;
+        flex: 1;
+    }
+
+    &-footer {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+
+    -webkit-box-shadow: 5px 0px 12px 0px colors.$shadow-color;
+    -moz-box-shadow: 5px 0px 12px 0px colors.$shadow-color;
+    box-shadow: 5px 0px 12px 0px colors.$shadow-color;
+}
