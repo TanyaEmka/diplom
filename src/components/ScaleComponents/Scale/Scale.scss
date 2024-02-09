@@ -19,13 +19,6 @@ $scale-switch-radius: 8px;
     position: relative;
     background-color: colors.$background-color;
 
-    &-line {
-        height: $scale-line-height;
-        width: 66%;
-        margin: 0 auto;
-        background-color: colors.$shadow-color;
-    }
-
     &-switch {
         position: absolute;
         left: 50%;

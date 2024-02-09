@@ -1,22 +1,23 @@
 import type { Meta, StoryObj } from '@storybook/react';
 
-import { Header } from '../containers/Header/Header';
+import { Line } from '../components/Line/Line';
 
 const meta = {
-  title: 'Map/Containers/Header',
-  component: Header,
+  title: 'Map/Components/Line',
+  component: Line,
   parameters: {
     layout: 'centered',
   },
   tags: ['autodocs'],
   argTypes: {
   },
-} satisfies Meta<typeof Header>;
+} satisfies Meta<typeof Line>;
 
 export default meta;
 type Story = StoryObj<typeof meta>;
 
-export const Headercontainer: Story = {
+export const LineComponent: Story = {
   args: {
   },
 };
+
