@@ -1,0 +1,33 @@
+$menu-content-gap: 32px;
+$menu-content-header-gap: 16px;
+$menu-content-header-tools-gap: 8px;
+$menu-content-list-gap: 12px;
+
+.menu-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    gap: $menu-content-gap;
+
+    &-header {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        gap: $menu-content-header-gap;
+
+        &-tools {
+            display: flex;
+            flex-direction: column;
+            justify-content: start;
+            gap: $menu-content-header-tools-gap;
+        }
+    }
+
+    &-list {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+        gap: $menu-content-list-gap;
+        //border: 1px solid red;
+    }
+}

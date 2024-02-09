@@ -4,18 +4,16 @@ import './Menu.scss';
 import exit from '../../assets/exit.svg';
 import setting from '../../assets/setting.svg';
 
+import { Line } from "../../components/Line/Line";
+import { MenuHeader } from "./MenuHeader/MenuHeader";
+import { MenuContent } from "./MenuContent/MenuContent";
+
 export const Menu: React.FC = () => {
     return (
         <div className='menu'>
-            <div className='menu-header'>
-
-            </div>
-            <div className='menu-line'>
-
-            </div>
-            <div className='menu-content'>
-
-            </div>
+            <MenuHeader />
+            <Line />
+            <MenuContent />
             <div className='menu-footer'>
                 <button>
                     <img src={setting} alt='settings' />
