@@ -28,6 +28,6 @@ $menu-content-list-gap: 12px;
         flex-direction: column;
         justify-content: start;
         gap: $menu-content-list-gap;
-        //border: 1px solid red;
+        flex: 1;
     }
 }

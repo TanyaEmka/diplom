@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 import './MenuContent.scss';
 import { Text } from "../../../components/Text/Text";
@@ -10,6 +10,10 @@ export const MenuContent: React.FC = () => {
 
     const { data = [] } = useGetPolygonsQuery();
     const [ boolValues, setBoolValues ] = useState(Array(data.length).fill(true));
+
+    useEffect(() => {
+        setBoolValues(Array(data.length).fill(true));
+    }, [data]);
 
     const getVisibleAreas = () => {
         return boolValues.filter((element) => element === true).length;
