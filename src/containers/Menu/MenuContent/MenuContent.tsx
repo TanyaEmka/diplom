@@ -28,6 +28,7 @@ export const MenuContent: React.FC = () => {
                     <BoolValue
                         name='Показать все области'
                         checked={false}
+                        textType='small-text'
                         onClick={() => {}}
                     />
                 </div>

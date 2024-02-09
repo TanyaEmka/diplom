@@ -10,6 +10,9 @@ const meta = {
   },
   tags: ['autodocs'],
   argTypes: {
+    textType: { control: 'select', 
+                  options: ['text', 'small-text'],
+                  defaultValue: 'blue' },
     checked: { control: 'boolean', },
     name: { control: 'text' },
   },
@@ -30,5 +33,21 @@ export const CheckedValue: Story = {
       name: 'Объект',
       checked: true,
     },
-  };
+};
+
+export const SmallUncheckedValue: Story = {
+  args: {
+    name: 'Объект',
+    checked: false,
+    textType: 'small-text',
+  },
+};
+
+export const SmallCheckedValue: Story = {
+  args: {
+    name: 'Объект',
+    checked: true,
+    textType: 'small-text',
+  },
+};
 
