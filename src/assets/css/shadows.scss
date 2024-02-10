@@ -1,0 +1,25 @@
+@use './colors.scss';
+
+$box-shadow-blur: 12px;
+$box-shadow-offset: 5px;
+
+$component-shadow-blur: 9px;
+$component-shadow-offset: 4px;
+
+.box-shadow-bottom {
+    -webkit-box-shadow: 0px $box-shadow-offset $box-shadow-blur 0px colors.$shadow-color;
+    -moz-box-shadow: 0px $box-shadow-offset $box-shadow-blur 0px colors.$shadow-color;
+    box-shadow: 0px $box-shadow-offset $box-shadow-blur 0px colors.$shadow-color;
+}
+
+.box-shadow-right {
+    -webkit-box-shadow: $box-shadow-offset 0px $box-shadow-blur 0px colors.$shadow-color;
+    -moz-box-shadow: $box-shadow-offset 0px $box-shadow-blur 0px colors.$shadow-color;
+    box-shadow: $box-shadow-offset 0px $box-shadow-blur 0px colors.$shadow-color;
+}
+
+.component-shadow {
+    -webkit-box-shadow: 0px $component-shadow-offset $component-shadow-blur 0px colors.$dark-shadow-color;
+    -moz-box-shadow: 0px $component-shadow-offset $component-shadow-blur 0px colors.$dark-shadow-color;
+    box-shadow: 0px $component-shadow-offset $component-shadow-blur 0px colors.$dark-shadow-color;
+}

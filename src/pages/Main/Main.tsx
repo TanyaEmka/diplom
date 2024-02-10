@@ -82,7 +82,7 @@ export const Main: React.FC = () => {
                                     properties={{
                                         hintContent: polygon.name,
                                     }}
-                                    onDblClick={(e: any) => {
+                                    onClick={(e: any) => {
                                         if (map.current) {
                                             const arrayX = polygon.points.map((element) => element[0]);
                                             const arrayY = polygon.points.map((element) => element[1]);

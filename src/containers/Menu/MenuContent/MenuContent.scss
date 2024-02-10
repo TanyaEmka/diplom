@@ -9,10 +9,16 @@ $menu-content-list-gap: 12px;
     justify-content: start;
     gap: $menu-content-gap;
 
-    &-header {
+    width: 100%;
+    flex: 1;
+
+    &-header, &-list {
         display: flex;
         flex-direction: column;
         justify-content: start;
+    }
+
+    &-header {
         gap: $menu-content-header-gap;
 
         &-tools {
@@ -24,9 +30,6 @@ $menu-content-list-gap: 12px;
     }
 
     &-list {
-        display: flex;
-        flex-direction: column;
-        justify-content: start;
         gap: $menu-content-list-gap;
         flex: 1;
     }

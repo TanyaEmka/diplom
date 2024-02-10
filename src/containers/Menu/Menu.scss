@@ -20,17 +20,6 @@ $menu-gap: 24px;
     align-content: center;
     gap: $menu-gap;
 
-    &-content {
-        width: 100%;
-        flex: 1;
-    }
-
-    &-footer {
-        width: 100%;
-        display: flex;
-        justify-content: space-between;
-    }
-
     -webkit-box-shadow: 5px 0px 12px 0px colors.$shadow-color;
     -moz-box-shadow: 5px 0px 12px 0px colors.$shadow-color;
     box-shadow: 5px 0px 12px 0px colors.$shadow-color;

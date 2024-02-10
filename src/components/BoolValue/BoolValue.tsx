@@ -23,7 +23,7 @@ export const BoolValue: React.FC<BoolValueProps> = ({
 }) => {
 
     return (
-        <div className={('boolvalue ' + className).trim()}>
+        <div className={('boolvalue ' + className + ((textType == 'small-text') ? 'boolvalue-small' : 'boolvalue-base')).trim()}>
             <Text
                 color={checked ? 'base' : 'other'}
                 type={textType}
