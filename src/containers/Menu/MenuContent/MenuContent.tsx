@@ -8,10 +8,11 @@ import { useGetPolygonsQuery } from "../../../api/paths/polygonApi";
 
 export const MenuContent: React.FC = () => {
 
-    const { data = [] } = useGetPolygonsQuery();
+    const { data = [], isLoading } = useGetPolygonsQuery();
     const [ boolValues, setBoolValues ] = useState(Array(data.length).fill(true));
 
     useEffect(() => {
+        console.log(data, isLoading);
         setBoolValues(Array(data.length).fill(true));
     }, [data]);
 

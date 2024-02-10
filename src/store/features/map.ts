@@ -1,21 +1,19 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
-type Enumerate<N extends number, Acc extends number[] = []> = Acc['length'] extends N
-    ? Acc[number]
-    : Enumerate<N, [...Acc, Acc['length']]>
-
-type NumberRange<F extends number, T extends number> = Exclude<Enumerate<T>, Enumerate<F>>
+import { NumberRange } from "../../utils/numberRange";
 
 interface MapState {
     zoom: NumberRange<9, 18>,
     center: [number, number],
+    duration: number,
     clickEvent: 'INC ZOOM' | 'DEC ZOOM' | 'NONE',
 }
 
 const initialState: MapState = {
     zoom: 10,
     center: [55.751574, 37.573856],
+    duration: 500,
     clickEvent: 'NONE',
 }
 

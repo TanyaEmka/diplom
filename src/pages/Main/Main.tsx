@@ -90,15 +90,11 @@ export const Main: React.FC = () => {
                                             const maxX = Math.max(...arrayX);
                                             const minY = Math.min(...arrayY);
                                             const maxY = Math.max(...arrayY);
-                                            const oldZoom = map.current.getZoom();
                                             map.current.setBounds([[minX, minY], [maxX, maxY]], {
                                                 checkZoomRange: true,
                                                 duration: 500,
                                             }).then(() => {
-                                                const newZoom = map.current?.getZoom();
-                                                if (newZoom !== oldZoom) {
-                                                    dispatch(showMenu());
-                                                }
+                                                dispatch(showMenu());
                                             });
                                         }
                                     }}
