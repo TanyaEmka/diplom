@@ -1,11 +1,97 @@
-import React from "react";
+import React, { useRef, useEffect } from "react";
 
 import './AppMap.scss';
+import { Map } from "@pbe/react-yandex-maps";
+import { AppPolygon } from "../AppPolygon/AppPolygon";
 
-export const AppMap: React.FC = () => {
+import { useGetPolygonsQuery } from "../../api/paths/polygonApi";
+import { changeState } from "../../store/features/map";
+import { hiddenMenu, showMenu } from "../../store/features/app";
+import { useAppDispatch, useAppSelector } from "../../store/hooks";
+
+interface AppMapProps {
+    width?: string,
+    height?: string,
+}
+
+export const AppMap: React.FC<AppMapProps> = ({
+    width='100vw',
+    height='100vh',
+}) => {
+
+    const dispatch = useAppDispatch();
+
+    const { data = [] } = useGetPolygonsQuery();
+
+    const map = useRef<ymaps.Map | undefined>(undefined);
+    const mapStore = useAppSelector((state) => state.map);
+    const mapState = {
+        center: mapStore.center,
+        zoom: mapStore.zoom
+    }
+
+    useEffect(() => {
+        if (map.current) {
+            if (mapStore.clickEvent === 'INC ZOOM') {
+                map.current.setZoom(mapStore.zoom + 1, { duration: 500 });
+            } else if (mapStore.clickEvent === 'DEC ZOOM') {
+                map.current.setZoom(mapStore.zoom - 1, { duration: 500 });
+            } else {
+                dispatch(changeState({
+                    zoom: map.current.getZoom(),
+                    center: map.current.getCenter(),
+                }));
+            }
+        }
+    }, [map, mapStore.clickEvent]);
+
     return (
         <div className='map'>
-
+            <Map 
+                instanceRef={map}
+                onActionend={() => {
+                    if (map.current) {
+                        dispatch(changeState({
+                            zoom: map.current.getZoom(),
+                            center: map.current.getCenter(),
+                        }));
+                    }
+                }}
+                onClick={() => {
+                    dispatch(hiddenMenu());
+                }}
+                state={mapState}
+                width={width}
+                height={height}
+                className='map-inner'
+                // для вывода подсказок и названий
+                modules={["geoObject.addon.balloon", "geoObject.addon.hint"]}
+            >
+                {data.map((polygon, index) => {
+                    return (
+                        <AppPolygon
+                            key={index}
+                            polygon={polygon}
+                            onClick={() => {
+                                if (map.current) {
+                                    const arrayX = polygon.points.map((element) => element[0]);
+                                    const arrayY = polygon.points.map((element) => element[1]);
+                                    const minX = Math.min(...arrayX);
+                                    const maxX = Math.max(...arrayX);
+                                    const minY = Math.min(...arrayY);
+                                    const maxY = Math.max(...arrayY);
+                                    map.current.setBounds([[minX, minY], [maxX, maxY]], {
+                                        checkZoomRange: true,
+                                        duration: mapStore.duration,
+                                    }).then(() => {
+                                        dispatch(showMenu());
+                                    });
+                                }
+                            }}
+                        />
+                    )
+                })}
+            </Map>
         </div>
     )
 }
