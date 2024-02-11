@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { Polygon } from "@pbe/react-yandex-maps";
 import { PolygonType } from "../../api/types";
@@ -15,10 +15,12 @@ export const AppPolygon: React.FC<AppPolygonProps> = ({
     strokeStyle='solid',
 }) => {
 
+    const [ strokeWidth, setStrokeWidth ] = useState(3);
+
     const polygonOptions = {
         fillColor: "rgba(164, 85, 201, 0.2)",
         strokeColor: "#A455C9",
-        strokeWidth: 5,
+        strokeWidth: strokeWidth,
         strokeStyle: strokeStyle,
     }
 
@@ -31,6 +33,12 @@ export const AppPolygon: React.FC<AppPolygonProps> = ({
                 hintContent: polygon.name,
             }}
             onClick={onClick}
+            onMouseEnter={() => {
+                setStrokeWidth(5);
+            }}
+            onMouseLeave={() => {
+                setStrokeWidth(3);
+            }}
         />
     )
 }

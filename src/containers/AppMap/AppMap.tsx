@@ -57,6 +57,7 @@ export const AppMap: React.FC<AppMapProps> = ({
 
     const goToPolygon = (polygon: PolygonType) => {
         if (map.current) {
+            dispatch(showMenu());
             const arrayX = polygon.points.map((element) => element[0]);
             const arrayY = polygon.points.map((element) => element[1]);
             const minX = Math.min(...arrayX);
@@ -66,8 +67,6 @@ export const AppMap: React.FC<AppMapProps> = ({
             map.current.setBounds([[minX, minY], [maxX, maxY]], {
                 checkZoomRange: true,
                 duration: mapStore.duration,
-            }).then(() => {
-                dispatch(showMenu());
             });
         }
     }
