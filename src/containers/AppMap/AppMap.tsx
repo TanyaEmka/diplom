@@ -26,6 +26,7 @@ export const AppMap: React.FC<AppMapProps> = ({
 
     const map = useRef<ymaps.Map | undefined>(undefined);
     const mapStore = useAppSelector((state) => state.map);
+    const { menuPolygonListVisible } = useAppSelector((state) => state.app);
     const mapState = {
         center: mapStore.center,
         zoom: mapStore.zoom
@@ -85,12 +86,20 @@ export const AppMap: React.FC<AppMapProps> = ({
                 modules={["geoObject.addon.balloon", "geoObject.addon.hint"]}
             >
                 {data.map((polygon, index) => {
+                    const visibleIndex = menuPolygonListVisible
+                        .map((element) => element.polygonId).indexOf(polygon.id);
+                    if (visibleIndex !== -1 && 
+                        menuPolygonListVisible[visibleIndex].polygonvisible) {
+                        return (
+                            <AppPolygon
+                                key={index}
+                                polygon={polygon}
+                                onClick={() => { goToPolygon(polygon); }}
+                            />
+                        )
+                    }
                     return (
-                        <AppPolygon
-                            key={index}
-                            polygon={polygon}
-                            onClick={() => { goToPolygon(polygon); }}
-                        />
+                        <></>
                     )
                 })}
             </Map>

@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 
+import './AppPolygon.scss';
 import { Polygon } from "@pbe/react-yandex-maps";
 import { PolygonType } from "../../api/types";
 
@@ -33,12 +34,8 @@ export const AppPolygon: React.FC<AppPolygonProps> = ({
                 hintContent: polygon.name,
             }}
             onClick={onClick}
-            onMouseEnter={() => {
-                setStrokeWidth(5);
-            }}
-            onMouseLeave={() => {
-                setStrokeWidth(3);
-            }}
+            onMouseEnter={() => { setStrokeWidth(5); }}
+            onMouseLeave={() => { setStrokeWidth(3); }}
         />
     )
 }
