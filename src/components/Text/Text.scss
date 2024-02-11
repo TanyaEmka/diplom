@@ -46,6 +46,11 @@
     text-decoration: underline;
 }
 
+.text-help-link:hover {
+    color: colors.$link-text-color;
+    cursor: pointer;   
+}
+
 .small-text {
     font-size: sizes.$text-small;
     color: colors.$other-text-color;

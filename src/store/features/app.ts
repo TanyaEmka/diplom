@@ -4,7 +4,8 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 type polygonVisibleType = {
     polygonId: number,
     polygonName: string,
-    polygonvisible: boolean,
+    polygonVisible: boolean,
+    polygonEnter: boolean,
 };
 
 type polygonDataType = {
@@ -41,13 +42,14 @@ const appSlice = createSlice({
                 state.menuPolygonListVisible.push({
                     polygonId: polygon.id,
                     polygonName: polygon.name,
-                    polygonvisible: true,
+                    polygonVisible: true,
+                    polygonEnter: false,
                 });
             });
         },
         showAllPolygons(state) {
             state.menuPolygonListVisible.forEach((polygonVisible, index) => {
-                state.menuPolygonListVisible[index].polygonvisible = true;
+                state.menuPolygonListVisible[index].polygonVisible = true;
             });
         },
         changePolygonVisible(state, action: PayloadAction<{ polygonId: number }>) {
@@ -55,7 +57,17 @@ const appSlice = createSlice({
                 .map((polygon) => polygon.polygonId)
                 .indexOf(action.payload.polygonId);
             if (index !== -1) {
-                state.menuPolygonListVisible[index].polygonvisible = !state.menuPolygonListVisible[index].polygonvisible;
+                state.menuPolygonListVisible[index].polygonVisible = !state.menuPolygonListVisible[index].polygonVisible;
+                return;
+            }
+            throw new Error('Области с таким id не существует');
+        },
+        changePolygonEnterStatus(state, action: PayloadAction<{ polygonId: number, enterStatus: boolean }>) {
+            const index = state.menuPolygonListVisible
+                .map((polygon) => polygon.polygonId)
+                .indexOf(action.payload.polygonId);
+            if (index !== -1) {
+                state.menuPolygonListVisible[index].polygonEnter = action.payload.enterStatus;
                 return;
             }
             throw new Error('Области с таким id не существует');
@@ -69,6 +81,7 @@ export const {
     hiddenMenu,
     updatePolygonList,
     showAllPolygons,
-    changePolygonVisible } = appSlice.actions;
+    changePolygonVisible,
+    changePolygonEnterStatus } = appSlice.actions;
 export default appSlice.reducer;
 

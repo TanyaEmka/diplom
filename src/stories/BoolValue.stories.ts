@@ -11,7 +11,7 @@ const meta = {
   tags: ['autodocs'],
   argTypes: {
     textType: { control: 'select', 
-                  options: ['text', 'small-text'],
+                  options: ['text', 'small-text', 'text-help-link'],
                   defaultValue: 'blue' },
     checked: { control: 'boolean', },
     name: { control: 'text' },
@@ -48,6 +48,14 @@ export const SmallCheckedValue: Story = {
     name: 'Объект',
     checked: true,
     textType: 'small-text',
+  },
+};
+
+export const TextHelpLink: Story = {
+  args: {
+    name: 'Объект',
+    checked: true,
+    textType: 'text-help-link',
   },
 };
 

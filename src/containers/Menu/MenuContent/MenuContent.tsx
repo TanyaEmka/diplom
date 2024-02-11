@@ -14,7 +14,7 @@ export const MenuContent: React.FC = () => {
 
     const getVisibleAreas = () => {
         return menuPolygonListVisible
-            .filter((polygon) => polygon.polygonvisible === true).length;
+            .filter((polygon) => polygon.polygonVisible === true).length;
     }
 
     return (

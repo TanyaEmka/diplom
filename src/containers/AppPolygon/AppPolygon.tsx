@@ -1,41 +1,57 @@
-import React, { useState } from "react";
+import React from "react";
 
-import './AppPolygon.scss';
 import { Polygon } from "@pbe/react-yandex-maps";
 import { PolygonType } from "../../api/types";
+
+import { changePolygonEnterStatus } from "../../store/features/app";
+import { useAppSelector, useAppDispatch } from "../../store/hooks";
 
 interface AppPolygonProps {
     polygon: PolygonType,
     onClick: (e: any) => void,
-    strokeStyle?: string,
 }
 
 export const AppPolygon: React.FC<AppPolygonProps> = ({
     polygon,
     onClick,
-    strokeStyle='solid',
 }) => {
 
-    const [ strokeWidth, setStrokeWidth ] = useState(3);
+    const leaveStroke = 3;
+    const enterStroke = 5;
+
+    const dispatch = useAppDispatch();
+    const polygonEnterStatus = useAppSelector((state) => {
+        const index = state.app.menuPolygonListVisible.map((element) => element.polygonId).indexOf(polygon.id);
+        if (index !== -1) {
+            return state.app.menuPolygonListVisible[index].polygonEnter;
+        }
+        return leaveStroke;
+    });
 
     const polygonOptions = {
         fillColor: "rgba(164, 85, 201, 0.2)",
         strokeColor: "#A455C9",
-        strokeWidth: strokeWidth,
-        strokeStyle: strokeStyle,
+        strokeWidth: polygonEnterStatus ? enterStroke : leaveStroke,
+        strokeStyle: 'solid',
+    }
+
+    const changeEnterStatus = (value: boolean) => {
+        dispatch(changePolygonEnterStatus({
+            polygonId: polygon.id,
+            enterStatus: value
+        }));
     }
 
     return (
         <Polygon
             options={polygonOptions}
-            className='app-polygon'
             geometry={[polygon.points]}
             properties={{
                 hintContent: polygon.name,
             }}
             onClick={onClick}
-            onMouseEnter={() => { setStrokeWidth(5); }}
-            onMouseLeave={() => { setStrokeWidth(3); }}
+            onMouseEnter={() => { changeEnterStatus(true); }}
+            onMouseLeave={() => { changeEnterStatus(false); }}
         />
     )
 }

@@ -7,7 +7,8 @@ interface MapState {
     zoom: NumberRange<9, 18>,
     center: [number, number],
     duration: number,
-    clickEvent: 'INC ZOOM' | 'DEC ZOOM' | 'NONE',
+    clickEvent: 'INC ZOOM' | 'DEC ZOOM' | 'GO TO POLYGON' | 'NONE',
+    goToPolygonEventId: number | undefined,
 }
 
 const initialState: MapState = {
@@ -15,6 +16,7 @@ const initialState: MapState = {
     center: [55.751574, 37.573856],
     duration: 500,
     clickEvent: 'NONE',
+    goToPolygonEventId: undefined,
 }
 
 const mapSlice = createSlice({
@@ -33,6 +35,10 @@ const mapSlice = createSlice({
             if (state.zoom > 9) {
                 state.clickEvent = 'DEC ZOOM';
             }
+        },
+        goToPolygon(state, action: PayloadAction<number>) {
+            state.clickEvent = 'GO TO POLYGON';
+            state.goToPolygonEventId = action.payload;
         },
         updateZoom(state, action: PayloadAction<number>) {
             const newZoom = state.zoom + action.payload;
@@ -67,6 +73,7 @@ const mapSlice = createSlice({
             state.center[1] = action.payload.center[1];
             state.zoom = action.payload.zoom as NumberRange<9, 18>;
             state.clickEvent = 'NONE';
+            state.goToPolygonEventId = undefined;
         },
     },
 })
@@ -74,6 +81,7 @@ const mapSlice = createSlice({
 export const { 
     incrementZoom, 
     decrementZoom, 
+    goToPolygon,
     updateZoom, 
     changeZoom,
     updateLatitude,
