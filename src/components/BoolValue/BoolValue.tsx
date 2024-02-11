@@ -8,7 +8,7 @@ export type BoolValueType = 'text' | 'small-text';
 
 interface BoolValueProps {
     checked: boolean,
-    onClick: (e: any) => void,
+    onChange: (e: any) => void,
     name: string,
     className?: string,
     textType?: BoolValueType,
@@ -16,7 +16,7 @@ interface BoolValueProps {
 
 export const BoolValue: React.FC<BoolValueProps> = ({
     checked,
-    onClick,
+    onChange,
     name,
     className='',
     textType='text'
@@ -33,7 +33,7 @@ export const BoolValue: React.FC<BoolValueProps> = ({
             </Text>
             <Checkbox 
                 checked={checked}
-                onClick={onClick}
+                onChange={onChange}
             />
         </div>
     )

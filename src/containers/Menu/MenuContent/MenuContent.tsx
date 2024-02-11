@@ -2,22 +2,19 @@ import React, { useState, useEffect } from "react";
 
 import './MenuContent.scss';
 import { Text } from "../../../components/Text/Text";
-import { BoolValue } from "../../../components/BoolValue/BoolValue";
 
-import { useGetPolygonsQuery } from "../../../api/paths/polygonApi";
+import { ShowAllButton } from "./ShowAllButton/ShowAllButton";
+import { PolygonList } from "./PolygonList/PolygonList";
+
+import { useAppSelector } from "../../../store/hooks";
 
 export const MenuContent: React.FC = () => {
 
-    const { data = [], isLoading } = useGetPolygonsQuery();
-    const [ boolValues, setBoolValues ] = useState(Array(data.length).fill(true));
-
-    useEffect(() => {
-        console.log(data, isLoading);
-        setBoolValues(Array(data.length).fill(true));
-    }, [data]);
+    const { menuPolygonListVisible } = useAppSelector((state) => state.app);
 
     const getVisibleAreas = () => {
-        return boolValues.filter((element) => element === true).length;
+        return menuPolygonListVisible
+            .filter((polygon) => polygon.polygonvisible === true).length;
     }
 
     return (
@@ -26,25 +23,11 @@ export const MenuContent: React.FC = () => {
                 <Text tag='div' type='h3'>Все области</Text>
                 <div className='menu-content-header-tools'>
                     <Text tag='div' type='small-text' color='other'>Видимые области: {getVisibleAreas()}</Text>
-                    <BoolValue
-                        name='Показать все области'
-                        checked={false}
-                        textType='small-text'
-                        onClick={() => {}}
-                    />
+                    <ShowAllButton />
                 </div>
             </div>
             <div className='menu-content-list'>
-                { data.map((element, index) => {
-                    return (
-                        <BoolValue 
-                            name={element.name} 
-                            checked={boolValues[index]}
-                            onClick={() => {}}
-                            key={index} 
-                        />
-                    )
-                }) }
+                <PolygonList />
             </div>
         </div>
     )
