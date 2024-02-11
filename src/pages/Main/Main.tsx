@@ -1,4 +1,4 @@
-import React, { useRef, useEffect } from "react";
+import React from "react";
 
 import './Main.scss';
 import { Header } from "../../containers/Header/Header";

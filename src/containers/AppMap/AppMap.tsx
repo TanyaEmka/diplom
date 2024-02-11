@@ -3,6 +3,7 @@ import React, { useRef, useEffect } from "react";
 import './AppMap.scss';
 import { Map } from "@pbe/react-yandex-maps";
 import { AppPolygon } from "../AppPolygon/AppPolygon";
+import { PolygonType } from "../../api/types";
 
 import { useGetPolygonsQuery } from "../../api/paths/polygonApi";
 import { changeState } from "../../store/features/map";
@@ -45,21 +46,38 @@ export const AppMap: React.FC<AppMapProps> = ({
         }
     }, [map, mapStore.clickEvent]);
 
+    const changeMapState = () => {
+        if (map.current) {
+            dispatch(changeState({
+                zoom: map.current.getZoom(),
+                center: map.current.getCenter(),
+            }));
+        }
+    }
+
+    const goToPolygon = (polygon: PolygonType) => {
+        if (map.current) {
+            const arrayX = polygon.points.map((element) => element[0]);
+            const arrayY = polygon.points.map((element) => element[1]);
+            const minX = Math.min(...arrayX);
+            const maxX = Math.max(...arrayX);
+            const minY = Math.min(...arrayY);
+            const maxY = Math.max(...arrayY);
+            map.current.setBounds([[minX, minY], [maxX, maxY]], {
+                checkZoomRange: true,
+                duration: mapStore.duration,
+            }).then(() => {
+                dispatch(showMenu());
+            });
+        }
+    }
+
     return (
         <div className='map'>
             <Map 
                 instanceRef={map}
-                onActionend={() => {
-                    if (map.current) {
-                        dispatch(changeState({
-                            zoom: map.current.getZoom(),
-                            center: map.current.getCenter(),
-                        }));
-                    }
-                }}
-                onClick={() => {
-                    dispatch(hiddenMenu());
-                }}
+                onActionend={() => { changeMapState(); }}
+                onClick={() => { dispatch(hiddenMenu()); }}
                 state={mapState}
                 width={width}
                 height={height}
@@ -72,22 +90,7 @@ export const AppMap: React.FC<AppMapProps> = ({
                         <AppPolygon
                             key={index}
                             polygon={polygon}
-                            onClick={() => {
-                                if (map.current) {
-                                    const arrayX = polygon.points.map((element) => element[0]);
-                                    const arrayY = polygon.points.map((element) => element[1]);
-                                    const minX = Math.min(...arrayX);
-                                    const maxX = Math.max(...arrayX);
-                                    const minY = Math.min(...arrayY);
-                                    const maxY = Math.max(...arrayY);
-                                    map.current.setBounds([[minX, minY], [maxX, maxY]], {
-                                        checkZoomRange: true,
-                                        duration: mapStore.duration,
-                                    }).then(() => {
-                                        dispatch(showMenu());
-                                    });
-                                }
-                            }}
+                            onClick={() => { goToPolygon(polygon); }}
                         />
                     )
                 })}
