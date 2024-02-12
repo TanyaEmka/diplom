@@ -5,6 +5,7 @@ import { Text } from "../../../components/Text/Text";
 
 import { ShowAllButton } from "./ShowAllButton/ShowAllButton";
 import { PolygonList } from "./PolygonList/PolygonList";
+import { ScrollBox } from "../../ScrollBox/ScrollBox";
 
 import { useAppSelector } from "../../../store/hooks";
 
@@ -26,12 +27,9 @@ export const MenuContent: React.FC = () => {
                     <ShowAllButton />
                 </div>
             </div>
-            <div className='menu-content-listbox'>
-                <div className='menu-content-listbox-list'>
-                    <PolygonList />
-                </div>
-                <div className='menu-content-listbox-bottomblock'></div>
-            </div>
+            <ScrollBox>
+                <PolygonList />
+            </ScrollBox>
         </div>
     )
 }
