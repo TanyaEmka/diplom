@@ -1,7 +1,8 @@
 @use '../../assets/css/colors.scss';
 
-$menu-padding-horizontal: 10%;
-$menu-padding-top: 13%;
+$menu-padding-right: 10%;
+$menu-padding-left: 14%;
+$menu-padding-top: 14%;
 $menu-padding-bottom: 8%;
 $menu-gap: 24px;
 
@@ -9,8 +10,8 @@ $menu-gap: 24px;
     width: 100%;
     height: 100%;
     background-color: colors.$background-color;
-    padding-left: $menu-padding-horizontal;
-    padding-right: $menu-padding-horizontal;
+    padding-left: $menu-padding-left;
+    padding-right: $menu-padding-right;
     padding-top: $menu-padding-top;
     padding-bottom: $menu-padding-bottom;
     display: flex;
