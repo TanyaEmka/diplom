@@ -16,11 +16,15 @@ type polygonDataType = {
 interface AppState {
     menuVisible: boolean,
     menuPolygonListVisible: Array<polygonVisibleType>,
+    mode: 'MAP' | 'AREA',
+    areaId: undefined | number,
 }
 
 const initialState: AppState = {
     menuVisible: false,
     menuPolygonListVisible: [],
+    mode: 'MAP',
+    areaId: undefined,
 }
 
 const appSlice = createSlice({

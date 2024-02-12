@@ -6,15 +6,16 @@ $boolvalue-gap: 12px;
     align-content: center;
     align-items: center;
 
-    &-text {
-        flex: 1;
-    }
-
     &-base {
         justify-content: space-between;
+
+        .boolvalue-text {
+            flex: 1;
+        }
     }
 
     &-small {
         justify-content: start;
+        gap: $boolvalue-gap;
     }
 }
