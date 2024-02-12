@@ -42,6 +42,7 @@ $menu-scroll-width: 12px;
             width: 100%;
             height: $menu-content-list-bottomblock;
             background: linear-gradient(0deg, colors.$background-color 0%, rgba(255,255,255,0) 100%);
+            pointer-events: none;
         }
 
         &-list {
