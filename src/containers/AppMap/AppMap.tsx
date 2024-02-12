@@ -80,7 +80,7 @@ export const AppMap: React.FC<AppMapProps> = ({
     }
 
     return (
-        <div className='map'>
+        <div className='app-map'>
             <Map 
                 instanceRef={map}
                 onActionend={() => { changeMapState(); }}
@@ -88,7 +88,7 @@ export const AppMap: React.FC<AppMapProps> = ({
                 state={mapState}
                 width={width}
                 height={height}
-                className='map-inner'
+                className='app-map-inner'
                 // для вывода подсказок и названий
                 modules={["geoObject.addon.balloon", "geoObject.addon.hint"]}
             >
@@ -106,7 +106,7 @@ export const AppMap: React.FC<AppMapProps> = ({
                         )
                     }
                     return (
-                        <></>
+                        <span key={index} ></span>
                     )
                 })}
             </Map>

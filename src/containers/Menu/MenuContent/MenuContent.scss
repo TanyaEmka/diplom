@@ -5,7 +5,7 @@ $menu-content-header-gap: 16px;
 $menu-content-header-tools-gap: 8px;
 $menu-content-list-gap: 12px;
 $menu-content-list-bottomblock: 60px;
-$menu-scroll-width: 12px;
+$menu-scroll-width: 10px;
 
 .menu-content {
     display: grid;
@@ -41,7 +41,10 @@ $menu-scroll-width: 12px;
 
             width: 100%;
             height: $menu-content-list-bottomblock;
-            background: linear-gradient(0deg, colors.$background-color 0%, rgba(255,255,255,0) 100%);
+            background: linear-gradient(0deg, 
+                colors.$background-color 0%, 
+                colors.$background-color 30%, 
+                rgba(255,255,255,0) 100%);
             pointer-events: none;
         }
 
@@ -49,10 +52,8 @@ $menu-scroll-width: 12px;
             position: absolute;
             top: 0;
 
-            --scroll-width: $menu-scroll-width;
-            --list-gap: $menu-content-list-gap;
-            --left-value: -calc(var(--scroll-width)+var(--list-gap));
-            left: -24px;
+            --left-value: calc((#{$menu-scroll-width} + #{$menu-content-list-gap}) * -1);
+            left: var(--left-value);
 
             height: 100%;
             display: flex;
