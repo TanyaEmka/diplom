@@ -1,7 +1,11 @@
+@use '../../../assets/css/colors.scss';
+
 $menu-content-gap: 32px;
 $menu-content-header-gap: 16px;
 $menu-content-header-tools-gap: 8px;
 $menu-content-list-gap: 12px;
+$menu-content-list-bottomblock: 60px;
+$menu-scroll-width: 12px;
 
 .menu-content {
     display: grid;
@@ -30,12 +34,26 @@ $menu-content-list-gap: 12px;
         flex: 1;
         position: relative;
 
+        &-bottomblock {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+
+            width: 100%;
+            height: $menu-content-list-bottomblock;
+            background: linear-gradient(0deg, colors.$background-color 0%, rgba(255,255,255,0) 100%);
+        }
+
         &-list {
             position: absolute;
             top: 0;
-            left: 0;
-            height: 100%;
 
+            --scroll-width: $menu-scroll-width;
+            --list-gap: $menu-content-list-gap;
+            --left-value: -calc(var(--scroll-width)+var(--list-gap));
+            left: -24px;
+
+            height: 100%;
             display: flex;
             flex-direction: column;
             overflow-y: scroll;
@@ -43,14 +61,20 @@ $menu-content-list-gap: 12px;
             direction: rtl;
             gap: $menu-content-list-gap;
             padding-left: $menu-content-list-gap;
+            padding-bottom: $menu-content-list-bottomblock;
 
             * {
                 direction: ltr;
             }
 
-            /*&::-webkit-scrollbar {
-                width: 0;
-            }*/
+            &::-webkit-scrollbar {
+                width: $menu-scroll-width;
+                background-color: colors.$light-shadow-color;
+
+                &-thumb {
+                    background-color: colors.$shadow-color;
+                }
+            }
         }
     }
 }

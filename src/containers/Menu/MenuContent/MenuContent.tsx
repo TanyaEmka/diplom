@@ -30,6 +30,9 @@ export const MenuContent: React.FC = () => {
                 <div className='menu-content-listbox-list'>
                     <PolygonList />
                 </div>
+                <div className='menu-content-listbox-bottomblock'>
+
+                </div>
             </div>
         </div>
     )
