@@ -4,21 +4,18 @@ $menu-content-header-tools-gap: 8px;
 $menu-content-list-gap: 12px;
 
 .menu-content {
-    display: flex;
-    flex-direction: column;
-    justify-content: start;
+    display: grid;
+    grid-template-rows: auto 1fr;
     gap: $menu-content-gap;
+    position: relative;
 
     width: 100%;
-    flex: 1;
+    height: inherit;
 
-    &-header, &-list {
+    &-header {
         display: flex;
         flex-direction: column;
         justify-content: start;
-    }
-
-    &-header {
         gap: $menu-content-header-gap;
 
         &-tools {
@@ -29,8 +26,31 @@ $menu-content-list-gap: 12px;
         }
     }
 
-    &-list {
-        gap: $menu-content-list-gap;
+    &-listbox {
         flex: 1;
+        position: relative;
+
+        &-list {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+
+            display: flex;
+            flex-direction: column;
+            overflow-y: scroll;
+            scroll-behavior: smooth;
+            direction: rtl;
+            gap: $menu-content-list-gap;
+            padding-left: $menu-content-list-gap;
+
+            * {
+                direction: ltr;
+            }
+
+            /*&::-webkit-scrollbar {
+                width: 0;
+            }*/
+        }
     }
 }

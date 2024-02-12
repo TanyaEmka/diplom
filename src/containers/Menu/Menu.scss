@@ -20,6 +20,8 @@ $menu-gap: 24px;
     align-content: center;
     gap: $menu-gap;
 
+    position: relative;
+
     -webkit-box-shadow: 5px 0px 12px 0px colors.$shadow-color;
     -moz-box-shadow: 5px 0px 12px 0px colors.$shadow-color;
     box-shadow: 5px 0px 12px 0px colors.$shadow-color;
