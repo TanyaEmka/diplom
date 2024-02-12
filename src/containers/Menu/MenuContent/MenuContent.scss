@@ -3,9 +3,6 @@
 $menu-content-gap: 32px;
 $menu-content-header-gap: 16px;
 $menu-content-header-tools-gap: 8px;
-$menu-content-list-gap: 12px;
-$menu-content-list-bottomblock: 60px;
-$menu-scroll-width: 10px;
 
 .menu-content {
     display: grid;
@@ -27,56 +24,6 @@ $menu-scroll-width: 10px;
             flex-direction: column;
             justify-content: start;
             gap: $menu-content-header-tools-gap;
-        }
-    }
-
-    &-listbox {
-        flex: 1;
-        position: relative;
-
-        &-bottomblock {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-
-            width: 100%;
-            height: $menu-content-list-bottomblock;
-            background: linear-gradient(0deg, 
-                colors.$background-color 0%, 
-                colors.$background-color 30%, 
-                rgba(255,255,255,0) 100%);
-            pointer-events: none;
-        }
-
-        &-list {
-            position: absolute;
-            top: 0;
-
-            --left-value: calc((#{$menu-scroll-width} + #{$menu-content-list-gap}) * -1);
-            left: var(--left-value);
-
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            overflow-y: scroll;
-            scroll-behavior: smooth;
-            direction: rtl;
-            gap: $menu-content-list-gap;
-            padding-left: $menu-content-list-gap;
-            padding-bottom: $menu-content-list-bottomblock;
-
-            * {
-                direction: ltr;
-            }
-
-            &::-webkit-scrollbar {
-                width: $menu-scroll-width;
-                background-color: colors.$light-shadow-color;
-
-                &-thumb {
-                    background-color: colors.$shadow-color;
-                }
-            }
         }
     }
 }
