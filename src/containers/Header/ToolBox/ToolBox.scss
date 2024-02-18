@@ -1,0 +1,17 @@
+@use '../../../assets/css/colors.scss';
+
+$tool-box-padding: 12px;
+$tool-box-border-radius: 12px;
+
+.tool-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    padding: $tool-box-padding;
+    border-radius: $tool-box-border-radius;
+
+    -webkit-box-shadow: 0px 5px 12px 0px colors.$shadow-color;
+    -moz-box-shadow: 0px 5px 12px 0px colors.$shadow-color;
+    box-shadow: 0px 5px 12px 0px colors.$shadow-color;
+}

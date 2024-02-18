@@ -2,28 +2,35 @@ import React from "react";
 
 import './Header.scss';
 import { Input } from "../../components/Input/Input";
-import { Text } from "../../components/Text/Text";
+import { Label } from "../../components/Label/Label";
+import { ExitButton } from "../../components/ExitButton/ExitButton";
+import { SettingButton } from "../../components/SettingButton/SettingButton";
 
-import { useAppSelector, useAppDispatch } from "../../store/hooks";
-import { changeMenuVisible } from "../../store/features/app";
+import { MenuButton } from "./MenuButton/MenuButton";
+import { ToolBox } from "./ToolBox/ToolBox";
 
-import menu from '../../assets/icons/header/menu.svg';
+import { useAppSelector } from "../../store/hooks";
 
 export const Header: React.FC = () => {
 
     const map = useAppSelector((state) => state.map);
-    const dispatch = useAppDispatch();
 
     return (
         <nav className='header'>
             <div className='header-left'>
-                <button onClick={() => { dispatch(changeMenuVisible()); }}>
-                    <img src={menu} alt='menu' />
-                </button>
+                <MenuButton size='small' />
                 <Input inputType='search' placeholder='Поиск' />
             </div>
-            <div className='header-map-info'>
-                <Text color='other'>Zoom: {map.zoom}, {map.center[0].toFixed(5)}, {map.center[1].toFixed(5)}</Text>
+            <div className='header-right'>
+                <ToolBox>
+                    <Label name={'Zoom: ' + map.zoom} labelColor='fill-blue' />
+                    <Label name={map.center[0].toFixed(5)} labelColor='blue' />
+                    <Label name={map.center[1].toFixed(5)} labelColor='blue' />
+                </ToolBox>
+                <ToolBox gap={28}>
+                    <SettingButton size='small' />
+                    <ExitButton size='small' />
+                </ToolBox>
             </div>
         </nav>
     )

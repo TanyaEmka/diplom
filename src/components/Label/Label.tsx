@@ -5,7 +5,7 @@ import { Text } from "../Text/Text";
 
 export type LabelColorType = 'blue' | 'accent' | 'fill-blue' | 'auto';
  
-interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
+interface LabelProps extends React.HTMLAttributes<HTMLDivElement> {
     name: string,
     shadow?: boolean,
     labelColor?: LabelColorType,
@@ -23,15 +23,17 @@ export const Label: React.FC<LabelProps> = ({
     const LabelColorClass = (labelColor !== 'auto') ? LabelClass + '-' + labelColor : '';
 
     return (
-        <label 
-            className={(LabelClass + ' ' + 
-                        LabelShadowClass + ' ' + 
-                        LabelColorClass + ' ' +
-                        props.className).trim()}
-            {...props}
+        <Text 
+            tag='div' 
+            color='inherit'
+            type='small-text'
+            class={(LabelClass + ' ' + 
+                    LabelShadowClass + ' ' + 
+                    LabelColorClass + ' ' +
+                    props.className).trim()}
         >
-            <Text color='inherit'>{name}</Text>
-        </label>
+            {name}
+        </Text>
     )
 }
 
