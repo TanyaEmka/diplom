@@ -9,7 +9,24 @@ $map-label-padding: 6px;
     padding: $map-label-padding;
     background: radial-gradient(#FFFFFF, #DFDFDF 200%);
 
-    -webkit-box-shadow: 0px 4px 4px 0px colors.$shadow-color;
-    -moz-box-shadow: 0px 4px 4px 0px colors.$shadow-color;
-    box-shadow: 0px 4px 4px 0px colors.$shadow-color;
+    &-blue {
+        border: 1px solid colors.$second-color;
+    }
+
+    &-accent {
+        color: colors.$accent-color;
+        border: 1px solid colors.$accent-color;
+    }
+
+    &-fill-blue {
+        color: colors.$background-color;
+        background: colors.$second-color;
+        border: 1px solid colors.$second-color;
+    }
+
+    &-shadow {
+        -webkit-box-shadow: 0px 4px 4px 0px colors.$shadow-color;
+        -moz-box-shadow: 0px 4px 4px 0px colors.$shadow-color;
+        box-shadow: 0px 4px 4px 0px colors.$shadow-color;
+    }
 }
