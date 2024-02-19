@@ -1,5 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
+import { PolygonType } from "../../api/types";
 
 type polygonVisibleType = {
     polygonId: number,
@@ -82,7 +83,6 @@ const appSlice = createSlice({
             state.areaId = action.payload.areaId;
         },
         setMapMode(state) {
-            state.menuVisible = false;
             state.mode = 'MAP';
             state.areaId = undefined;
         }

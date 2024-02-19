@@ -1,18 +1,24 @@
 import React from "react";
 
 import './MenuHeader.scss';
-import { Text } from "../../../components/Text/Text";
 
-import { useGetPolygonsQuery } from "../../../api/paths/polygonApi";
+import { MapMode } from "./MapMode";
+import { AreaMode } from "./AreaMode";
+
+import { useAppSelector } from "../../../store/hooks";
 
 export const MenuHeader: React.FC = () => {
 
-    const { data = [] } = useGetPolygonsQuery();
+    const { mode, areaId } = useAppSelector((state) => state.app);
 
     return (
         <div className='menu-header'>
-            <Text tag='div'>Всего областей на карте</Text>
-            <Text tag='div' type='h1'>{data.length}</Text>
+            { mode === 'MAP' ?
+                <MapMode /> :
+                mode === 'AREA' && areaId ?
+                <AreaMode areaId={areaId} />
+                : <></>
+            }
         </div>
     )
 }

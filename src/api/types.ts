@@ -4,6 +4,7 @@ export type TreeType = {
     x: number,
     y: number,
     wood_id: number,
+    name: string,
 }
 
 export type WoodType = {
