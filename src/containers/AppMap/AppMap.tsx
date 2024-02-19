@@ -7,7 +7,7 @@ import { PolygonType } from "../../api/types";
 
 import { useGetPolygonsQuery } from "../../api/paths/polygonApi";
 import { changeState } from "../../store/features/map";
-import { hiddenMenu, showMenu, setAreaMode } from "../../store/features/app";
+import { hiddenMenu, setAreaMode } from "../../store/features/app";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 
 interface AppMapProps {

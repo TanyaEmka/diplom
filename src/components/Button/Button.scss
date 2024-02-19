@@ -2,6 +2,7 @@
 @use '../../assets/css/sizes.scss';
 
 .blue-button, .white-button, .accent-button {
+    display: flex;
     border-radius: sizes.$border-radius-component;
 }
 
@@ -22,6 +23,7 @@
 }
 
 .blue-line-button, .white-line-button, .accent-line-button {
+    display: flex;
     border-radius: sizes.$border-radius-component;
     background-color: colors.$background-color;
 

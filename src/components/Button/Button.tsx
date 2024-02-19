@@ -34,7 +34,12 @@ export const Button: React.FC<ButtonProps> = ({
             className={buttonClass}
             {...props}
         >
-            <Text color='inherit'>{children}</Text>
+            <Text 
+                color='inherit'
+                type={buttonSizeClass === 'small' ? 'small-text' : 'text'}
+            >
+                {children}
+            </Text>
         </button>
     );
 }
