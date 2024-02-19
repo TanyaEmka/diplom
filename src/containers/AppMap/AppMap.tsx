@@ -7,7 +7,7 @@ import { PolygonType } from "../../api/types";
 
 import { useGetPolygonsQuery } from "../../api/paths/polygonApi";
 import { changeState } from "../../store/features/map";
-import { hiddenMenu, showMenu } from "../../store/features/app";
+import { hiddenMenu, showMenu, setAreaMode } from "../../store/features/app";
 import { useAppDispatch, useAppSelector } from "../../store/hooks";
 
 interface AppMapProps {
@@ -26,7 +26,7 @@ export const AppMap: React.FC<AppMapProps> = ({
 
     const map = useRef<ymaps.Map | undefined>(undefined);
     const mapStore = useAppSelector((state) => state.map);
-    const { menuPolygonListVisible } = useAppSelector((state) => state.app);
+    const { menuPolygonListVisible, mode, areaId } = useAppSelector((state) => state.app);
     const mapState = {
         center: mapStore.center,
         zoom: mapStore.zoom
@@ -65,7 +65,7 @@ export const AppMap: React.FC<AppMapProps> = ({
 
     const goToPolygon = (polygon: PolygonType) => {
         if (map.current) {
-            dispatch(showMenu());
+            dispatch(setAreaMode({ areaId: polygon.id }));
             const arrayX = polygon.points.map((element) => element[0]);
             const arrayY = polygon.points.map((element) => element[1]);
             const minX = Math.min(...arrayX);
@@ -77,6 +77,19 @@ export const AppMap: React.FC<AppMapProps> = ({
                 duration: mapStore.duration,
             });
         }
+    }
+
+    const getPolygonIndexById = (polygonId: number | undefined) => {
+        if (!polygonId) {
+            throw new Error('id области не определен')    
+        }
+
+        const index = data.map((polygon) => polygon.id).indexOf(polygonId);
+        if (index !== -1) {
+            return index;
+        }
+
+        throw new Error('Области с таким id не существует');
     }
 
     return (
@@ -92,23 +105,37 @@ export const AppMap: React.FC<AppMapProps> = ({
                 // для вывода подсказок и названий
                 modules={["geoObject.addon.balloon", "geoObject.addon.hint"]}
             >
-                {data.map((polygon, index) => {
-                    const visibleIndex = menuPolygonListVisible
-                        .map((element) => element.polygonId).indexOf(polygon.id);
-                    if (visibleIndex !== -1 && 
-                        menuPolygonListVisible[visibleIndex].polygonVisible) {
+                {mode === 'MAP' ? 
+                    data.map((polygon, index) => {
+                        const visibleIndex = menuPolygonListVisible
+                            .map((element) => element.polygonId).indexOf(polygon.id);
+                        if (visibleIndex !== -1 && 
+                            menuPolygonListVisible[visibleIndex].polygonVisible) {
+                            return (
+                                <AppPolygon
+                                    key={index}
+                                    polygon={polygon}
+                                    onClick={() => { goToPolygon(polygon); }}
+                                />
+                            )
+                        }
+                        return (
+                            <span key={index} ></span>
+                        )
+                    })
+                :
+                    [0].map((value) => {
+                        const polygonIndex = getPolygonIndexById(areaId);
+
                         return (
                             <AppPolygon
-                                key={index}
-                                polygon={polygon}
-                                onClick={() => { goToPolygon(polygon); }}
+                                key={value}
+                                polygon={data[polygonIndex]}
+                                onClick={() => { goToPolygon(data[polygonIndex]); }}
                             />
                         )
-                    }
-                    return (
-                        <span key={index} ></span>
-                    )
-                })}
+                    })
+                }
             </Map>
         </div>
     )

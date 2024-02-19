@@ -76,6 +76,16 @@ const appSlice = createSlice({
             }
             throw new Error('Области с таким id не существует');
         },
+        setAreaMode(state, action: PayloadAction<{ areaId: number }>) {
+            state.menuVisible = true;
+            state.mode = 'AREA';
+            state.areaId = action.payload.areaId;
+        },
+        setMapMode(state) {
+            state.menuVisible = false;
+            state.mode = 'MAP';
+            state.areaId = undefined;
+        }
     }
 });
 
@@ -86,6 +96,8 @@ export const {
     updatePolygonList,
     showAllPolygons,
     changePolygonVisible,
-    changePolygonEnterStatus } = appSlice.actions;
+    changePolygonEnterStatus,
+    setAreaMode,
+    setMapMode } = appSlice.actions;
 export default appSlice.reducer;
 

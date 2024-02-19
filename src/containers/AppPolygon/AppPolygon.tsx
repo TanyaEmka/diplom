@@ -18,20 +18,28 @@ export const AppPolygon: React.FC<AppPolygonProps> = ({
 
     const leaveStroke = 3;
     const enterStroke = 5;
+    const areaStroke = 2;
 
     const dispatch = useAppDispatch();
     const polygonEnterStatus = useAppSelector((state) => {
-        const index = state.app.menuPolygonListVisible.map((element) => element.polygonId).indexOf(polygon.id);
+        const index = state.app.menuPolygonListVisible
+            .map((element) => element.polygonId).indexOf(polygon.id);
         if (index !== -1) {
             return state.app.menuPolygonListVisible[index].polygonEnter;
         }
         return leaveStroke;
     });
+    const { mode, areaId } = useAppSelector((state) => state.app);
+
+    const isPolygonMode = () => {
+        return (mode === 'AREA' && areaId === polygon.id);
+    }
 
     const polygonOptions = {
-        fillColor: "rgba(164, 85, 201, 0.2)",
-        strokeColor: "#A455C9",
-        strokeWidth: polygonEnterStatus ? enterStroke : leaveStroke,
+        fillColor: isPolygonMode() ? 'rgba(164, 85, 201, 0.0)' : 'rgba(164, 85, 201, 0.2)',
+        strokeColor: '#A455C9',
+        strokeWidth: isPolygonMode() ? areaStroke : 
+            polygonEnterStatus ? enterStroke : leaveStroke,
         strokeStyle: 'solid',
     }
 
