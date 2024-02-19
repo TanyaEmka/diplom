@@ -3,7 +3,7 @@ export type TreeType = {
     veight: number,
     x: number,
     y: number,
-    wood_id: number,
+    wood: string,
     name: string,
 }
 

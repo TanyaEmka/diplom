@@ -127,8 +127,9 @@
             "length": 25,
             "d1_3": 3,
             "note": "Примечание",
-            "wood_id": 1,
-            "polygon_id": 1
+            "wood": "Берёза",
+            "polygon_id": 1,
+            "name": "Дерево XGREF"
         }
     ]
 }

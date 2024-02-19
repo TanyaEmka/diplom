@@ -14,12 +14,15 @@ interface MenuBlockProps {
 export const MenuBlock: React.FC<MenuBlockProps> = ({
     name,
     selected,
-    onClick
+    onClick,
 }) => {
     return (
-        <div className='menublock'>
-            <Text>{name}</Text>
-            <Line />
+        <div 
+            className='menublock'
+            onClick={onClick}
+        >
+            <Text tag='div' class='menublock-text'>{name}</Text>
+            <Line color={selected ? 'blue' : 'gray'} />
         </div>
     )
 }

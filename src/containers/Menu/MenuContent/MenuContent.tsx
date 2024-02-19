@@ -1,35 +1,29 @@
 import React from "react";
 
 import './MenuContent.scss';
+
 import { Text } from "../../../components/Text/Text";
 
-import { ShowAllButton } from "./ShowAllButton/ShowAllButton";
-import { PolygonList } from "./PolygonList/PolygonList";
-import { ScrollBox } from "../../ScrollBox/ScrollBox";
+import { MapMode } from "./MapMode";
+import { AreaMode } from "./AreaMode";
+import { MenuContentHeader } from "./MenuContentHeader/MenuContentHeader";
 
 import { useAppSelector } from "../../../store/hooks";
 
 export const MenuContent: React.FC = () => {
 
-    const { menuPolygonListVisible } = useAppSelector((state) => state.app);
-
-    const getVisibleAreas = () => {
-        return menuPolygonListVisible
-            .filter((polygon) => polygon.polygonVisible === true).length;
-    }
+    const { mode, areaId } = useAppSelector((state) => state.app);
 
     return (
         <div className='menu-content'>
-            <div className='menu-content-header'>
-                <Text tag='div' type='h3'>Все области</Text>
-                <div className='menu-content-header-tools'>
-                    <Text tag='div' type='small-text' color='other'>Видимые области: {getVisibleAreas()}</Text>
-                    <ShowAllButton />
-                </div>
-            </div>
-            <ScrollBox>
-                <PolygonList />
-            </ScrollBox>
+            <MenuContentHeader />
+            {mode === 'MAP' ?
+                <MapMode />
+            : mode === 'AREA' && areaId ?
+                <AreaMode />
+            :
+                <Text color='gray'>Загрузка...</Text>
+            }
         </div>
     )
 }

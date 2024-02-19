@@ -1,8 +1,7 @@
 @use '../../../assets/css/colors.scss';
 
 $menu-content-gap: 32px;
-$menu-content-header-gap: 16px;
-$menu-content-header-tools-gap: 8px;
+$menu-content-areamode-gap: 8px;
 
 .menu-content {
     display: grid;
@@ -13,17 +12,10 @@ $menu-content-header-tools-gap: 8px;
     width: 100%;
     height: inherit;
 
-    &-header {
+    &-areamode {
         display: flex;
         flex-direction: column;
-        justify-content: start;
-        gap: $menu-content-header-gap;
-
-        &-tools {
-            display: flex;
-            flex-direction: column;
-            justify-content: start;
-            gap: $menu-content-header-tools-gap;
-        }
+        gap: $menu-content-areamode-gap;
+        width: 100%;
     }
 }

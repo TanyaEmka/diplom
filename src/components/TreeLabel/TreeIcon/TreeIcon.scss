@@ -1,4 +1,4 @@
-@use '../../assets/css/colors.scss';
+@use '../../../assets/css/colors.scss';
 
 $tree-icon-border: 4px;
 $tree-icon-size: 40px;
@@ -8,6 +8,8 @@ $tree-icon-size: 40px;
     width: $tree-icon-size;
     height: $tree-icon-size;
     border: $tree-icon-border solid colors.$header-text-color;
+    color: colors.$header-text-color;
+    cursor: pointer;
 
     display: flex;
     justify-content: center;

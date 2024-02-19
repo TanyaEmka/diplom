@@ -16,7 +16,7 @@ export const TreeIcon: React.FC<TreeIconProps> = ({
             className='tree-icon'
             title={wood}
         >
-            <Text type='h3'>{wood.charAt(0)}</Text>
+            <Text type='h3' color='inherit'>{wood.charAt(0)}</Text>
         </div>
     )
 }

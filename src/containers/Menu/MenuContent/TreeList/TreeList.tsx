@@ -1,5 +1,8 @@
 import React from "react";
 
+import { Text } from "../../../../components/Text/Text";
+import { TreeLabel } from "../../../../components/TreeLabel/TreeLabel";
+
 import { useGetPolygonTreesQuery } from "../../../../api/paths/treeApi";
 
 interface TreeListProps {
@@ -14,6 +17,17 @@ export const TreeList: React.FC<TreeListProps> = ({
 
     return (
         <>
+            {!isLoading ? 
+                data.map((tree, index) => {
+                    return (
+                        <TreeLabel 
+                            key={index}
+                            {...tree}
+                        />
+                    )
+                })
+            : <Text color='gray'>Загрузка...</Text>
+            }
         </>
     )
 }
