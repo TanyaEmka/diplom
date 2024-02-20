@@ -4,6 +4,7 @@ import './AppMap.scss';
 import { Map } from "@pbe/react-yandex-maps";
 import { AppPolygon } from "../AppPolygon/AppPolygon";
 import { PolygonType } from "../../api/types";
+import { AppMapTreeList } from "./AppMapTreeList/AppMapTreeList";
 
 import { useGetPolygonsQuery } from "../../api/paths/polygonApi";
 import { changeState } from "../../store/features/map";
@@ -123,18 +124,22 @@ export const AppMap: React.FC<AppMapProps> = ({
                             <span key={index} ></span>
                         )
                     })
-                :
+                : mode === 'AREA' && areaId ?
                     [0].map((value) => {
                         const polygonIndex = getPolygonIndexById(areaId);
 
                         return (
-                            <AppPolygon
-                                key={value}
-                                polygon={data[polygonIndex]}
-                                onClick={() => { goToPolygon(data[polygonIndex]); }}
-                            />
+                            <>
+                                <AppPolygon
+                                    key={value}
+                                    polygon={data[polygonIndex]}
+                                    onClick={() => { goToPolygon(data[polygonIndex]); }}
+                                />
+                                <AppMapTreeList areaId={areaId} />
+                            </>
                         )
                     })
+                : <></>
                 }
             </Map>
         </div>
