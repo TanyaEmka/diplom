@@ -115,6 +115,7 @@ export const AppMap: React.FC<AppMapProps> = ({
                                 <AppPolygon
                                     key={index}
                                     polygon={polygon}
+                                    enterStatus={menuPolygonListVisible[visibleIndex].polygonEnter}
                                     onClick={() => { goToPolygon(polygon); }}
                                 />
                             )
@@ -131,6 +132,7 @@ export const AppMap: React.FC<AppMapProps> = ({
                             <AppPolygon
                                 key={value}
                                 polygon={data[polygonIndex]}
+                                enterStatus={menuPolygonListVisible[polygonIndex].polygonEnter}
                                 onClick={() => { goToPolygon(data[polygonIndex]); }}
                             />
                         )

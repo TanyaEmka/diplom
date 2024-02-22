@@ -11,11 +11,13 @@ import { useAppSelector, useAppDispatch } from "../../store/hooks";
 
 interface AppPolygonProps {
     polygon: PolygonType,
+    enterStatus: boolean,
     onClick: (e: any) => void,
 }
 
 export const AppPolygon: React.FC<AppPolygonProps> = ({
     polygon,
+    enterStatus,
     onClick,
 }) => {
 
@@ -24,14 +26,6 @@ export const AppPolygon: React.FC<AppPolygonProps> = ({
     const areaStroke = 2;
 
     const dispatch = useAppDispatch();
-    const polygonEnterStatus = useAppSelector((state) => {
-        const index = state.app.menuPolygonListVisible
-            .map((element) => element.polygonId).indexOf(polygon.id);
-        if (index !== -1) {
-            return state.app.menuPolygonListVisible[index].polygonEnter;
-        }
-        return leaveStroke;
-    });
     const { mode, areaId } = useAppSelector((state) => state.app);
 
     const isPolygonMode = () => {
@@ -46,7 +40,7 @@ export const AppPolygon: React.FC<AppPolygonProps> = ({
     const lineOptions = {
         strokeColor: '#A455C9',
         strokeWidth: isPolygonMode() ? areaStroke :
-            polygonEnterStatus ? enterStroke : leaveStroke,
+            enterStatus ? enterStroke : leaveStroke,
         strokeStyle: 'solid',
     }
 
