@@ -1,5 +1,6 @@
 import React from "react";
 
+import { Polyline } from "@pbe/react-yandex-maps";
 import { Polygon } from "@pbe/react-yandex-maps";
 import { PolygonType } from "../../api/types";
 
@@ -37,17 +38,16 @@ export const AppPolygon: React.FC<AppPolygonProps> = ({
         return (mode === 'AREA' && areaId === polygon.id);
     }
 
-    let polygonOptions = {
-        strokeColor: '#A455C9',
-        strokeWidth: isPolygonMode() ? areaStroke : 
-            polygonEnterStatus ? enterStroke : leaveStroke,
-        strokeStyle: 'solid',
+    const polygonOptions = {
+        fillColor: isPolygonMode() ? 'rgba(164, 85, 201, 0.0)' 
+            : 'rgba(164, 85, 201, 0.2)',
     }
 
-    if (!isPolygonMode()) {
-        polygonOptions = Object.assign(polygonOptions, { 
-            fillColor: 'rgba(164, 85, 201, 0.2)', 
-        });
+    const lineOptions = {
+        strokeColor: '#A455C9',
+        strokeWidth: isPolygonMode() ? areaStroke :
+            polygonEnterStatus ? enterStroke : leaveStroke,
+        strokeStyle: 'solid',
     }
 
     const changeEnterStatus = (value: boolean) => {
@@ -59,18 +59,23 @@ export const AppPolygon: React.FC<AppPolygonProps> = ({
 
     return (
         <>
-            <Polygon
-                options={polygonOptions}
-                geometry={[polygon.points]}
-                properties={{
-                    hintContent: polygon.name,
-                }}
-                onClick={onClick}
-                onMouseEnter={() => { changeEnterStatus(true); }}
-                onMouseLeave={() => { changeEnterStatus(false); }}
-            />
-            {mode === 'AREA' && areaId === polygon.id ?
-                <AreaMode areaId={areaId} />
+            {mode === 'MAP' ?
+                <Polygon
+                    options={{ ...polygonOptions, ...lineOptions, }}
+                    geometry={[polygon.points]}
+                    properties={{ hintContent: polygon.name, }}
+                    onClick={onClick}
+                    onMouseEnter={() => { changeEnterStatus(true); }}
+                    onMouseLeave={() => { changeEnterStatus(false); }}
+                />
+            : mode === 'AREA' && areaId === polygon.id ?
+                <>
+                    <Polyline 
+                        options={{ ...polygonOptions, ...lineOptions, }}
+                        geometry={[...polygon.points, polygon.points[0]]}
+                    />
+                    <AreaMode areaId={areaId} />
+                </>
             : <></>
             }
         </>
