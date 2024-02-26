@@ -5,7 +5,7 @@ import './MenuContent.scss';
 import { Text } from "../../../components/Text/Text";
 
 import { MapMode } from "./MapMode";
-import { AreaMode } from "./AreaMode";
+import { AreaMode } from "./AreaMode/AreaMode";
 import { MenuContentHeader } from "./MenuContentHeader/MenuContentHeader";
 
 import { useAppSelector } from "../../../store/hooks";

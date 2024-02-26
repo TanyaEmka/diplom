@@ -10,7 +10,7 @@ import { MenuFooter } from "./MenuFooter/MenuFooter";
 
 export const Menu: React.FC = () => {
     return (
-        <div className='menu'>
+        <div className='menu box-shadow-right'>
             <MenuOther />
             <MenuHeader />
             <Line />

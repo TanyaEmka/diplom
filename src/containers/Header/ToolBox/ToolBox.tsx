@@ -15,7 +15,7 @@ export const ToolBox: React.FC<ToolBox> = ({
 }) => {
     return (
         <div 
-            className='tool-box'
+            className='tool-box box-shadow-bottom'
             style={{
                 gap: gap.toString() + 'px',
             }}

@@ -19,7 +19,7 @@ export const Label: React.FC<LabelProps> = ({
 }) => {
 
     const LabelClass = 'map-label';
-    const LabelShadowClass = (shadow) ? LabelClass + '-shadow' : '';
+    const LabelShadowClass = (shadow) ? 'component-shadow' : '';
     const LabelColorClass = (labelColor !== 'auto') ? LabelClass + '-' + labelColor : '';
 
     return (
@@ -27,10 +27,10 @@ export const Label: React.FC<LabelProps> = ({
             tag='div' 
             color='inherit'
             type='small-text'
-            class={(LabelClass + ' ' + 
-                    LabelShadowClass + ' ' + 
-                    LabelColorClass + ' ' +
-                    props.className).trim()}
+            class={[LabelClass, 
+                    LabelShadowClass, 
+                    LabelColorClass, 
+                    props.className].join(' ').trim()}
         >
             {name}
         </Text>

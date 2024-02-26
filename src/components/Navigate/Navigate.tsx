@@ -7,8 +7,8 @@ export const Navigate: React.FC = () => {
     return (
         <div className='navigate'>
             <div className='navigate-shadow'>
-                <div className='navigate-shadow-vblock'></div>
-                <div className='navigate-shadow-hblock'></div>
+                <div className='navigate-shadow-vblock component-shadow'></div>
+                <div className='navigate-shadow-hblock component-shadow'></div>
             </div>
 
             <div className='navigate-form'>

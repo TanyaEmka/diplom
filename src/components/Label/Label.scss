@@ -23,10 +23,4 @@ $map-label-padding: 6px;
         background: colors.$second-color;
         border: 1px solid colors.$second-color;
     }
-
-    &-shadow {
-        -webkit-box-shadow: 0px 4px 4px 0px colors.$shadow-color;
-        -moz-box-shadow: 0px 4px 4px 0px colors.$shadow-color;
-        box-shadow: 0px 4px 4px 0px colors.$shadow-color;
-    }
 }

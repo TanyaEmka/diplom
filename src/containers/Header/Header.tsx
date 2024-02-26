@@ -17,7 +17,7 @@ export const Header: React.FC = () => {
     const mode = useAppSelector((state) => state.app.mode);
 
     return (
-        <nav className='header'>
+        <nav className='header box-shadow-bottom'>
             <div className='header-left'>
                 <MenuButton size='small' />
                 <Input inputType='search' placeholder='Поиск' />
