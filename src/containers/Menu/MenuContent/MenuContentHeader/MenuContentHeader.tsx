@@ -11,14 +11,14 @@ import { useAppSelector } from "../../../../store/hooks";
 
 export const MenuContentHeader: React.FC = () => {
 
-    const { mode, areaId } = useAppSelector((state) => state.app);
+    const { mode } = useAppSelector((state) => state.app);
 
     return (
         <div className='menu-content-header'>
             {mode === 'MAP' ?
                 <MapMode />
-            : mode === 'AREA' && areaId ?
-                <AreaMode areaId={areaId} />
+            : mode === 'AREA' ?
+                <AreaMode />
             :
                 <Text>Загрузка...</Text>
             }

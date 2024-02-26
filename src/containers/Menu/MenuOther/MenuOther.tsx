@@ -7,9 +7,11 @@ import { OtherButton } from "../../../components/OtherButton/OtherButton";
 
 import { setMapMode } from "../../../store/features/app";
 import { useAppDispatch, useAppSelector } from "../../../store/hooks";
+import { useNavigate } from "react-router-dom";
 
 export const MenuOther: React.FC = () => {
 
+    const navigate = useNavigate();
     const dispatch = useAppDispatch();
     const mode = useAppSelector((state) => state.app.mode);
 
@@ -21,7 +23,10 @@ export const MenuOther: React.FC = () => {
                 <Button
                     buttonType='accent'
                     buttonLine='line'
-                    onClick={() => { dispatch(setMapMode()); }}
+                    onClick={() => { 
+                        navigate('/');
+                        dispatch(setMapMode()); 
+                    }}
                 >
                     Прекратить просмотр
                 </Button>

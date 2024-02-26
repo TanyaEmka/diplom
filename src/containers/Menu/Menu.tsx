@@ -8,12 +8,21 @@ import { MenuHeader } from "./MenuHeader/MenuHeader";
 import { MenuContent } from "./MenuContent/MenuContent";
 import { MenuFooter } from "./MenuFooter/MenuFooter";
 
+import { useAppSelector } from "../../store/hooks";
+
 export const Menu: React.FC = () => {
+
+    const { mode } = useAppSelector(state => state.app);
+
     return (
         <div className='menu box-shadow-right'>
             <MenuOther />
             <MenuHeader />
-            <Line />
+            {mode === 'MAP' ?
+                <Line />
+            : 
+                <></>
+            }
             <MenuContent />
             <MenuFooter />
         </div>
