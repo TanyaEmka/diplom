@@ -28,6 +28,8 @@ $navigate-radius: 26px;
             border-radius: $navigate-radius;
             left: 50%;
             transform: translate(-50%, 0);
+            
+            background-color: colors.$background-color;
         }
 
         &-hblock {
