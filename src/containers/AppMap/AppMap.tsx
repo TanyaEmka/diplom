@@ -34,22 +34,29 @@ export const AppMap: React.FC<AppMapProps> = ({
 
     useEffect(() => {
         if (map.current) {
-            if (mapStore.clickEvent === 'INC ZOOM') {
-                map.current.setZoom(mapStore.zoom + 1, { duration: mapStore.duration });
-            } else if (mapStore.clickEvent === 'DEC ZOOM') {
-                map.current.setZoom(mapStore.zoom - 1, { duration: mapStore.duration });
-            } else if (mapStore.clickEvent === 'GO TO POLYGON') {
-                if (mapStore.goToPolygonEventId) {
-                    const index = data.map((element) => element.id).indexOf(mapStore.goToPolygonEventId);
-                    if (index !== -1) {
-                        goToPolygon(data[index]);
+            switch (mapStore.clickEvent) {
+                case 'INC ZOOM':
+                    map.current.setZoom(mapStore.zoom + 1, { duration: mapStore.duration });
+                    return;
+                case 'DEC ZOOM':
+                    map.current.setZoom(mapStore.zoom - 1, { duration: mapStore.duration });
+                    return;
+                case 'GO TO POLYGON':
+                    if (mapStore.goToPolygonEventId) {
+                        const index = data.map((element) => element.id).indexOf(mapStore.goToPolygonEventId);
+                        if (index !== -1) {
+                            goToPolygon(data[index]);
+                        }
                     }
-                }
-            } else {
-                dispatch(changeState({
-                    zoom: map.current.getZoom(),
-                    center: map.current.getCenter(),
-                }));
+                    return;
+                case 'NONE':
+                    dispatch(changeState({
+                        zoom: map.current.getZoom(),
+                        center: map.current.getCenter(),
+                    }));
+                    return;
+                default:
+                    return;
             }
         }
     }, [map, mapStore.clickEvent]);

@@ -16,9 +16,8 @@ export const MapMode: React.FC = () => {
 
     return (
         <>
-            <Text tag='div' type='h3'>Все области</Text>
             <div className='menu-content-header-tools'>
-                <Text tag='div' type='small-text' color='other'>Видимые области: {getVisibleAreas()}</Text>
+                <Text tag='div' type='small-text' color='other'>Видимые участки: {getVisibleAreas()}</Text>
                 <ShowAllButton />
             </div>
         </>

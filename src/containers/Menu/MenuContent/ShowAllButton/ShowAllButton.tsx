@@ -12,7 +12,7 @@ export const ShowAllButton: React.FC = () => {
 
     return (
         <BoolValue
-            name='Показать все области'
+            name='Показать все участки'
             checked={showAll}
             textType='small-text'
             onChange={() => {

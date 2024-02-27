@@ -10,7 +10,7 @@ export const MapMode: React.FC = () => {
 
     return (
         <>
-            <Text tag='div'>Всего областей на карте</Text>
+            <Text tag='div' type='h3'>Все участки</Text>
             <Text tag='div' type='h1'>{data.length}</Text>
         </>
     )

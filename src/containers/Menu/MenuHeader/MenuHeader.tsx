@@ -15,9 +15,9 @@ export const MenuHeader: React.FC = () => {
         <div className='menu-header'>
             { mode === 'MAP' ?
                 <MapMode /> :
-                mode === 'AREA' && areaId ?
+            mode === 'AREA' && areaId ?
                 <AreaMode areaId={areaId} />
-                : <></>
+            : <></>
             }
         </div>
     )
