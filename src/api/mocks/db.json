@@ -103,9 +103,10 @@
             "tree_count": 3
         }
     ],
-    "polygon_statistic": [
+    "statistics": [
         {
             "id": 1,
+            "polygon_id": "1",
             "tree_count": 3,
             "trees": [
                 {

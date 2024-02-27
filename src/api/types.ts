@@ -24,6 +24,18 @@ export type PolygonTreesType = {
     trees: Array<TreeType>,
 }
 
+export type StatisticTreeType = {
+    count: number,
+    wood: string,
+}
+
+export type StatisticType = {
+    id: number,
+    polygon_id: number,
+    tree_count: number,
+    trees: Array<StatisticTreeType>,
+}
+
 export type SigninType = {
     login: string,
     password: string,
