@@ -118,6 +118,60 @@
                     "wood": "Осина"
                 }
             ]
+        },
+        {
+            "id": 2,
+            "polygon_id": "2",
+            "tree_count": 0,
+            "trees": []
+        },
+        {
+            "id": 3,
+            "polygon_id": "3",
+            "tree_count": 0,
+            "trees": []
+        },
+        {
+            "id": 4,
+            "polygon_id": "4",
+            "tree_count": 0,
+            "trees": []
+        },
+        {
+            "id": 5,
+            "polygon_id": "5",
+            "tree_count": 0,
+            "trees": []
+        },
+        {
+            "id": 6,
+            "polygon_id": "6",
+            "tree_count": 0,
+            "trees": []
+        },
+        {
+            "id": 7,
+            "polygon_id": "7",
+            "tree_count": 0,
+            "trees": []
+        },
+        {
+            "id": 8,
+            "polygon_id": "8",
+            "tree_count": 0,
+            "trees": []
+        },
+        {
+            "id": 9,
+            "polygon_id": "9",
+            "tree_count": 0,
+            "trees": []
+        },
+        {
+            "id": 10,
+            "polygon_id": "10",
+            "tree_count": 0,
+            "trees": []
         }
     ],
     "woods": [
@@ -141,6 +195,22 @@
             "y": 55.75,
             "name": "Дерево XGREF",
             "wood": "Берёза",
+            "polygon_id": 1
+        },
+        {
+            "id": "2",
+            "x": 37.9,
+            "y": 55.76,
+            "name": "Дерево XGREF2",
+            "wood": "Осина",
+            "polygon_id": 1
+        },
+        {
+            "id": "3",
+            "x": 37.9,
+            "y": 55.74,
+            "name": "Дерево XGREF3",
+            "wood": "Осина",
             "polygon_id": 1
         }
     ],
