@@ -8,6 +8,7 @@ import { useGetPolygonTreesQuery } from "../../../../../../api/paths/treeApi";
 import { useGetPolygonStatisticQuery } from "../../../../../../api/paths/statisticApi";
 import { useAppSelector } from "../../../../../../store/hooks";
 import { StatisticTreeType } from "../../../../../../api/types";
+import { PieChart } from "@mui/x-charts";
 
 export const AboutPage: React.FC = () => {
 
@@ -28,6 +29,21 @@ export const AboutPage: React.FC = () => {
             <Text type='bold-text'>
                 Число деревьев: {isLoading ? 'загрузка...' : data.length}
             </Text>
+            <PieChart 
+                series={[
+                    {
+                        data: trees.map((tree, index) => {
+                            return {
+                                id: index,
+                                value: tree.count,
+                                label: tree.wood,
+                            }
+                        })
+                    }
+                ]}
+                width={300}
+                height={100}
+                />
             {trees.map((statistic, index) => {
                 return (
                     <Text key={index}>{statistic.wood}: {statistic.count}</Text>
