@@ -2,8 +2,6 @@ import React from "react";
 
 import './Header.scss';
 import { Label } from "../../components/Label/Label";
-import { ExitButton } from "../../components/ExitButton/ExitButton";
-import { SettingButton } from "../../components/SettingButton/SettingButton";
 
 import { MenuButton } from "./MenuButton/MenuButton";
 import { ToolBox } from "./ToolBox/ToolBox";
@@ -29,10 +27,6 @@ export const Header: React.FC = () => {
                     <Label name={'Zoom: ' + map.zoom} labelColor='fill-blue' />
                     <Label name={map.center[0].toFixed(5)} labelColor='blue' />
                     <Label name={map.center[1].toFixed(5)} labelColor='blue' />
-                </ToolBox>
-                <ToolBox gap={28}>
-                    <SettingButton size='small' />
-                    <ExitButton size='small' />
                 </ToolBox>
             </div>
         </nav>

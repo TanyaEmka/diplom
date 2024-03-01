@@ -32,10 +32,6 @@ export const TreeLabel: React.FC<TreeLabelProps> = ({
                     <Text type='small-text'>{x} {y}</Text>
                 </div>
             </div>
-            <IconButton 
-                src={arrow}
-                alt='Подробнее'
-            />
         </div>
     )
 }
