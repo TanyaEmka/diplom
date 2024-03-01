@@ -1,3 +1,5 @@
+@use '../../../assets/css/colors.scss';
+
 $tool-box-padding: 12px;
 $tool-box-border-radius: 12px;
 
@@ -8,4 +10,5 @@ $tool-box-border-radius: 12px;
     align-content: center;
     padding: $tool-box-padding;
     border-radius: $tool-box-border-radius;
+    background-color: colors.$background-color;
 }

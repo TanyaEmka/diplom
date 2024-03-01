@@ -14,13 +14,13 @@ export const Main: React.FC = () => {
 
     return (
         <div className='main-page'>
-            <Header />
+            <AppMap />
             <div className='main-page-content'>
-                <AppMap />
+                <Header />
+                <div className={'main-page-content-menu main-page-content-menu-' + (appStore.menuVisible ? 'show' : 'hidden')}>
+                    <Menu />
+                </div>
                 <div className='page-tools'>
-                    <div className={'page-tools-menu page-tools-menu-' + (appStore.menuVisible ? 'show' : 'hidden')}>
-                        <Menu />
-                    </div>
                     <div className='page-tools-map'>
                         <MapTools />
                     </div>

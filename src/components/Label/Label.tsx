@@ -25,7 +25,6 @@ export const Label: React.FC<LabelProps> = ({
     return (
         <Text 
             tag='div' 
-            color='inherit'
             type='small-text'
             class={[LabelClass, 
                     LabelShadowClass, 

@@ -7,16 +7,16 @@ $header-tools-gap: 24px;
 .header {
     box-sizing: border-box;
     width: 100%;
-    height: $header-height;
-    padding-left: $header-horizontal-padding;
+    margin-top: 30px;
     padding-right: $header-horizontal-padding;
-    background-color: colors.$background-color;
     position: relative;
     
     z-index: 100;
 
     display: flex;
     justify-content: space-between;
+    align-items: center;
+    align-content: center;
 
     &-left, &-right {
         display: flex;
@@ -27,7 +27,7 @@ $header-tools-gap: 24px;
 
     &-left {
         gap: $header-horizontal-padding;
-        width: calc(412px - 2 * #{$header-horizontal-padding});
+        padding-left: $header-horizontal-padding;
 
         div {
             flex: 1;

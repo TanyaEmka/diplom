@@ -1,7 +1,6 @@
 import React from "react";
 
 import './Header.scss';
-import { Input } from "../../components/Input/Input";
 import { Label } from "../../components/Label/Label";
 import { ExitButton } from "../../components/ExitButton/ExitButton";
 import { SettingButton } from "../../components/SettingButton/SettingButton";
@@ -17,10 +16,9 @@ export const Header: React.FC = () => {
     const mode = useAppSelector((state) => state.app.mode);
 
     return (
-        <nav className='header box-shadow-bottom'>
+        <nav className='header'>
             <div className='header-left'>
                 <MenuButton size='small' />
-                <Input inputType='search' placeholder='Поиск' />
             </div>
             <div className='header-right'>
                 <ToolBox>

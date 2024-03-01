@@ -4,7 +4,7 @@ $map-label-border-radius: 9px;
 $map-label-padding: 6px;
 
 .map-label {
-    color: colors.$second-color;
+    color: colors.$second-color !important;
     border-radius: $map-label-border-radius;
     padding: $map-label-padding;
     background: radial-gradient(#FFFFFF, #DFDFDF 200%);
@@ -15,12 +15,12 @@ $map-label-padding: 6px;
     }
 
     &-accent {
-        color: colors.$accent-color;
+        color: colors.$accent-color !important;
         border: 1px solid colors.$accent-color;
     }
 
     &-fill-blue {
-        color: colors.$background-color;
+        color: colors.$background-color !important;
         background: colors.$second-color;
         border: 1px solid colors.$second-color;
     }
