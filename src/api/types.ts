@@ -37,11 +37,18 @@ export type StatisticType = {
 }
 
 export type SigninType = {
-    login: string,
+    name: string,
     password: string,
 }
 
+export type SigninResponse = {
+    status: number,
+    body: {
+        access_token: string,
+    }
+}
+
 export type SignupType = {
-    login: string,
+    name: string,
     password: string,
 }
