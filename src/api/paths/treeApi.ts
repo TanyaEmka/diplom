@@ -4,15 +4,15 @@ import { TreeType } from "../types";
 
 export const treeApi = createApi({
     reducerPath: 'treeApi',
-    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3001/' }),
+    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000/api/' }),
     endpoints: (builder) => ({
-        getTrees: builder.query<Array<TreeType>, void>({
+        getTrees: builder.query<{ trees: Array<TreeType>}, void>({
             query: () => 'trees/',
         }),
         getTree: builder.query<TreeType, number>({
             query: (id) => `trees/${id}`,
         }),
-        getPolygonTrees: builder.query<Array<TreeType>, number>({
+        getPolygonTrees: builder.query<{ trees: Array<TreeType> }, number>({
             query: (id) => `trees?polygon_id=${id}`,
         }),
     }),

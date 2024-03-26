@@ -12,12 +12,12 @@ export const PolygonList: React.FC = () => {
     const dispatch = useAppDispatch();
     const { menuPolygonListVisible } = useAppSelector((state) => state.app);
 
-    const { data = [], isLoading } = useGetPolygonsQuery();
+    const { data = { polygons: [] }, isLoading } = useGetPolygonsQuery();
 
     useEffect(() => {
         if (!isLoading) {
             dispatch(updatePolygonList({
-                polygons: [...data],
+                polygons: [...data.polygons],
             }));
         }
     }, [isLoading]);

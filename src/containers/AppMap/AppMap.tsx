@@ -22,7 +22,7 @@ export const AppMap: React.FC<AppMapProps> = ({
 
     const dispatch = useAppDispatch();
 
-    const { data = [] } = useGetPolygonsQuery();
+    const { data = {polygons: []} } = useGetPolygonsQuery();
 
     const map = useRef<ymaps.Map | undefined>(undefined);
     const mapStore = useAppSelector((state) => state.map);
@@ -43,9 +43,9 @@ export const AppMap: React.FC<AppMapProps> = ({
                     return;
                 case 'GO TO POLYGON':
                     if (mapStore.goToPolygonEventId) {
-                        const index = data.map((element) => element.id).indexOf(mapStore.goToPolygonEventId);
+                        const index = data.polygons.map((element) => element.id).indexOf(mapStore.goToPolygonEventId);
                         if (index !== -1) {
-                            goToPolygon(data[index]);
+                            goToPolygon(data.polygons[index]);
                         }
                     }
                     return;
@@ -59,7 +59,7 @@ export const AppMap: React.FC<AppMapProps> = ({
                     return;
             }
         }
-    }, [map, mapStore.clickEvent]);
+    }, [map, mapStore.clickEvent, data]);
 
     const changeMapState = () => {
         if (map.current) {
@@ -91,7 +91,7 @@ export const AppMap: React.FC<AppMapProps> = ({
             throw new Error('id области не определен')    
         }
 
-        const index = data.map((polygon) => polygon.id).indexOf(polygonId);
+        const index = data.polygons.map((polygon) => polygon.id).indexOf(polygonId);
         if (index !== -1) {
             return index;
         }
@@ -113,7 +113,7 @@ export const AppMap: React.FC<AppMapProps> = ({
                 modules={["geoObject.addon.balloon", "geoObject.addon.hint"]}
             >
                 {mode === 'MAP' ? 
-                    data.map((polygon, index) => {
+                    data.polygons.map((polygon, index) => {
                         const visibleIndex = menuPolygonListVisible
                             .map((element) => element.polygonId).indexOf(polygon.id);
                         if (visibleIndex !== -1 && 
@@ -138,9 +138,9 @@ export const AppMap: React.FC<AppMapProps> = ({
                         return (
                             <AppPolygon
                                 key={value}
-                                polygon={data[polygonIndex]}
+                                polygon={data.polygons[polygonIndex]}
                                 enterStatus={menuPolygonListVisible[polygonIndex].polygonEnter}
-                                onClick={() => { goToPolygon(data[polygonIndex]); }}
+                                onClick={() => { goToPolygon(data.polygons[polygonIndex]); }}
                             />
                         )
                     })

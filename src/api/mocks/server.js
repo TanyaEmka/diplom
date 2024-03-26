@@ -22,53 +22,51 @@ export default function () {
 
             treeData.forEach((treeArray, index) => {
                 treeArray.forEach((tree) => {
-                    server.create('tree', { 
-                        polygon: polygonShema[index],
-                        ...tree,
-                    });
+                    server.create('tree', { ...tree, polygon: polygonShema[index] });
                 });
             });
         },
 
         routes() {
-            this.get('/polygons', (schema) => {
-                return schema.polygon.all();
+            this.get('/api/polygons/', (schema) => {
+
+                return schema.all('polygon');
             })
 
-            this.get('polygons/:id', (schema, request) => {
+            this.get('/api/polygons/:id', (schema, request) => {
                 const id = request.params.id;
 
-                return schema.polygon.find(id);
+                return schema.find('polygon', id);
             })
 
-            this.post('/polygons', (schema, request) => {
+            this.post('/api/polygons', (schema, request) => {
                 const attrs = JSON.parse(request.requestBody);
 
-                return schema.polygon.create(attrs);
+                return schema.create('polygon', attrs);
             })
 
-            this.delete('polygons/:id', (schema, request) => {
+            this.delete('/api/polygons/:id', (schema, request) => {
                 const id = request.params.id;
 
-                return schema.polygon.find(id).destroy();
+                return schema.find('polygon', id).destroy();
             })
 
-            this.get('/trees', (schema) => {
-                return schema.tree.all();
+            this.get('/api/trees', (schema) => {
+                return schema.all('tree');
             })
 
-            this.get('trees/:id', (schema, request) => {
+            this.get('/api/trees/:id', (schema, request) => {
                 const id = request.params.id;
 
-                return schema.tree.find(id);
+                return schema.find('tree', id);
             })
 
-            this.get('trees?polygon_id=:id', (schema, request) => {
+            this.get('/api/trees?polygon_id=:id', (schema, request) => {
                 const id = request.params.id;
-                const polygonBody = schema.polygon.find(id);
+                const polygonBody = schema.find('polygon', id);
 
                 return polygonBody.trees;
-            }) 
+            })
         },
     })
 }

@@ -4,9 +4,9 @@ import { PolygonType } from '../types';
 
 export const polygonApi = createApi({
     reducerPath: 'polygonApi',
-    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3001/' }),
+    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000/api/' }),
     endpoints: (builder) => ({
-        getPolygons: builder.query<Array<PolygonType>, void>({
+        getPolygons: builder.query<{ polygons: Array<PolygonType>}, void>({
             query: () => 'polygons/',
         }),
         getPolygon: builder.query<PolygonType, number>({

@@ -13,7 +13,7 @@ import { StatisticTreeType } from "../../../../../../api/types";
 export const AboutPage: React.FC = () => {
 
     const areaId = useAppSelector((state) => state.app.areaId);
-    const { data = [], isLoading } = useGetPolygonTreesQuery(areaId || -1);
+    const { data = { trees: [] }, isLoading } = useGetPolygonTreesQuery(areaId || -1);
     const statisticQuery = useGetPolygonStatisticQuery(areaId || -1);
 
     const [trees, setTrees] = useState<Array<StatisticTreeType>>([]);
@@ -27,7 +27,7 @@ export const AboutPage: React.FC = () => {
     return (
         <div className='aboutpage'>
             <Text type='bold-text'>
-                Число деревьев: {isLoading ? 'загрузка...' : data.length}
+                Число деревьев: {isLoading ? 'загрузка...' : data.trees.length}
             </Text>
             <Button
                 buttonType='blue'

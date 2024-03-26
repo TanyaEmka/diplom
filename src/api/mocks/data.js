@@ -104,7 +104,6 @@ export let treeData = [
             d1_3: 3,
             note: "Примечание",
             wood: "Берёза",
-            polygon_id: 1,
             name: "Дерево XGREF"
         }
     ]

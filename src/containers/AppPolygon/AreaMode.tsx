@@ -12,12 +12,12 @@ export const AreaMode: React.FC<AreaModeProps> = ({
     areaId,
 }) => {
 
-    const { data = [], isLoading } = useGetPolygonTreesQuery(areaId);
+    const { data = { trees: [] }, isLoading } = useGetPolygonTreesQuery(areaId);
 
     return (
         <>
             {!isLoading ?
-                data.map((tree, index) => {
+                data.trees.map((tree, index) => {
                     return (
                         <AppPlacemark 
                             key={index}
