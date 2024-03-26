@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import './AboutPage.scss';
 
@@ -6,12 +6,23 @@ import { Text } from "../../../../../../components/Text/Text";
 import { Button } from "../../../../../../components/Button/Button";
 
 import { useGetPolygonTreesQuery } from "../../../../../../api/paths/treeApi";
+import { useGetPolygonStatisticQuery } from "../../../../../../api/paths/statisticApi";
 import { useAppSelector } from "../../../../../../store/hooks";
+import { StatisticTreeType } from "../../../../../../api/types";
 
 export const AboutPage: React.FC = () => {
 
     const areaId = useAppSelector((state) => state.app.areaId);
     const { data = [], isLoading } = useGetPolygonTreesQuery(areaId || -1);
+    const statisticQuery = useGetPolygonStatisticQuery(areaId || -1);
+
+    const [trees, setTrees] = useState<Array<StatisticTreeType>>([]);
+
+    useEffect(() => {
+        if (!isLoading && statisticQuery.data) {
+            setTrees(statisticQuery.data[0].trees);
+        }
+    }, [statisticQuery.isLoading])
 
     return (
         <div className='aboutpage'>
@@ -27,6 +38,11 @@ export const AboutPage: React.FC = () => {
             >
                 Перейти на страницу участка
             </Button>
+            {trees.map((statistic, index) => {
+                return (
+                    <Text key={index}>{statistic.wood}: {statistic.count}</Text>
+                )
+            })}
         </div>
     )
 }

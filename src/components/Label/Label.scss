@@ -8,6 +8,7 @@ $map-label-padding: 6px;
     border-radius: $map-label-border-radius;
     padding: $map-label-padding;
     background: radial-gradient(#FFFFFF, #DFDFDF 200%);
+    cursor: pointer;
 
     &-blue {
         border: 1px solid colors.$second-color;
