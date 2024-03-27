@@ -18,6 +18,7 @@ export const Login: React.FC = () => {
 
     const [ name, setName ] = useState('');
     const [ password, setPassword ] = useState('');
+    const [ error, setError ] = useState('');
 
     const [ login ] = useLoginMutation();
 
@@ -27,7 +28,8 @@ export const Login: React.FC = () => {
             password: passwordString
         })
         .then((res: any) => {
-            if (res.status !== 400) {
+            console.log(res);
+            if (!res.error) {
                 return res.data;
             } else {
                 throw new Error(res.error.data.errors.join(' '));
@@ -40,8 +42,8 @@ export const Login: React.FC = () => {
             }));
             navigate('/');
         })
-        .catch((error) => {
-            console.log(error);
+        .catch((error: any) => {
+            setError(error.message);
         });
     }
 
@@ -65,6 +67,7 @@ export const Login: React.FC = () => {
                         setPassword(e.target.value);
                     }} 
                 />
+                <Text tag='div' type='small-text' color='error'>{error}</Text>
                 <Button 
                     buttonType='blue'
                     onClick={() => { loginFunction(name, password) }}

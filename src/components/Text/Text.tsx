@@ -18,6 +18,7 @@ export type TextColor = 'base' |
                         'other' | 
                         'header' | 
                         'link' |
+                        'error' |
                         'inherit';
  
 interface TextProps {

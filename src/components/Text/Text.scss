@@ -76,6 +76,11 @@
     color: colors.$link-text-color;
 }
 
+.error {
+    color: colors.$accent-color;
+    cursor: pointer;
+}
+
 .inherit {
     color: inherit;
 }
