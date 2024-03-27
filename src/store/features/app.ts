@@ -1,6 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
-import { PolygonType } from "../../api/types";
 
 type polygonVisibleType = {
     polygonId: number,

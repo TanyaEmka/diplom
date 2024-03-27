@@ -36,6 +36,11 @@ export type StatisticType = {
     trees: Array<StatisticTreeType>,
 }
 
+export type UserType = {
+    name: string,
+    status: string,
+}
+
 export type SigninType = {
     name: string,
     password: string,

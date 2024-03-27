@@ -2,21 +2,26 @@ import React, { useEffect } from 'react';
 import './assets/css/index.scss';
 
 import { Main } from './pages/Main/Main';
+import { Login } from './pages/Login/Login';
 import { YMaps } from '@pbe/react-yandex-maps';
 
 import { Route, Routes } from 'react-router';
 
+import { useAppDispatch, useAppSelector } from './store/hooks';
 import { useLoginMutation } from './api/paths/userApi';
+import { useNavigate } from 'react-router';
 
 function App() {
+
+  const navigate = useNavigate();
+  const { accessToken } = useAppSelector((state) => state.user);
 
   const [login, { isLoading }] = useLoginMutation();
 
   useEffect(() => {
-    const user = login({
-      name: 'user',
-      password: 'user',
-    });
+    if (accessToken == '') {
+      navigate('/login');
+    }
   }, [])
 
   return (
@@ -26,9 +31,7 @@ function App() {
     }}>
       <Routes>
         <Route path="*" element={<Main />} />
-        <Route path="/login" element={
-          <span>Login</span>
-        } />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </YMaps>
   );

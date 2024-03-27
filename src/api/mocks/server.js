@@ -1,4 +1,4 @@
-import { createServer, Model, hasMany, belongsTo } from 'miragejs'
+import { createServer, Model, hasMany, belongsTo, Response } from 'miragejs'
 
 import { polygonData, woodData, treeData, userData } from './data';
 import { cookieParser, deleteCookie } from './cookie';
@@ -89,7 +89,19 @@ export default function () {
 
             this.post('/api/login', (shema, request) => {
                 const attrs = JSON.parse(request.requestBody);
-                const user = shema.findBy('user', { ...attrs });
+                const user = shema.findBy('user', { name: attrs.name });
+
+                if (!user) {
+                    return new Response(400, {}, {
+                        errors: ['Не правильно введён логин. Повторите снова']
+                    });
+                }
+
+                if (user.password !== attrs.password) {
+                    return new Response(400, {}, {
+                        errors: ['Не правильно введён пароль. Повторите снова']
+                    });
+                }
                 
                 const newToken = sign(user, 'Token');
                 let now = new Date();
@@ -97,16 +109,10 @@ export default function () {
                 document.cookie = ['access_token=' + encodeURIComponent(newToken),
                                     'expires=' + endTime.toUTCString()].join('; ');
             
-                return new Response(
-                    JSON.stringify({ access_token: newToken }),
-                    {
-                        status: 200,
-                        statusText: 'Success',
-                        headers: {
-                            'Content-type': 'application/json'
-                        }
-                    }
-                );
+                return { 
+                    user: user,
+                    access_token: newToken
+                };
             })
 
             this.post('/api/logout', (shema, request) => {
