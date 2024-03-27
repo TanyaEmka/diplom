@@ -12,6 +12,13 @@ export const polygonApi = createApi({
         getPolygon: builder.query<PolygonType, number>({
             query: (id) => `polygons/${id}`,
         }),
+        updatePolygon: builder.query<PolygonType, { id: number, attrs: any }>({
+            query: (params) => ({
+                url: `polygons/${params.id}`,
+                method: 'PATCH',
+                body: { ...params.attrs }
+            })
+        })
     }),
 });
 

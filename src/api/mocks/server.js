@@ -122,6 +122,20 @@ export default function () {
             
                 return new Response(200, {}, { message: 'Success' });
             })
+
+            this.patch('api/polygons/:id', (schema, request) => {
+                const id = request.params.id;
+                const attrs = this.normalizedRequestAttrs();
+
+                return schema.find('polygon', id).update(attrs);
+            })
+
+            this.patch('api/trees/:id', (schema, request) => {
+                const id = request.params.id;
+                const attrs = this.normalizedRequestAttrs();
+
+                return schema.find('tree', id).update(attrs);
+            })
         },
     })
 }

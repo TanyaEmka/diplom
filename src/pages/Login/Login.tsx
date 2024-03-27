@@ -79,7 +79,7 @@ export const Login: React.FC = () => {
                     color='link' 
                     onClick={() => { loginFunction('user', 'user') }}
                 >
-                    Продолжить без авторизации
+                    Продолжить как гость
                 </Text>
             </form>
         </div>
