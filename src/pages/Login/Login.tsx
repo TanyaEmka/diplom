@@ -28,7 +28,6 @@ export const Login: React.FC = () => {
             password: passwordString
         })
         .then((res: any) => {
-            console.log(res);
             if (!res.error) {
                 return res.data;
             } else {

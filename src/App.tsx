@@ -8,21 +8,34 @@ import { YMaps } from '@pbe/react-yandex-maps';
 import { Route, Routes } from 'react-router';
 
 import { useAppDispatch, useAppSelector } from './store/hooks';
-import { useLoginMutation } from './api/paths/userApi';
 import { useNavigate } from 'react-router';
+import { updateToken } from './store/features/user';
+
+import { cookieParser } from './api/mocks/cookie';
 
 function App() {
 
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
   const { accessToken } = useAppSelector((state) => state.user);
 
-  const [login, { isLoading }] = useLoginMutation();
+  useEffect(() => {
+    const cookieInfo = cookieParser(document.cookie);
+    if (cookieInfo && cookieInfo.access_token) {
+      dispatch(updateToken({
+        user: { name: cookieInfo.user_name, status: cookieInfo.user_status },
+        accessToken: cookieInfo.access_token,
+      }));
+    }
+  }, [])
 
   useEffect(() => {
     if (accessToken == '') {
       navigate('/login');
+    } else {
+      navigate('/');
     }
-  }, [])
+  }, [ accessToken ])
 
   return (
     <YMaps query={{ 

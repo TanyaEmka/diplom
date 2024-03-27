@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { SigninType, SignupType, SigninResponse } from "../types";
+import { SigninType, SigninResponse } from "../types";
 
 export const userApi = createApi({
     reducerPath: 'userApi',
@@ -12,12 +12,13 @@ export const userApi = createApi({
                 body: { ...params }
             }),
         }),
-        logout: builder.query<string, SignupType>({
-            query: (params: SignupType) => 'logout/',
+        logout: builder.mutation<any, void>({
+            query: () => 'logout/',
         }),
     }),
 });
 
 export const {
-    useLoginMutation
+    useLoginMutation,
+    useLogoutMutation
 } = userApi;

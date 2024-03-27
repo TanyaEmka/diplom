@@ -23,12 +23,12 @@ const userSlice = createSlice({
                 state.user = undefined;
             }
         },
-        logout(state) {
+        deleteToken(state) {
             state.accessToken = '';
             state.user = undefined;
         }
     }
 });
 
-export const { updateToken, logout } = userSlice.actions;
+export const { updateToken, deleteToken } = userSlice.actions;
 export default userSlice.reducer;

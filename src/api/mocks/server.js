@@ -1,7 +1,6 @@
 import { createServer, Model, hasMany, belongsTo, Response } from 'miragejs'
 
 import { polygonData, woodData, treeData, userData } from './data';
-import { cookieParser, deleteCookie } from './cookie';
 const sign = require('jwt-encode');
 
 export const keyName = 'Token';
@@ -106,8 +105,9 @@ export default function () {
                 const newToken = sign(user, 'Token');
                 let now = new Date();
                 let endTime = new Date(now.getTime() + 24 * 3600 * 1000);
-                document.cookie = ['access_token=' + encodeURIComponent(newToken),
-                                    'expires=' + endTime.toUTCString()].join('; ');
+                document.cookie = ['access_token=' + encodeURIComponent(newToken), 'expires=' + endTime.toUTCString()].join('; ');
+                document.cookie = ['gis_name=' + user.name, 'expires=' + endTime.toUTCString()].join('; ');
+                document.cookie = ['gis_status=' + user.status, 'expires=' + endTime.toUTCString()].join('; ');
             
                 return { 
                     user: user,
@@ -115,19 +115,12 @@ export default function () {
                 };
             })
 
-            this.post('/api/logout', (shema, request) => {
-                const status = deleteCookie('access_token');
+            this.get('/api/logout', (shema, request) => {
+                document.cookie = ['access_token=', 'expires=Thu, 01 Jan 1970 00:00:01 GMT'].join('; ');
+                document.cookie = ['gis_name=', 'expires=Thu, 01 Jan 1970 00:00:01 GMT'].join('; ');
+                document.cookie = ['gis_status=', 'expires=Thu, 01 Jan 1970 00:00:01 GMT'].join('; ');
             
-                if (status) {
-                    return {
-                        'status': 200,
-                        'message': 'success'
-                    };
-                }
-                return {
-                    'status': 400,
-                    'message': 'error'
-                };
+                return new Response(200, {}, { message: 'Success' });
             })
         },
     })
