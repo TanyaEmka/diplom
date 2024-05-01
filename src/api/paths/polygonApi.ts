@@ -22,7 +22,22 @@ export const polygonApi = createApi({
                 body: { ...params.attrs }
             }),
             invalidatesTags: ['Polygon', 'Polygons']
-        })
+        }),
+        deletePolygon: builder.mutation<PolygonType, { id: number }>({
+            query: (params) => ({
+                url: `polygons/${params.id}`,
+                method: 'DELETE',
+            }),
+            invalidatesTags: ['Polygon', 'Polygons']
+        }),
+        addPolygon: builder.mutation<PolygonType, { id: number, attrs: any }>({
+            query: (params) => ({
+                url: `polygons`,
+                method: 'POST',
+                body: { ...params.attrs }
+            }),
+            invalidatesTags: ['Polygon', 'Polygons']
+        }),
     }),
 });
 
@@ -31,5 +46,6 @@ export const {
     useGetPolygonsQuery,
     useGetPolygonQuery,
     useUpdatePolygonMutation,
-    useLazyGetPolygonQuery
+    useDeletePolygonMutation,
+    useAddPolygonMutation
 } = polygonApi;

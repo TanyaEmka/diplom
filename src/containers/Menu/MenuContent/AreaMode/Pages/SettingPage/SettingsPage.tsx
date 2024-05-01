@@ -3,8 +3,13 @@ import React, { useState } from "react";
 import { Button } from "../../../../../../components/Button/Button";
 import { EditBox } from "./EditBox/EditBox";
 
-import { useAppSelector } from "../../../../../../store/hooks";
-import { useGetPolygonQuery, useUpdatePolygonMutation } from "../../../../../../api/paths/polygonApi";
+import { useAppSelector, useAppDispatch } from "../../../../../../store/hooks";
+import { setMapMode } from "../../../../../../store/features/app";
+import { 
+    useGetPolygonQuery, 
+    useUpdatePolygonMutation, 
+    useDeletePolygonMutation 
+} from "../../../../../../api/paths/polygonApi";
 
 export const SettingsPage: React.FC = () => {
 
@@ -15,6 +20,9 @@ export const SettingsPage: React.FC = () => {
 
     const [pointArray, setPointArray] = useState(updatedPoints);
     const [patchPolygon] = useUpdatePolygonMutation();
+    const [deletePolygon] = useDeletePolygonMutation();
+
+    const dispatch = useAppDispatch();
 
     const getPointArray = () => {
         return pointArray.map((value) => [value.x, value.y]);
@@ -41,6 +49,12 @@ export const SettingsPage: React.FC = () => {
                 buttonSize='small'
                 buttonLine='line'
                 style={{ width: 'fit-content' }}
+                onClick={() => {
+                    if (areaId) {
+                        dispatch(setMapMode());
+                        deletePolygon({ id: areaId });
+                    }
+                }}
             >
                 Удалить полигон
             </Button>

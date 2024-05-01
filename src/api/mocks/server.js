@@ -130,6 +130,18 @@ export default function () {
                 return schema.find('polygon', id).update(attrs);
             })
 
+            this.delete('api/polygons/:id', (schema, request) => {
+                let id = request.params.id;
+
+                return schema.find('polygon', id).destroy();
+            })
+
+            this.post('api/polygons', (schema, request) => {
+                const attrs = JSON.parse(request.requestBody);
+
+                return schema.create('polygon', { attrs });
+            });
+
             this.patch('api/trees/:id', (schema, request) => {
                 const id = request.params.id;
                 const attrs = this.normalizedRequestAttrs();
