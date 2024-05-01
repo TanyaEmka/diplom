@@ -138,8 +138,8 @@ export default function () {
 
             this.post('api/polygons', (schema, request) => {
                 const attrs = JSON.parse(request.requestBody);
-
-                return schema.create('polygon', { attrs });
+                console.log(attrs);
+                return schema.create('polygon', attrs);
             });
 
             this.patch('api/trees/:id', (schema, request) => {

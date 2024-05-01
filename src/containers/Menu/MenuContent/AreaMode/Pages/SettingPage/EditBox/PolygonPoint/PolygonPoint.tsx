@@ -46,6 +46,7 @@ export const  PolygonPoint: React.FC<PolygonPointProps> = ({
             />
             <Button
                 buttonType='blue' buttonSize='small' buttonLine='line'
+                style={{ fontWeight: 'bold' }}
                 onClick={() => { addNewPoint(pointIndex + 1) }}
             >
                 ↓
@@ -53,6 +54,7 @@ export const  PolygonPoint: React.FC<PolygonPointProps> = ({
             {type == 'first' &&
             <Button
                 buttonType='blue' buttonSize='small' buttonLine='line'
+                style={{ fontWeight: 'bold' }}
                 onClick={() => { addNewPoint(0) }}
             >
                 ↑

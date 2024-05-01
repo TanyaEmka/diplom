@@ -18,4 +18,18 @@ $menu-content-areamode-gap: 8px;
         gap: $menu-content-areamode-gap;
         width: 100%;
     }
+
+    &-add {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        button {
+            width: fit-content;
+        }
+
+        .add-text {
+            margin-top: 8px;
+        }
+    }
 }

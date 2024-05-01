@@ -17,6 +17,7 @@ interface AppState {
     menuVisible: boolean,
     menuPolygonListVisible: Array<polygonVisibleType>,
     mode: 'MAP' | 'AREA',
+    postMode: 'BASE' | 'POST',
     areaId: undefined | number,
 }
 
@@ -24,6 +25,7 @@ const initialState: AppState = {
     menuVisible: false,
     menuPolygonListVisible: [],
     mode: 'MAP',
+    postMode: 'BASE',
     areaId: undefined,
 }
 
@@ -84,6 +86,12 @@ const appSlice = createSlice({
         setMapMode(state) {
             state.mode = 'MAP';
             state.areaId = undefined;
+        },
+        addPolygonMode(state) {
+            state.postMode = 'POST';
+        },
+        notAddPolygonMode(state) {
+            state.postMode = 'BASE';
         }
     }
 });
@@ -97,6 +105,8 @@ export const {
     changePolygonVisible,
     changePolygonEnterStatus,
     setAreaMode,
+    addPolygonMode,
+    notAddPolygonMode,
     setMapMode } = appSlice.actions;
 export default appSlice.reducer;
 

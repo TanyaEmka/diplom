@@ -30,7 +30,7 @@ export const polygonApi = createApi({
             }),
             invalidatesTags: ['Polygon', 'Polygons']
         }),
-        addPolygon: builder.mutation<PolygonType, { id: number, attrs: any }>({
+        addPolygon: builder.mutation<PolygonType, { attrs: any }>({
             query: (params) => ({
                 url: `polygons`,
                 method: 'POST',

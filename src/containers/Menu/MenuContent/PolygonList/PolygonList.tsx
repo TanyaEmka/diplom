@@ -15,7 +15,7 @@ export const PolygonList: React.FC = () => {
     const { data = { polygons: [] }, isLoading } = useGetPolygonsQuery();
 
     useEffect(() => {
-        if (!isLoading) {
+        if (data) {
             dispatch(updatePolygonList({
                 polygons: [...data.polygons],
             }));
