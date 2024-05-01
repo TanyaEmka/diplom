@@ -11,6 +11,10 @@ export const polygonApi = createApi({
             query: () => 'polygons/',
             providesTags: ['Polygons']
         }),
+        getSearchPolygons: builder.query<{ polygons: Array<PolygonType>}, { queryStr: string }>({
+            query: (queryStr) => `polygons/search?query=${queryStr}`,
+            providesTags: ['Polygons']
+        }),
         getPolygon: builder.query<{ polygon: PolygonType }, number>({
             query: (id) => `polygons/${id}`,
             providesTags: ['Polygon'],
@@ -45,6 +49,7 @@ export const polygonApi = createApi({
 export const {
     useGetPolygonsQuery,
     useGetPolygonQuery,
+    useGetSearchPolygonsQuery,
     useUpdatePolygonMutation,
     useDeletePolygonMutation,
     useAddPolygonMutation
