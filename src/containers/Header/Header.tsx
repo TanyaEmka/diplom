@@ -9,6 +9,7 @@ import { SettingButton } from "../../components/SettingButton/SettingButton";
 
 import { MenuButton } from "./MenuButton/MenuButton";
 import { ToolBox } from "./ToolBox/ToolBox";
+import { SearchBlock } from "./SearchBlock/SearchBlock";
 
 import { useAppSelector } from "../../store/hooks";
 import { useNavigate } from "react-router-dom";
@@ -25,7 +26,7 @@ export const Header: React.FC = () => {
         <nav className='header box-shadow-bottom'>
             <div className='header-left'>
                 <MenuButton size='small' />
-                <Input inputType='search' placeholder='Поиск' />
+                <SearchBlock />
             </div>
             <div className='header-right'>
                 <ToolBox>

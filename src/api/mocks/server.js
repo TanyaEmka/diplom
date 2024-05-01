@@ -51,7 +51,7 @@ export default function () {
                 return schema.all('polygon');
             })
 
-            this.get('/api/polygons/search?query=:query', (schema, request) => {
+            this.get('/api/polygons/search', (schema, request) => {
                 const query = request.queryParams.query;
                 return schema.findBy('polygon', { name: query });
             })
