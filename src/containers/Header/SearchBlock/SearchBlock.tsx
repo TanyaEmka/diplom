@@ -16,19 +16,20 @@ export const SearchBlock: React.FC = () => {
 
     const dispatch = useAppDispatch();
 
-    useEffect(() => {
-        console.log(data);
-    }, [data]);
-
     return (
-        <div className="search-block">
+        <div className="search-block"
+            onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                    getSearch({ queryStr: value });
+                }
+            }}
+        >
             <Input 
                 inputType='search' 
                 placeholder='Поиск' 
                 value={value}
                 onChange={(e) => { 
-                    setValue(e.target.value) 
-                    getSearch({ queryStr: e.target.value.toString() });
+                    setValue(e.target.value);
                 }}
             />
             {value !== '' &&
