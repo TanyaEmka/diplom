@@ -4,20 +4,24 @@ import { PolygonType } from '../types';
 
 export const polygonApi = createApi({
     reducerPath: 'polygonApi',
+    tagTypes: ['Polygon', 'Polygons'],
     baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000/api/' }),
     endpoints: (builder) => ({
         getPolygons: builder.query<{ polygons: Array<PolygonType>}, void>({
             query: () => 'polygons/',
+            providesTags: ['Polygons']
         }),
-        getPolygon: builder.query<PolygonType, number>({
+        getPolygon: builder.query<{ polygon: PolygonType }, number>({
             query: (id) => `polygons/${id}`,
+            providesTags: ['Polygon'],
         }),
-        updatePolygon: builder.query<PolygonType, { id: number, attrs: any }>({
+        updatePolygon: builder.mutation<PolygonType, { id: number, attrs: any }>({
             query: (params) => ({
                 url: `polygons/${params.id}`,
                 method: 'PATCH',
                 body: { ...params.attrs }
-            })
+            }),
+            invalidatesTags: ['Polygon', 'Polygons']
         })
     }),
 });
@@ -26,4 +30,6 @@ export const polygonApi = createApi({
 export const {
     useGetPolygonsQuery,
     useGetPolygonQuery,
+    useUpdatePolygonMutation,
+    useLazyGetPolygonQuery
 } = polygonApi;

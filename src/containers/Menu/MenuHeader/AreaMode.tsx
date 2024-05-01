@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import { Text } from "../../../components/Text/Text";
 
@@ -15,8 +15,8 @@ export const AreaMode: React.FC<AreaModeProps> = ({
     const { data } = useGetPolygonQuery(areaId);
 
     return (
-        <>
-            <Text tag='div' type='h3'>{data?.name || 'Загрузка...'}</Text>
-        </>
+        <Text tag='div' type='h3'>
+            {data?.polygon.name || 'Загрузка...'}
+        </Text>
     )
 }

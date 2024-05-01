@@ -4,8 +4,6 @@ import { Polyline } from "@pbe/react-yandex-maps";
 import { Polygon } from "@pbe/react-yandex-maps";
 import { PolygonType } from "../../api/types";
 
-import { AreaMode } from "./AreaMode";
-
 import { changePolygonEnterStatus } from "../../store/features/app";
 import { useAppSelector, useAppDispatch } from "../../store/hooks";
 
@@ -68,7 +66,6 @@ export const AppPolygon: React.FC<AppPolygonProps> = ({
                         options={{ ...polygonOptions, ...lineOptions, }}
                         geometry={[...polygon.points, polygon.points[0]]}
                     />
-                    <AreaMode areaId={areaId} />
                 </>
             : <></>
             }

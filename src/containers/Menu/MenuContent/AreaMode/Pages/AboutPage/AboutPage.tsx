@@ -3,7 +3,6 @@ import React, { useEffect, useState } from "react";
 import './AboutPage.scss';
 
 import { Text } from "../../../../../../components/Text/Text";
-import { Button } from "../../../../../../components/Button/Button";
 
 import { useGetPolygonTreesQuery } from "../../../../../../api/paths/treeApi";
 import { useGetPolygonStatisticQuery } from "../../../../../../api/paths/statisticApi";
@@ -29,15 +28,6 @@ export const AboutPage: React.FC = () => {
             <Text type='bold-text'>
                 Число деревьев: {isLoading ? 'загрузка...' : data.trees.length}
             </Text>
-            <Button
-                buttonType='blue'
-                buttonLine='line'
-                style={{
-                    width: 'fit-content',
-                }}
-            >
-                Перейти на страницу участка
-            </Button>
             {trees.map((statistic, index) => {
                 return (
                     <Text key={index}>{statistic.wood}: {statistic.count}</Text>

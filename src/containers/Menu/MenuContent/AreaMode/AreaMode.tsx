@@ -4,7 +4,7 @@ import { Routes, Route } from "react-router-dom";
 
 import { TreesPage } from "./Pages/TreesPage";
 import { AboutPage } from "./Pages/AboutPage/AboutPage";
-import { SettingsPage } from "./Pages/SettingsPage";
+import { SettingsPage } from "./Pages/SettingPage/SettingsPage";
 
 export const AreaMode: React.FC = () => {
 

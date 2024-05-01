@@ -46,7 +46,8 @@ function App() {
       <Routes>
         <Route path="*" element={<Main />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/edit" element={<Edit />} />
+        <Route path="/edit/:id" element={<Edit />} />
+        <Route path="/edit/" element={<Edit />} />
       </Routes>
     </YMaps>
   );

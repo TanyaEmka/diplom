@@ -7,7 +7,6 @@ export const AreaMode: React.FC = () => {
         <SubMenu 
             paths={[
                 { name: 'Об участке', url: 'area/about', },
-                { name: 'Деревья', url: 'area/trees', },
                 { name: 'Настройки', url: 'area/settings', },
             ]}
         />

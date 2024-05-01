@@ -125,7 +125,7 @@ export default function () {
 
             this.patch('api/polygons/:id', (schema, request) => {
                 const id = request.params.id;
-                const attrs = this.normalizedRequestAttrs();
+                const attrs = JSON.parse(request.requestBody);
 
                 return schema.find('polygon', id).update(attrs);
             })
