@@ -3,7 +3,6 @@ import './assets/css/index.scss';
 
 import { Main } from '@pages/Main/Main';
 import { Login } from '@pages/Login/Login';
-import { Edit } from '@pages/Edit/Edit';
 import { YMaps } from '@pbe/react-yandex-maps';
 
 import { Route, Routes } from 'react-router';
@@ -46,8 +45,6 @@ function App() {
       <Routes>
         <Route path="*" element={<Main />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/edit/:id" element={<Edit />} />
-        <Route path="/edit/" element={<Edit />} />
       </Routes>
     </YMaps>
   );

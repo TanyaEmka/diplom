@@ -2,7 +2,7 @@ import React from "react";
 
 import './Header.scss';
 import { Label } from "@components/baseComponents";
-import { Button, ExitButton, SettingButton } from "@components/buttons";
+import { ExitButton, SettingButton } from "@components/buttons";
 
 import { MenuButton } from "./MenuButton/MenuButton";
 import { ToolBox } from "./ToolBox/ToolBox";
@@ -34,17 +34,6 @@ export const Header: React.FC = () => {
                     <Label name={map.center[0].toFixed(5)} labelColor='blue' />
                     <Label name={map.center[1].toFixed(5)} labelColor='blue' />
                 </ToolBox>
-                {status == 'admin' &&
-                    <ToolBox>
-                        <Button 
-                            buttonType='blue' 
-                            buttonSize='small'
-                            onClick={() => { navigate('/edit') }}
-                        >
-                            Редактировать
-                        </Button>
-                    </ToolBox>
-                }
                 <ToolBox gap={28}>
                     <SettingButton size='small' />
                     <ExitButton size='small' />

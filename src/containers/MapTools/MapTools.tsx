@@ -17,7 +17,6 @@ export const MapTools: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
         >
             <Navigate />
             <ScaleButton type='inc' />
-            <Scale />
             <ScaleButton type='dec' />
         </div>
     )

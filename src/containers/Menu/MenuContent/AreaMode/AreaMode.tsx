@@ -2,7 +2,6 @@ import React from "react";
 
 import { Routes, Route } from "react-router-dom";
 
-import { TreesPage } from "./Pages/TreesPage";
 import { AboutPage } from "./Pages/AboutPage/AboutPage";
 import { SettingsPage } from "./Pages/SettingPage/SettingsPage";
 
@@ -13,7 +12,6 @@ export const AreaMode: React.FC = () => {
             <Routes>
                 <Route path='/' element={<AboutPage />} />
                 <Route path='area/about' element={<AboutPage />} />
-                <Route path='area/trees' element={<TreesPage />} />
                 <Route path='area/settings' element={<SettingsPage />} />
             </Routes>
         </div>

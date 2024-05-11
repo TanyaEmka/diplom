@@ -3,8 +3,6 @@ import Map from './features/map';
 import App from './features/app';
 import User from './features/user';
 import { polygonApi } from '@api/paths/polygonApi';
-import { statisticApi } from '@api/paths/statisticApi';
-import { treeApi } from '@api/paths/treeApi';
 import { userApi } from '@api/paths/userApi';
 
 export const store = configureStore({
@@ -13,15 +11,11 @@ export const store = configureStore({
     app: App,
     user: User,
     [polygonApi.reducerPath]: polygonApi.reducer,
-    [treeApi.reducerPath]: treeApi.reducer,
-    [statisticApi.reducerPath]: statisticApi.reducer,
     [userApi.reducerPath]: userApi.reducer,
   },
   middleware: (getDefaultMiddleware) => {
     return getDefaultMiddleware()
       .concat(polygonApi.middleware)
-      .concat(treeApi.middleware)
-      .concat(statisticApi.middleware)
       .concat(userApi.middleware);
   },
 });
