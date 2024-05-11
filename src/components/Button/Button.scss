@@ -1,6 +1,10 @@
 @use '../../assets/css/colors.scss';
 @use '../../assets/css/sizes.scss';
 
+.button {
+    width: fit-content;
+}
+
 .blue-button, .white-button, .accent-button {
     display: flex;
     border-radius: sizes.$border-radius-component;

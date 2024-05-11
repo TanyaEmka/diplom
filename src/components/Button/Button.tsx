@@ -24,7 +24,7 @@ export const Button: React.FC<ButtonProps> = ({
 
     const buttonLineClass = (buttonLine === 'auto') ? '' : '-line';
     const buttonSizeClass = (buttonLine === 'line') ? 'small' : buttonSize;
-    const buttonClass = (buttonType + buttonLineClass + '-button ' +
+    const buttonClass = ('button ' + buttonType + buttonLineClass + '-button ' +
                             buttonSizeClass + '-button ' +
                             props.className).trim();
 

@@ -28,33 +28,36 @@ export const SettingsPage: React.FC = () => {
         return pointArray.map((value) => [value.x, value.y]);
     }
 
+    const saveChanges = () => {
+        if (areaId) {
+            patchPolygon({ 
+                id: areaId, 
+                attrs: {
+                    points: getPointArray(), 
+                }
+            });
+        }
+    }
+
+    const deleteData = () => {
+        if (areaId) {
+            dispatch(setMapMode());
+            deletePolygon({ id: areaId });
+        }
+    }
+
     return (
         <>
             <EditBox points={pointArray} setPoints={setPointArray} />
             <Button
                 buttonType='blue' buttonSize='small' buttonLine='line'
-                style={{ width: 'fit-content' }}
-                onClick={() => { 
-                    if (areaId) {
-                        patchPolygon({ id: areaId, attrs: {
-                            points: getPointArray(),
-                        }});
-                    }
-                }}
+                onClick={saveChanges}
             >
                 Сохранить изменения
             </Button>
             <Button
-                buttonType='accent'
-                buttonSize='small'
-                buttonLine='line'
-                style={{ width: 'fit-content' }}
-                onClick={() => {
-                    if (areaId) {
-                        dispatch(setMapMode());
-                        deletePolygon({ id: areaId });
-                    }
-                }}
+                buttonType='accent' buttonSize='small' buttonLine='line'
+                onClick={deleteData}
             >
                 Удалить полигон
             </Button>

@@ -29,7 +29,6 @@ export const AddMode: React.FC = () => {
         <div className="menu-content-add">
             <Button
                 buttonLine='line' buttonType='accent' buttonSize='small'
-                style={{ width: 'fir-content' }}
                 onClick={() => {
                     dispatch(notAddPolygonMode());
                 }}
