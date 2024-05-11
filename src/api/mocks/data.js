@@ -93,33 +93,6 @@ export let polygonData = [
     }
 ];
 
-export let woodData = [
-    { wood_type: "Ель" },
-    { wood_type: "Берёза" },
-    { wood_type: "Сосна" }
-];
-
-export let treeData = [
-    [
-        {
-            "veight": 20,
-            "x": 37.9,
-            "y": 55.75,
-            "name": "Дерево XGREF",
-            "height": 25,
-            "length": 25,
-            "crown_volue": 25,
-            "crown_square": 5,
-            "quality": 6,
-            "wood": "Берёза",
-            "circle": 5,
-            "d1_3": 3,
-            "note": "Примечание",
-            "id_file": "ссылка"
-        }
-    ]
-];
-
 export let userData = [
     {
         name: 'admin',

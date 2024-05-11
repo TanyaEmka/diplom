@@ -1,6 +1,6 @@
-import { createServer, Model, hasMany, belongsTo, Response } from 'miragejs'
+import { createServer, Model, Response } from 'miragejs'
 
-import { polygonData, woodData, treeData, userData } from './data';
+import { polygonData, userData } from './data';
 const sign = require('jwt-encode');
 
 export const keyName = 'Token';
@@ -8,16 +8,7 @@ export const keyName = 'Token';
 export default function () {
     createServer({
         models: {
-            wood: Model,
-
-            tree: Model.extend({
-                polygon: belongsTo(),
-            }),
-
-            polygon: Model.extend({
-                tree: hasMany(),
-            }),
-
+            polygon: Model,
             user: Model,
         },
 
@@ -25,19 +16,6 @@ export default function () {
             let polygonShema = [];
             polygonData.forEach((polygon) => {
                 polygonShema.push(server.create('polygon', { ...polygon }));
-            });
-
-            woodData.forEach((wood) => {
-                server.create('wood', { ...wood });
-            })
-
-            treeData.forEach((treeArray, index) => {
-                treeArray.forEach((tree) => {
-                    server.create('tree', { 
-                        ...tree, 
-                        polygon: polygonShema[index] 
-                    });
-                });
             });
 
             userData.forEach((user) => {
@@ -72,16 +50,6 @@ export default function () {
                 const id = request.params.id;
 
                 return schema.find('polygon', id).destroy();
-            })
-
-            this.get('/api/trees', (schema) => {
-                return schema.all('tree');
-            })
-
-            this.get('/api/trees/:id', (schema, request) => {
-                const id = request.params.id;
-
-                return schema.find('tree', id);
             })
 
             this.get('/api/trees?polygon_id=:id', (schema, request) => {
@@ -120,7 +88,7 @@ export default function () {
                 };
             })
 
-            this.get('/api/logout', (shema, request) => {
+            this.get('/api/logout', () => {
                 document.cookie = ['access_token=', 'expires=Thu, 01 Jan 1970 00:00:01 GMT'].join('; ');
                 document.cookie = ['gis_name=', 'expires=Thu, 01 Jan 1970 00:00:01 GMT'].join('; ');
                 document.cookie = ['gis_status=', 'expires=Thu, 01 Jan 1970 00:00:01 GMT'].join('; ');
@@ -145,13 +113,6 @@ export default function () {
                 const attrs = JSON.parse(request.requestBody);
                 console.log(attrs);
                 return schema.create('polygon', attrs);
-            });
-
-            this.patch('api/trees/:id', (schema, request) => {
-                const id = request.params.id;
-                const attrs = this.normalizedRequestAttrs();
-
-                return schema.find('tree', id).update(attrs);
             })
         },
     })

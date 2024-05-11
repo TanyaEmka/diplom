@@ -1,4 +1,4 @@
-import { decodeToken, isExpired } from "react-jwt";
+import { decodeToken } from "react-jwt";
 
 const sign = require('jwt-encode');
 
