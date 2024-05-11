@@ -9,22 +9,13 @@ export const Edit: React.FC = () => {
 
     return(
         <div className='edit-page'>
-            <Text
-                tag='div'
-                type='h2'
-            >
+            <Text tag='div' type='h2'>
                 Редактирование
             </Text>
             <EditMenu 
                 ways={[
-                    {
-                        name: 'Области',
-                        path: 'polygons/'
-                    },
-                    {
-                        name: 'Деревья',
-                        path: 'trees/'
-                    }
+                    { name: 'Области', path: 'polygons/' },
+                    { name: 'Деревья', path: 'trees/' }
                 ]}
             />
         </div>

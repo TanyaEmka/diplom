@@ -1,16 +1,16 @@
 import { useEffect } from 'react';
 import './assets/css/index.scss';
 
-import { Main } from './pages/Main/Main';
-import { Login } from './pages/Login/Login';
-import { Edit } from './pages/Edit/Edit';
+import { Main } from '@pages/Main/Main';
+import { Login } from '@pages/Login/Login';
+import { Edit } from '@pages/Edit/Edit';
 import { YMaps } from '@pbe/react-yandex-maps';
 
 import { Route, Routes } from 'react-router';
 
-import { useAppDispatch, useAppSelector } from './store/hooks';
-import { updateToken } from './store/features/user';
-import { cookieParser } from './api/mocks/cookie';
+import { useAppDispatch, useAppSelector } from '@store/hooks';
+import { updateToken } from '@store/features/user';
+import { cookieParser } from '@api/mocks/cookie';
 
 import { useNavigate } from 'react-router';
 
@@ -41,7 +41,7 @@ function App() {
   return (
     <YMaps query={{ 
       lang: 'en_RU',
-      apikey: process.env.GEO_API_KEY,
+      // apikey: process.env.GEO_API_KEY,
     }}>
       <Routes>
         <Route path="*" element={<Main />} />

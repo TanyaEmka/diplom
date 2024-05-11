@@ -21,7 +21,6 @@
     "jsx": "react-jsx",
     "baseUrl": ".",
       "paths": {
-        "@/*": ["./src/*"],
         "@components/*": ["src/components/*"],
         "@containers/*": ["src/containers/*"],
         "@pages/*": ["src/pages/*"],
@@ -31,5 +30,5 @@
         "@api/*": ["src/api/*"]
       },
   },
-  "include": [ "src/**/*" ]
+  "include": [ "src/**/*", "declaration.d.ts" ]
 }
