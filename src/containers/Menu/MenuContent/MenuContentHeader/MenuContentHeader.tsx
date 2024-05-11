@@ -2,12 +2,12 @@ import React from "react";
 
 import './MenuContentHeader.scss';
 
-import { Text } from "../../../../components/Text/Text";
+import { Text } from "@components/baseComponents";
 
 import { MapMode } from "./MapMode";
 import { AreaMode } from "./AreaMode";
 
-import { useAppSelector } from "../../../../store/hooks";
+import { useAppSelector } from "@store/hooks";
 
 export const MenuContentHeader: React.FC = () => {
 

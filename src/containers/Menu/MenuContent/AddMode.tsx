@@ -1,13 +1,12 @@
 import React, { useState } from "react";
 
-import { Input } from "../../../components/Input/Input";
-import { Button } from "../../../components/Button/Button";
-import { Text } from "../../../components/Text/Text";
+import { Input, Text } from "@components/baseComponents";
+import { Button } from "@components/buttons";
 import { EditBox } from "./AreaMode/Pages/SettingPage/EditBox/EditBox";
 
-import { useAppDispatch } from "../../../store/hooks";
-import { notAddPolygonMode } from "../../../store/features/app";
-import { useAddPolygonMutation } from "../../../api/paths/polygonApi";
+import { useAppDispatch } from "@store/hooks";
+import { notAddPolygonMode } from "@store/features/app";
+import { useAddPolygonMutation } from "@api/paths/polygonApi";
 
 export const AddMode: React.FC = () => {
 

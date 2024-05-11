@@ -1,8 +1,8 @@
 import React from "react";
 
-import { Text } from "../../../components/Text/Text";
+import { Text } from "@components/baseComponents";
 
-import { useGetPolygonsQuery } from "../../../api/paths/polygonApi";
+import { useGetPolygonsQuery } from "@api/paths/polygonApi";
 
 export const MapMode: React.FC = () => {
 

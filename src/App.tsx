@@ -1,18 +1,18 @@
-import React, { useEffect } from 'react';
-import './assets/css/index.scss';
+import { useEffect } from 'react';
+import '@assets/css/index.scss';
 
-import { Main } from './pages/Main/Main';
-import { Login } from './pages/Login/Login';
-import { Edit } from './pages/Edit/Edit';
+import { Main } from '@pages/Main/Main';
+import { Login } from '@pages/Login/Login';
+import { Edit } from '@pages/Edit/Edit';
 import { YMaps } from '@pbe/react-yandex-maps';
 
 import { Route, Routes } from 'react-router';
 
-import { useAppDispatch, useAppSelector } from './store/hooks';
-import { useNavigate } from 'react-router';
-import { updateToken } from './store/features/user';
+import { useAppDispatch, useAppSelector } from '@store/hooks';
+import { updateToken } from '@store/features/user';
+import { cookieParser } from '@api/mocks/cookie';
 
-import { cookieParser } from './api/mocks/cookie';
+import { useNavigate } from 'react-router';
 
 function App() {
 

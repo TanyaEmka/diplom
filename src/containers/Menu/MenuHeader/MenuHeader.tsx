@@ -5,7 +5,7 @@ import './MenuHeader.scss';
 import { MapMode } from "./MapMode";
 import { AreaMode } from "./AreaMode";
 
-import { useAppSelector } from "../../../store/hooks";
+import { useAppSelector } from "@store/hooks";
 
 export const MenuHeader: React.FC = () => {
 
@@ -15,9 +15,8 @@ export const MenuHeader: React.FC = () => {
         <div className='menu-header'>
             { mode === 'MAP' ?
                 <MapMode /> :
-            mode === 'AREA' && areaId ?
+            (mode === 'AREA' && areaId) &&
                 <AreaMode areaId={areaId} />
-            : <></>
             }
         </div>
     )

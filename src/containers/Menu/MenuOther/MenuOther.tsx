@@ -1,12 +1,10 @@
 import React from "react";
 
 import './MenuOther.scss';
+import { Button, OtherButton } from "@components/buttons";
 
-import { Button } from "../../../components/Button/Button";
-import { OtherButton } from "../../../components/OtherButton/OtherButton";
-
-import { setMapMode } from "../../../store/features/app";
-import { useAppDispatch, useAppSelector } from "../../../store/hooks";
+import { setMapMode } from "@store/features/app";
+import { useAppDispatch, useAppSelector } from "@store/hooks";
 import { useNavigate } from "react-router-dom";
 
 export const MenuOther: React.FC = () => {
@@ -19,7 +17,7 @@ export const MenuOther: React.FC = () => {
         <div className='menu-other'>
             <OtherButton />
             <div className='menu-other-space' ></div>
-            {mode === 'AREA' ?
+            {mode === 'AREA' &&
                 <Button
                     buttonType='accent'
                     buttonLine='line'
@@ -30,7 +28,6 @@ export const MenuOther: React.FC = () => {
                 >
                     Прекратить просмотр
                 </Button>
-                : <></>
             }    
         </div>
     )

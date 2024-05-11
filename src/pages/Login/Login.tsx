@@ -2,14 +2,14 @@ import React, { useState } from "react";
 
 import './Login.scss';
 
-import { Input } from "../../components/Input/Input";
-import { Button } from "../../components/Button/Button";
-import { Text } from "../../components/Text/Text";
+import { Input, Text } from "@components/baseComponents";
+import { Button } from "@components/buttons";
+
+import { useLoginMutation } from "@api/paths/userApi";
+import { useAppDispatch } from "@store/hooks";
+import { updateToken } from "@store/features/user";
 
 import { useNavigate } from "react-router";
-import { useLoginMutation } from "../../api/paths/userApi";
-import { useAppDispatch } from "../../store/hooks";
-import { updateToken } from "../../store/features/user";
 
 export const Login: React.FC = () => {
 

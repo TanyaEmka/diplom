@@ -2,12 +2,13 @@ import React from "react";
 
 import './Menu.scss';
 
-import { Line } from "../../components/Line/Line";
+import { Line } from "@components/baseComponents";
+
 import { MenuOther } from "./MenuOther/MenuOther";
 import { MenuHeader } from "./MenuHeader/MenuHeader";
 import { MenuContent } from "./MenuContent/MenuContent";
 
-import { useAppSelector } from "../../store/hooks";
+import { useAppSelector } from "@store/hooks";
 
 export const Menu: React.FC = () => {
 
@@ -17,7 +18,7 @@ export const Menu: React.FC = () => {
         <div className='menu box-shadow-right'>
             <MenuOther />
             <MenuHeader />
-            {mode === 'MAP' ? <Line /> : <></> }
+            {mode === 'MAP' && <Line />}
             <MenuContent />
         </div>
     )

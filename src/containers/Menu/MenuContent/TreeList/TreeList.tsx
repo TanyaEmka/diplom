@@ -1,9 +1,9 @@
 import React from "react";
 
-import { Text } from "../../../../components/Text/Text";
-import { TreeLabel } from "../../../../components/TreeLabel/TreeLabel";
+import { Text } from "@components/baseComponents";
+import { TreeLabel } from "@components/TreeLabel/TreeLabel";
 
-import { useGetPolygonTreesQuery } from "../../../../api/paths/treeApi";
+import { useGetPolygonTreesQuery } from "@api/paths/treeApi";
 
 interface TreeListProps {
     areaId: number,

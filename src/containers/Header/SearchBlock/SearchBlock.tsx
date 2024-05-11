@@ -1,13 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import './SearchBlock.scss';
 
-import { Input } from "../../../components/Input/Input";
-import { Text } from "../../../components/Text/Text";
+import { Input, Text } from "@components/baseComponents";
 
-import { useAppDispatch } from "../../../store/hooks";
-import { goToPolygon } from "../../../store/features/map";
-import { useGetSearchPolygonsMutation } from "../../../api/paths/polygonApi";
-import { PolygonType } from "../../../api/types";
+import { useAppDispatch } from "@store/hooks";
+import { goToPolygon } from "@store/features/map";
+
+import { useGetSearchPolygonsMutation } from "@api/paths/polygonApi";
+import { PolygonType } from "@api/types";
 
 export const SearchBlock: React.FC = () => {
 

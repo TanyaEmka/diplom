@@ -1,11 +1,11 @@
 import React from "react";
 
-import { Text } from "../../../../../components/Text/Text";
+import { Text } from "@components/baseComponents";
 
 import { TreeList } from "../../TreeList/TreeList";
-import { ScrollBox } from "../../../../ScrollBox/ScrollBox";
+import { ScrollBox } from "@containers/ScrollBox/ScrollBox";
 
-import { useAppSelector } from "../../../../../store/hooks";
+import { useAppSelector } from "@store/hooks";
 
 export const TreesPage: React.FC = () => {
 

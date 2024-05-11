@@ -2,10 +2,10 @@ import { configureStore, ThunkAction, Action } from '@reduxjs/toolkit';
 import Map from './features/map';
 import App from './features/app';
 import User from './features/user';
-import { polygonApi } from '../api/paths/polygonApi';
-import { statisticApi } from '../api/paths/statisticApi';
-import { treeApi } from '../api/paths/treeApi';
-import { userApi } from '../api/paths/userApi';
+import { polygonApi } from '@api/paths/polygonApi';
+import { statisticApi } from '@api/paths/statisticApi';
+import { treeApi } from '@api/paths/treeApi';
+import { userApi } from '@api/paths/userApi';
 
 export const store = configureStore({
   reducer: {

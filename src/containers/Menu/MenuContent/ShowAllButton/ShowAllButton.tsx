@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
-import { BoolValue } from "../../../../components/BoolValue/BoolValue";
+import { BoolValue } from "@components/baseComponents";
 
-import { showAllPolygons } from "../../../../store/features/app";
-import { useAppDispatch } from "../../../../store/hooks";
+import { showAllPolygons } from "@store/features/app";
+import { useAppDispatch } from "@store/hooks";
 
 export const ShowAllButton: React.FC = () => {
 

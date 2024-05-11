@@ -1,11 +1,11 @@
 import React from "react";
 
-import { Text } from "../../../../components/Text/Text";
+import { Text } from "@components/baseComponents";
+import { Button } from "@components/buttons";
 import { ShowAllButton } from "../ShowAllButton/ShowAllButton";
-import { Button } from "../../../../components/Button/Button";
 
-import { useAppSelector, useAppDispatch } from "../../../../store/hooks";
-import { addPolygonMode } from "../../../../store/features/app";
+import { useAppSelector, useAppDispatch } from "@store/hooks";
+import { addPolygonMode } from "@store/features/app";
 
 export const MapMode: React.FC = () => {
 
@@ -20,7 +20,9 @@ export const MapMode: React.FC = () => {
     return (
         <>
             <div className='menu-content-header-tools'>
-                <Text tag='div' type='small-text' color='other'>Видимые участки: {getVisibleAreas()}</Text>
+                <Text tag='div' type='small-text' color='other'>
+                    Видимые участки: {getVisibleAreas()}
+                </Text>
                 <ShowAllButton />
                 <Button
                     buttonType='blue'

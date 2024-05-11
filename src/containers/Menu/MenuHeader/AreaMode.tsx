@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
-import { Text } from "../../../components/Text/Text";
-
-import { useGetPolygonQuery } from "../../../api/paths/polygonApi";
+import { Text } from "@components/baseComponents";
+import { useGetPolygonQuery } from "@api/paths/polygonApi";
 
 interface AreaModeProps {
     areaId: number,

@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { SigninType, SigninResponse } from "../types";
+import { SigninType, SigninResponse } from "@api/types";
 
 export const userApi = createApi({
     reducerPath: 'userApi',

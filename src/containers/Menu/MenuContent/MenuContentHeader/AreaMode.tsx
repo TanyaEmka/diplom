@@ -1,6 +1,6 @@
 import React from "react";
 
-import { SubMenu } from "../../../../components/SubMenu/SubMenu";
+import { SubMenu } from "@components/baseComponents";
 
 export const AreaMode: React.FC = () => {
     return (

@@ -2,10 +2,10 @@ import React from "react";
 
 import './MenuButton.scss';
 
-import { useAppDispatch } from "../../../store/hooks";
-import { changeMenuVisible } from "../../../store/features/app";
+import { useAppDispatch } from "@store/hooks";
+import { changeMenuVisible } from "@store/features/app";
 
-import menu from '../../../assets/icons/header/menu.svg';
+import menu from '@assets/icons/header/menu.svg';
 
 export type MenuButtonSizeType = 'big' | 'small';
 

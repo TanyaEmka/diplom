@@ -2,10 +2,10 @@ import React from "react";
 
 import { Polyline } from "@pbe/react-yandex-maps";
 import { Polygon } from "@pbe/react-yandex-maps";
-import { PolygonType } from "../../api/types";
+import { PolygonType } from "@api/types";
 
-import { changePolygonEnterStatus } from "../../store/features/app";
-import { useAppSelector, useAppDispatch } from "../../store/hooks";
+import { changePolygonEnterStatus } from "@store/features/app";
+import { useAppSelector, useAppDispatch } from "@store/hooks";
 
 interface AppPolygonProps {
     polygon: PolygonType,
@@ -60,14 +60,13 @@ export const AppPolygon: React.FC<AppPolygonProps> = ({
                     onMouseEnter={() => { changeEnterStatus(true); }}
                     onMouseLeave={() => { changeEnterStatus(false); }}
                 />
-            : mode === 'AREA' && areaId === polygon.id ?
+            : (mode === 'AREA' && areaId === polygon.id) &&
                 <>
                     <Polyline 
                         options={{ ...polygonOptions, ...lineOptions, }}
                         geometry={[...polygon.points, polygon.points[0]]}
                     />
                 </>
-            : <></>
             }
         </>
     )

@@ -1,17 +1,14 @@
 import React from "react";
 
 import './Header.scss';
-import { Input } from "../../components/Input/Input";
-import { Label } from "../../components/Label/Label";
-import { Button } from "../../components/Button/Button";
-import { ExitButton } from "../../components/ExitButton/ExitButton";
-import { SettingButton } from "../../components/SettingButton/SettingButton";
+import { Label } from "@components/baseComponents";
+import { Button, ExitButton, SettingButton } from "@components/buttons";
 
 import { MenuButton } from "./MenuButton/MenuButton";
 import { ToolBox } from "./ToolBox/ToolBox";
 import { SearchBlock } from "./SearchBlock/SearchBlock";
 
-import { useAppSelector } from "../../store/hooks";
+import { useAppSelector } from "@store/hooks";
 import { useNavigate } from "react-router-dom";
 
 export const Header: React.FC = () => {
@@ -30,15 +27,14 @@ export const Header: React.FC = () => {
             </div>
             <div className='header-right'>
                 <ToolBox>
-                    {mode === 'AREA' ?
+                    {mode === 'AREA' &&
                         <Label name='Режим просмотра области' labelColor='accent' />
-                        : <></>
                     }
                     <Label name={'Zoom: ' + map.zoom} labelColor='fill-blue' />
                     <Label name={map.center[0].toFixed(5)} labelColor='blue' />
                     <Label name={map.center[1].toFixed(5)} labelColor='blue' />
                 </ToolBox>
-                {status == 'admin' ?
+                {status == 'admin' &&
                     <ToolBox>
                         <Button 
                             buttonType='blue' 
@@ -48,7 +44,6 @@ export const Header: React.FC = () => {
                             Редактировать
                         </Button>
                     </ToolBox>
-                    : <></>
                 }
                 <ToolBox gap={28}>
                     <SettingButton size='small' />

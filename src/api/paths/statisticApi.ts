@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { StatisticType } from '../types';
+import { StatisticType } from '@api/types';
 
 export const statisticApi = createApi({
     reducerPath: 'statisticApi',

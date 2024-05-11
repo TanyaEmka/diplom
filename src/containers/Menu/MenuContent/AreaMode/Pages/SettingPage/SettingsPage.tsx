@@ -1,15 +1,15 @@
 import React, { useState } from "react";
 
-import { Button } from "../../../../../../components/Button/Button";
+import { Button } from "@components/buttons";
 import { EditBox } from "./EditBox/EditBox";
 
-import { useAppSelector, useAppDispatch } from "../../../../../../store/hooks";
-import { setMapMode } from "../../../../../../store/features/app";
+import { useAppSelector, useAppDispatch } from "@store/hooks";
+import { setMapMode } from "@store/features/app";
 import { 
     useGetPolygonQuery, 
     useUpdatePolygonMutation, 
     useDeletePolygonMutation 
-} from "../../../../../../api/paths/polygonApi";
+} from "@api/paths/polygonApi";
 
 export const SettingsPage: React.FC = () => {
 

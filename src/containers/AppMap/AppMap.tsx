@@ -2,13 +2,13 @@ import React, { useRef, useEffect } from "react";
 
 import './AppMap.scss';
 import { Map } from "@pbe/react-yandex-maps";
-import { AppPolygon } from "../AppPolygon/AppPolygon";
-import { PolygonType } from "../../api/types";
+import { AppPolygon } from "@containers/AppPolygon/AppPolygon";
+import { PolygonType } from "@api/types";
 
-import { useGetPolygonsQuery } from "../../api/paths/polygonApi";
-import { changeState } from "../../store/features/map";
-import { hiddenMenu, setAreaMode } from "../../store/features/app";
-import { useAppDispatch, useAppSelector } from "../../store/hooks";
+import { useGetPolygonsQuery } from "@api/paths/polygonApi";
+import { changeState } from "@store/features/map";
+import { hiddenMenu, setAreaMode } from "@store/features/app";
+import { useAppDispatch, useAppSelector } from "@store/hooks";
 
 interface AppMapProps {
     width?: string,

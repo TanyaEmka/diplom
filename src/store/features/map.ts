@@ -1,7 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import type { PayloadAction } from "@reduxjs/toolkit";
 
-import { NumberRange } from "../../utils/numberRange";
+import { NumberRange } from "@utils/numberRange";
 
 interface MapState {
     zoom: NumberRange<9, 18>,

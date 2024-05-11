@@ -1,6 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-import { getFullUrl } from '../../utils/urls';
-import { PolygonType } from '../types';
+import { PolygonType } from '@api/types';
 
 export const polygonApi = createApi({
     reducerPath: 'polygonApi',
