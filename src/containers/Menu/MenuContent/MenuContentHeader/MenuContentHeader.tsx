@@ -2,7 +2,7 @@ import React from "react";
 
 import './MenuContentHeader.scss';
 
-import { Text } from "@components/baseComponents";
+import { Text } from "@components/base";
 
 import { MapMode } from "./MapMode";
 import { AreaMode } from "./AreaMode";

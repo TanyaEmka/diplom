@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Text } from "@components/baseComponents";
+import { Text } from "@components/base";
 import { useGetPolygonQuery } from "@api/paths/polygonApi";
 
 interface AreaModeProps {

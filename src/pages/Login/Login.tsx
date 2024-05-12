@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import './Login.scss';
 
-import { Input, Text } from "@components/baseComponents";
+import { Input, Text } from "@components/base";
 import { Button } from "@components/buttons";
 
 import { useLoginMutation } from "@api/paths/userApi";

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import { BoolValue } from "@components/baseComponents";
+import { BoolValue } from "@components/base";
 
 import { showAllPolygons } from "@store/features/app";
 import { useAppDispatch } from "@store/hooks";

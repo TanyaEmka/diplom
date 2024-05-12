@@ -2,7 +2,7 @@ import React from "react";
 
 import './AboutPage.scss';
 
-import { Text } from "@components/baseComponents";
+import { Text } from "@components/base";
 
 import { useGetPolygonQuery } from "@api/paths/polygonApi";
 import { useAppSelector } from "@store/hooks";

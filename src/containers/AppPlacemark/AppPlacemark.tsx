@@ -2,7 +2,7 @@ import React from "react";
 
 import { Placemark } from "@pbe/react-yandex-maps";
 
-import location from '../../assets/icons/location/location.svg';
+import location from '@assets/icons/location/location.svg';
 
 interface AppPlacemarkProps {
     id: number,

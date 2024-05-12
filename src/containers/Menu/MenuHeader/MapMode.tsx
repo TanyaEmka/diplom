@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Text } from "@components/baseComponents";
+import { Text } from "@components/base";
 
 import { useGetPolygonsQuery } from "@api/paths/polygonApi";
 

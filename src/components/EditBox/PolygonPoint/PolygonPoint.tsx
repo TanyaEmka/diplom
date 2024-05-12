@@ -1,7 +1,7 @@
 import React from "react";
 import './PolygonPoint.scss';
 
-import { Input } from "@components/baseComponents";
+import { Input } from "@components/base";
 import { Button } from "@components/buttons";
 
 interface PolygonPointProps {

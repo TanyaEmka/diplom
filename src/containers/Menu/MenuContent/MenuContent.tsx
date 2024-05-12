@@ -2,7 +2,7 @@ import React from "react";
 
 import './MenuContent.scss';
 
-import { Text } from "@components/baseComponents";
+import { Text } from "@components/base";
 
 import { MenuContentHeader } from "./MenuContentHeader/MenuContentHeader";
 import { MapMode } from "./MapMode";

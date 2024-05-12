@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import './SearchBlock.scss';
 
-import { Input, Text } from "@components/baseComponents";
+import { Input, Text } from "@components/base";
 
 import { useAppDispatch } from "@store/hooks";
 import { goToPolygon } from "@store/features/map";

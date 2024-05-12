@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Text } from "@components/baseComponents";
+import { Text } from "@components/base";
 import { Button } from "@components/buttons";
 import { ShowAllButton } from "../ShowAllButton/ShowAllButton";
 
@@ -25,13 +25,8 @@ export const MapMode: React.FC = () => {
                 </Text>
                 <ShowAllButton />
                 <Button
-                    buttonType='blue'
-                    buttonLine='line'
-                    buttonSize='small'
-                    style={{ width: 'fit-content' }}
-                    onClick={() => {
-                        dispatch(addPolygonMode());
-                    }}
+                    buttonType='blue' buttonLine='line' buttonSize='small'
+                    onClick={() => { dispatch(addPolygonMode()) }}
                 >
                     Добавить полигон
                 </Button>

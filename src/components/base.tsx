@@ -5,3 +5,4 @@ export { Label } from './Label/Label';
 export { Line } from './Line/Line';
 export { SubMenu } from './SubMenu/SubMenu';
 export { Text } from './Text/Text';
+export { EditBox } from './EditBox/EditBox';

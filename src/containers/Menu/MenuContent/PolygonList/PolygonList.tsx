@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-import { BoolValue } from "@components/baseComponents";
+import { BoolValue } from "@components/base";
 
 import { useGetPolygonsQuery } from "@api/paths/polygonApi";
 import { goToPolygon } from "@store/features/map";

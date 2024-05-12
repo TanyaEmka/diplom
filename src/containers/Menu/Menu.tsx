@@ -2,7 +2,7 @@ import React from "react";
 
 import './Menu.scss';
 
-import { Line } from "@components/baseComponents";
+import { Line } from "@components/base";
 
 import { MenuOther } from "./MenuOther/MenuOther";
 import { MenuHeader } from "./MenuHeader/MenuHeader";

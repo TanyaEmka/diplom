@@ -1,7 +1,7 @@
 import React from "react";
 
 import './Header.scss';
-import { Label } from "@components/baseComponents";
+import { Label } from "@components/base";
 import { ExitButton, SettingButton } from "@components/buttons";
 
 import { MenuButton } from "./MenuButton/MenuButton";
