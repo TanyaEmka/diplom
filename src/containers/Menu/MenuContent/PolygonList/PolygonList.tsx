@@ -16,15 +16,15 @@ export const PolygonList: React.FC = () => {
     const dispatch = useAppDispatch();
     const { menuPolygonListVisible } = useAppSelector((state) => state.app);
 
-    const { data = { polygons: [] }, isLoading } = useGetPolygonsQuery();
+    const { data = { polygons: [] }, isFetching } = useGetPolygonsQuery();
 
     useEffect(() => {
-        if (data) {
+        if (!isFetching) {
             dispatch(updatePolygonList({
                 polygons: [...data.polygons],
             }));
         }
-    }, [isLoading]);
+    }, [isFetching]);
 
     const changeEnterStatus = (id: number, value: boolean) => {
         dispatch(changePolygonEnterStatus({

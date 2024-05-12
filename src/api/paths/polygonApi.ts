@@ -3,12 +3,18 @@ import { PolygonType } from '@api/types';
 
 export const polygonApi = createApi({
     reducerPath: 'polygonApi',
-    tagTypes: ['Polygon', 'Polygons'],
+    tagTypes: [
+        'Polygon', 
+        'Polygons', 
+        'Add-Polygons', 
+        'Delete-Polygons',
+        'Change-Polygons'
+    ],
     baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000/api/' }),
     endpoints: (builder) => ({
         getPolygons: builder.query<{ polygons: Array<PolygonType>}, void>({
             query: () => 'polygons/',
-            providesTags: ['Polygons']
+            providesTags: ['Polygons', 'Add-Polygons', 'Change-Polygons', 'Delete-Polygons']
         }),
         getSearchPolygons: builder.mutation<{ polygon: PolygonType}, { queryStr: string }>({
             query: (params) => ({
@@ -26,14 +32,14 @@ export const polygonApi = createApi({
                 method: 'PATCH',
                 body: { ...params.attrs }
             }),
-            invalidatesTags: ['Polygon', 'Polygons']
+            invalidatesTags: ['Polygon', 'Polygons', 'Change-Polygons']
         }),
         deletePolygon: builder.mutation<PolygonType, { id: number }>({
             query: (params) => ({
                 url: `polygons/${params.id}`,
                 method: 'DELETE',
             }),
-            invalidatesTags: ['Polygon', 'Polygons']
+            invalidatesTags: ['Polygon', 'Polygons', 'Delete-Polygons']
         }),
         addPolygon: builder.mutation<PolygonType, { attrs: any }>({
             query: (params) => ({
@@ -41,7 +47,7 @@ export const polygonApi = createApi({
                 method: 'POST',
                 body: { ...params.attrs }
             }),
-            invalidatesTags: ['Polygon', 'Polygons']
+            invalidatesTags: ['Polygon', 'Polygons', 'Add-Polygons']
         }),
     }),
 });
