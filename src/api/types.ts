@@ -57,3 +57,11 @@ export type SignupType = {
     name: string,
     password: string,
 }
+
+export interface AreaModeProps {
+    areaId: number
+}
+
+export interface ManyModesProps {
+    areaId: number | null
+}

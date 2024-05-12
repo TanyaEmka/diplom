@@ -5,6 +5,7 @@ import { Polygon } from "@pbe/react-yandex-maps";
 import { PolygonType } from "@api/types";
 
 import { changePolygonEnterStatus } from "@store/features/app";
+import { getAreaId } from "@store/features/searchParams";
 import { useAppSelector, useAppDispatch } from "@store/hooks";
 
 interface AppPolygonProps {
@@ -24,10 +25,11 @@ export const AppPolygon: React.FC<AppPolygonProps> = ({
     const areaStroke = 2;
 
     const dispatch = useAppDispatch();
-    const { mode, areaId } = useAppSelector((state) => state.app);
+    const { searchParams } = useAppSelector((state) => state.searchParams);
+    const areaId = getAreaId(searchParams);
 
     const isPolygonMode = () => {
-        return (mode === 'AREA' && areaId === polygon.id);
+        return (areaId && areaId === Number(polygon.id));
     }
 
     const polygonOptions = {
@@ -44,14 +46,14 @@ export const AppPolygon: React.FC<AppPolygonProps> = ({
 
     const changeEnterStatus = (value: boolean) => {
         dispatch(changePolygonEnterStatus({
-            polygonId: polygon.id,
+            polygonId: Number(polygon.id),
             enterStatus: value
         }));
     }
 
     return (
         <>
-            {mode === 'MAP' ?
+            {!areaId ?
                 <Polygon
                     options={{ ...polygonOptions, ...lineOptions, }}
                     geometry={[polygon.points]}
@@ -60,7 +62,7 @@ export const AppPolygon: React.FC<AppPolygonProps> = ({
                     onMouseEnter={() => { changeEnterStatus(true); }}
                     onMouseLeave={() => { changeEnterStatus(false); }}
                 />
-            : (mode === 'AREA' && areaId === polygon.id) &&
+            : (areaId && areaId === Number(polygon.id)) &&
                 <>
                     <Polyline 
                         options={{ ...polygonOptions, ...lineOptions, }}

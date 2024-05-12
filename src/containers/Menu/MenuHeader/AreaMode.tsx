@@ -2,14 +2,9 @@ import React from "react";
 
 import { Text } from "@components/base";
 import { useGetPolygonQuery } from "@api/paths/polygonApi";
+import { AreaModeProps } from "@api/types";
 
-interface AreaModeProps {
-    areaId: number,
-}
-
-export const AreaMode: React.FC<AreaModeProps> = ({
-    areaId,
-}) => {
+export const AreaMode: React.FC<AreaModeProps> = ({ areaId }) => {
 
     const { data } = useGetPolygonQuery(areaId);
 

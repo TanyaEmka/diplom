@@ -1,12 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 
 import { BoolValue } from "@components/base";
-
-import { useGetPolygonsQuery } from "@api/paths/polygonApi";
 import { goToPolygon } from "@store/features/map";
 import { 
     changePolygonVisible, 
-    updatePolygonList, 
     changePolygonEnterStatus 
 } from "@store/features/app";
 import { useAppSelector, useAppDispatch } from "@store/hooks";
@@ -16,21 +13,11 @@ export const PolygonList: React.FC = () => {
     const dispatch = useAppDispatch();
     const { menuPolygonListVisible } = useAppSelector((state) => state.app);
 
-    const { data = { polygons: [] }, isFetching } = useGetPolygonsQuery();
-
-    useEffect(() => {
-        if (!isFetching) {
-            dispatch(updatePolygonList({
-                polygons: [...data.polygons],
-            }));
-        }
-    }, [isFetching]);
-
     const changeEnterStatus = (id: number, value: boolean) => {
         dispatch(changePolygonEnterStatus({
             polygonId: id,
             enterStatus: value
-        }));        
+        }));
     }
 
     return (

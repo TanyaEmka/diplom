@@ -16,7 +16,6 @@ type polygonDataType = {
 interface AppState {
     menuVisible: boolean,
     menuPolygonListVisible: Array<polygonVisibleType>,
-    mode: 'MAP' | 'AREA',
     postMode: 'BASE' | 'POST',
     areaId: undefined | number,
 }
@@ -24,7 +23,6 @@ interface AppState {
 const initialState: AppState = {
     menuVisible: false,
     menuPolygonListVisible: [],
-    mode: 'MAP',
     postMode: 'BASE',
     areaId: undefined,
 }
@@ -46,7 +44,7 @@ const appSlice = createSlice({
             state.menuPolygonListVisible = [];
             action.payload.polygons.forEach((polygon) => {
                 state.menuPolygonListVisible.push({
-                    polygonId: polygon.id,
+                    polygonId: Number(polygon.id),
                     polygonName: polygon.name,
                     polygonVisible: true,
                     polygonEnter: false,
@@ -78,15 +76,6 @@ const appSlice = createSlice({
             }
             throw new Error('Области с таким id не существует');
         },
-        setAreaMode(state, action: PayloadAction<{ areaId: number }>) {
-            state.menuVisible = true;
-            state.mode = 'AREA';
-            state.areaId = action.payload.areaId;
-        },
-        setMapMode(state) {
-            state.mode = 'MAP';
-            state.areaId = undefined;
-        },
         addPolygonMode(state) {
             state.postMode = 'POST';
         },
@@ -104,9 +93,7 @@ export const {
     showAllPolygons,
     changePolygonVisible,
     changePolygonEnterStatus,
-    setAreaMode,
     addPolygonMode,
-    notAddPolygonMode,
-    setMapMode } = appSlice.actions;
+    notAddPolygonMode } = appSlice.actions;
 export default appSlice.reducer;
 

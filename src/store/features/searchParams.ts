@@ -14,7 +14,7 @@ type ParamType = {
 
 interface SearchParamsState {
     searchParams: OptionType,
-    actionName: 'CHANGE' | 'GET',
+    actionName: 'SET' | 'DELETE' | 'APPEND' | 'GET' | 'DESTROY' | 'DEL_AREA',
 }
 
 const initialState: SearchParamsState = {
@@ -33,8 +33,7 @@ const searchParamsSlice = createSlice({
         setParam(state, action: PayloadAction<ParamType>) {
             const { key, value } = action.payload;
             state.searchParams[key] = value;
-            state.actionName = 'CHANGE';
-            console.log(state.searchParams);
+            state.actionName = 'SET';
         },
         appendParam(state, action: PayloadAction<ParamType>) {
             const { key, value } = action.payload;
@@ -58,20 +57,23 @@ const searchParamsSlice = createSlice({
             } else {
                 state.searchParams[key] = value;
             }
-            state.actionName = 'CHANGE';
-            console.log(state.searchParams);
+            state.actionName = 'APPEND';
         },
         deleteParam(state, action: PayloadAction<string>) {
             if (state.searchParams.hasOwnProperty(action.payload)) {
                 delete state.searchParams[action.payload];
             }
-            state.actionName = 'CHANGE';
-            console.log(state.searchParams);
+            state.actionName = 'DELETE';
+        },
+        deleteAreaId(state) {
+            if (state.searchParams.hasOwnProperty('area')) {
+                delete state.searchParams['area'];
+            }
+            state.actionName = 'DEL_AREA';
         },
         destroySearchParams(state) {
             state.searchParams = {};
-            state.actionName = 'CHANGE';
-            console.log(state.searchParams);
+            state.actionName = 'DESTROY';
         }
     }
 });
@@ -79,19 +81,21 @@ const searchParamsSlice = createSlice({
 export function getNumberParam(
     searchParams: OptionType,
     key: string
-) {
+): number | null {
     if (Array.isArray(searchParams[key])) {
         const keyArr = searchParams[key] as ValueType[];
         if (keyArr.length === 0) {
             return null;
         }
-        return keyArr[0];
+        const value = Number(keyArr[0]);
+        return isNaN(value) ? null : value;
     }
     const numberValue = Number(searchParams[key]);
-    if (isNaN(numberValue)) {
-        return null;
-    }
-    return numberValue;
+    return isNaN(numberValue) ? null : numberValue;
+}
+
+export function getAreaId(searchParams: OptionType) {
+    return getNumberParam(searchParams, 'area');
 }
 
 export function getAllParams(

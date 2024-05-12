@@ -9,17 +9,19 @@ import { MenuHeader } from "./MenuHeader/MenuHeader";
 import { MenuContent } from "./MenuContent/MenuContent";
 
 import { useAppSelector } from "@store/hooks";
+import { getAreaId } from "@store/features/searchParams";
 
 export const Menu: React.FC = () => {
 
-    const { mode } = useAppSelector(state => state.app);
+    const { searchParams } = useAppSelector((state) => state.searchParams);
+    const areaId = getAreaId(searchParams);
 
     return (
         <div className='menu box-shadow-right'>
-            <MenuOther />
-            <MenuHeader />
-            {mode === 'MAP' && <Line />}
-            <MenuContent />
+            <MenuOther areaId={areaId} />
+            <MenuHeader areaId={areaId} />
+            {!areaId && <Line />}
+            <MenuContent areaId={areaId} />
         </div>
     )
 }

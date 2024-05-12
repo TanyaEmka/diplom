@@ -3,18 +3,19 @@ import React, { useState } from "react";
 import { Button } from "@components/buttons";
 import { EditBox } from "@components/base";
 
-import { useAppSelector, useAppDispatch } from "@store/hooks";
-import { setMapMode } from "@store/features/app";
+import { useAppDispatch } from "@store/hooks";
 import { 
     useGetPolygonQuery, 
     useUpdatePolygonMutation, 
     useDeletePolygonMutation 
 } from "@api/paths/polygonApi";
+import { deleteParam } from "@store/features/searchParams";
 
-export const SettingsPage: React.FC = () => {
+import { AreaModeProps } from "@api/types";
 
-    const areaId = useAppSelector((state) => state.app.areaId);
-    const { data } = useGetPolygonQuery(areaId || 0);
+export const SettingsPage: React.FC<AreaModeProps> = ({ areaId }) => {
+
+    const { data } = useGetPolygonQuery(areaId);
     const updatedPoints = data?.polygon.points
         .map((point) => { return({ x: point[0], y: point[1] })}) || [];
 
@@ -41,7 +42,7 @@ export const SettingsPage: React.FC = () => {
 
     const deleteData = () => {
         if (areaId) {
-            dispatch(setMapMode());
+            dispatch(deleteParam('area'));
             deletePolygon({ id: areaId });
         }
     }

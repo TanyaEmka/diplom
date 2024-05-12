@@ -17,6 +17,8 @@ import {
   handleOptions,
   updateSearchParams 
 } from '@store/features/searchParams';
+import { updatePolygonList } from '@store/features/app';
+import { useGetPolygonsQuery } from '@api/paths/polygonApi';
 import { useSearchParams } from 'react-router-dom';
 
 function App() {
@@ -26,6 +28,16 @@ function App() {
   const { accessToken } = useAppSelector((state) => state.user);
   const { actionName, searchParams } = useAppSelector((state) => state.searchParams);
   const [ _, setSearchParams ] = useSearchParams();
+
+  const { data = { polygons: [] }, isFetching } = useGetPolygonsQuery();
+
+    useEffect(() => {
+        if (!isFetching) {
+            dispatch(updatePolygonList({
+                polygons: [...data.polygons],
+            }));
+        }
+    }, [isFetching]);
 
   useEffect(() => {
     const cookieInfo = cookieParser(document.cookie);
@@ -46,7 +58,7 @@ function App() {
   }, [ ]);
 
   useEffect(() => {
-    if (actionName === 'CHANGE') {
+    if (actionName !== 'GET') {
       setSearchParams(handleOptions(searchParams));
     }
   }, [ actionName ]);

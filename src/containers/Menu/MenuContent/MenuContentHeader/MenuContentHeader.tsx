@@ -8,19 +8,16 @@ import { MapMode } from "./MapMode";
 import { AreaMode } from "./AreaMode";
 
 import { useAppSelector } from "@store/hooks";
+import { ManyModesProps } from "@api/types";
 
-export const MenuContentHeader: React.FC = () => {
-
-    const { mode } = useAppSelector((state) => state.app);
+export const MenuContentHeader: React.FC<ManyModesProps> = ({ areaId }) => {
 
     return (
         <div className='menu-content-header'>
-            {mode === 'MAP' ?
-                <MapMode />
-            : mode === 'AREA' ?
-                <AreaMode />
+            {!areaId ?
+            <MapMode />
             :
-                <Text>Загрузка...</Text>
+            <AreaMode />
             }
         </div>
     )

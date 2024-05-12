@@ -9,11 +9,13 @@ import { ToolBox } from "./ToolBox/ToolBox";
 import { SearchBlock } from "./SearchBlock/SearchBlock";
 
 import { useAppSelector } from "@store/hooks";
+import { getAreaId } from "@store/features/searchParams";
 
 export const Header: React.FC = () => {
 
     const map = useAppSelector((state) => state.map);
-    const mode = useAppSelector((state) => state.app.mode);
+    const { searchParams } = useAppSelector((state) => state.searchParams);
+    const areaId = getAreaId(searchParams);
 
     return (
         <nav className='header box-shadow-bottom'>
@@ -23,8 +25,8 @@ export const Header: React.FC = () => {
             </div>
             <div className='header-right'>
                 <ToolBox>
-                    {mode === 'AREA' &&
-                        <Label name='Режим просмотра области' labelColor='accent' />
+                    {areaId &&
+                    <Label name='Режим просмотра области' labelColor='accent' />
                     }
                     <Label name={'Zoom: ' + map.zoom} labelColor='fill-blue' />
                     <Label name={map.center[0].toFixed(5)} labelColor='blue' />

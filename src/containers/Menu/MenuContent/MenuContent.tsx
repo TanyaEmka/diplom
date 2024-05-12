@@ -2,30 +2,27 @@ import React from "react";
 
 import './MenuContent.scss';
 
-import { Text } from "@components/base";
-
 import { MenuContentHeader } from "./MenuContentHeader/MenuContentHeader";
 import { MapMode } from "./MapMode";
 import { AreaMode } from "./AreaMode/AreaMode";
 import { AddMode } from "./AddMode";
 
 import { useAppSelector } from "@store/hooks";
+import { ManyModesProps } from "@api/types";
 
-export const MenuContent: React.FC = () => {
+export const MenuContent: React.FC<ManyModesProps> = ({ areaId }) => {
 
-    const { mode, postMode } = useAppSelector((state) => state.app);
+    const { postMode } = useAppSelector((state) => state.app);
 
     return (
         <div className='menu-content'>
             {postMode === 'BASE' ?
                 <>
-                <MenuContentHeader />
-                {mode === 'MAP' ?
-                    <MapMode />
-                : mode === 'AREA' ?
-                    <AreaMode />
+                <MenuContentHeader areaId={areaId} />
+                {!areaId ?
+                <MapMode />
                 :
-                    <Text color='gray'>Загрузка...</Text>
+                <AreaMode areaId={areaId} />
                 }
                 </>
             :

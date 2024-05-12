@@ -4,19 +4,16 @@ import './MenuHeader.scss';
 
 import { MapMode } from "./MapMode";
 import { AreaMode } from "./AreaMode";
+import { ManyModesProps } from "@api/types";
 
-import { useAppSelector } from "@store/hooks";
-
-export const MenuHeader: React.FC = () => {
-
-    const { mode, areaId } = useAppSelector((state) => state.app);
+export const MenuHeader: React.FC<ManyModesProps> = ({ areaId }) => {
 
     return (
         <div className='menu-header'>
-            { mode === 'MAP' ?
-                <MapMode /> :
-            (mode === 'AREA' && areaId) &&
-                <AreaMode areaId={areaId} />
+            {!areaId ?
+            <MapMode />
+            :
+            <AreaMode areaId={areaId} />
             }
         </div>
     )

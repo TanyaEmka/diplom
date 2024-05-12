@@ -5,13 +5,12 @@ import './AboutPage.scss';
 import { Text } from "@components/base";
 
 import { useGetPolygonQuery } from "@api/paths/polygonApi";
-import { useAppSelector } from "@store/hooks";
 import { PolygonType } from "@api/types";
+import { AreaModeProps } from "@api/types";
 
-export const AboutPage: React.FC = () => {
+export const AboutPage: React.FC<AreaModeProps> = ({ areaId }) => {
 
-    const areaId = useAppSelector((state) => state.app.areaId);
-    const { data = { polygon: {} as PolygonType }, isLoading } = useGetPolygonQuery(areaId || -1);
+    const { data = { polygon: {} as PolygonType }, isLoading } = useGetPolygonQuery(areaId);
 
     return (
         <div className='aboutpage'>
