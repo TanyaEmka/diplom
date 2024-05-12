@@ -4,7 +4,6 @@ import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import { store } from './store';
 import App from './App';
-import reportWebVitals from './reportWebVitals';
 import './index.css';
 
 import server from "@api/mocks/server";
@@ -23,5 +22,3 @@ root.render(
     </Provider>
   </React.StrictMode>
 );
-
-reportWebVitals();

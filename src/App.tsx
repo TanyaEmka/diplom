@@ -12,12 +12,20 @@ import { updateToken } from '@store/features/user';
 import { cookieParser } from '@api/mocks/cookie';
 
 import { useNavigate } from 'react-router';
+import { 
+  getOptionsFromSearchParams, 
+  handleOptions,
+  updateSearchParams 
+} from '@store/features/searchParams';
+import { useSearchParams } from 'react-router-dom';
 
 function App() {
 
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
   const { accessToken } = useAppSelector((state) => state.user);
+  const { actionName, searchParams } = useAppSelector((state) => state.searchParams);
+  const [ _, setSearchParams ] = useSearchParams();
 
   useEffect(() => {
     const cookieInfo = cookieParser(document.cookie);
@@ -26,16 +34,22 @@ function App() {
         user: { name: cookieInfo.user_name, status: cookieInfo.user_status },
         accessToken: cookieInfo.access_token,
       }));
+    } else {
+      if (accessToken === '') {
+        navigate('/login');
+      }
     }
-  }, [])
+
+    const params = new URLSearchParams(window.location.search);
+    const paramObject = getOptionsFromSearchParams(params);
+    dispatch(updateSearchParams(paramObject));
+  }, [ ]);
 
   useEffect(() => {
-    if (accessToken == '') {
-      navigate('/login');
-    } else {
-      navigate('/');
+    if (actionName === 'CHANGE') {
+      setSearchParams(handleOptions(searchParams));
     }
-  }, [ accessToken ])
+  }, [ actionName ]);
 
   return (
     <YMaps query={{ 
@@ -43,7 +57,7 @@ function App() {
       // apikey: process.env.GEO_API_KEY,
     }}>
       <Routes>
-        <Route path="*" element={<Main />} />
+        <Route path="/" element={<Main />} />
         <Route path="/login" element={<Login />} />
       </Routes>
     </YMaps>

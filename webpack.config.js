@@ -9,7 +9,12 @@ const srcPath = path.resolve(__dirname, 'src');
 const isProd = process.env.NODE_ENV === 'production';
 
 module.exports = {
-    entry: path.resolve(srcPath, 'index.tsx'), 
+    entry: { 
+        bundle: [
+            path.resolve(srcPath, 'index.tsx'),
+            'url-search-params-polyfill',
+        ]
+    }, 
     target: !isProd ? 'web' : 'browserslist',
     devtool: isProd? 'hidden-source-map' : 'eval-source-map',
     output: {

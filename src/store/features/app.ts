@@ -54,7 +54,7 @@ const appSlice = createSlice({
             });
         },
         showAllPolygons(state) {
-            state.menuPolygonListVisible.forEach((polygonVisible, index) => {
+            state.menuPolygonListVisible.forEach((_, index) => {
                 state.menuPolygonListVisible[index].polygonVisible = true;
             });
         },
