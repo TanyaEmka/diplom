@@ -2,7 +2,7 @@ import React, { useState } from "react";
 
 import { Input, Text } from "@components/base";
 import { Button } from "@components/buttons";
-import { EditBox } from "../../../components/EditBox/EditBox";
+import { EditBox } from "@components/EditBox/EditBox";
 
 import { useAppDispatch } from "@store/hooks";
 import { deleteParam } from "@store/features/searchParams";
