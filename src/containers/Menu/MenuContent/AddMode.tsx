@@ -6,6 +6,8 @@ import { EditBox } from "../../../components/EditBox/EditBox";
 
 import { useAppDispatch } from "@store/hooks";
 import { notAddPolygonMode } from "@store/features/app";
+import { deleteParam } from "@store/features/searchParams";
+
 import { useAddPolygonMutation } from "@api/paths/polygonApi";
 
 export const AddMode: React.FC = () => {
@@ -30,7 +32,7 @@ export const AddMode: React.FC = () => {
             <Button
                 buttonLine='line' buttonType='accent' buttonSize='small'
                 onClick={() => {
-                    dispatch(notAddPolygonMode());
+                    dispatch(deleteParam('menu'));
                 }}
             >
                 Вернуться к списку полигонов
@@ -56,7 +58,7 @@ export const AddMode: React.FC = () => {
             <Button
                 onClick={() => {
                     addPolygon({ attrs: getPolygonRequestBody() });
-                    dispatch(notAddPolygonMode());
+                    dispatch(deleteParam('menu'));
                 }}
             >
                 Добавить полигон

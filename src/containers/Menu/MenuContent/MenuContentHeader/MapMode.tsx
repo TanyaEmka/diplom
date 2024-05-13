@@ -5,7 +5,7 @@ import { Button } from "@components/buttons";
 import { ShowAllButton } from "../ShowAllButton/ShowAllButton";
 
 import { useAppSelector, useAppDispatch } from "@store/hooks";
-import { addPolygonMode } from "@store/features/app";
+import { setParam } from "@store/features/searchParams";
 
 export const MapMode: React.FC = () => {
 
@@ -17,6 +17,13 @@ export const MapMode: React.FC = () => {
             .filter((polygon) => polygon.polygonVisible === true).length;
     }
 
+    const goToAddMode = () => {
+        dispatch(setParam({
+            key: 'menu',
+            value: 'add'
+        }));
+    }
+
     return (
         <>
             <div className='menu-content-header-tools'>
@@ -26,7 +33,7 @@ export const MapMode: React.FC = () => {
                 <ShowAllButton />
                 <Button
                     buttonType='blue' buttonLine='line' buttonSize='small'
-                    onClick={() => { dispatch(addPolygonMode()) }}
+                    onClick={goToAddMode}
                 >
                     Добавить полигон
                 </Button>

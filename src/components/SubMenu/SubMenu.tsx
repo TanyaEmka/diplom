@@ -4,26 +4,35 @@ import './SubMenu.scss';
 
 import { MenuBlock } from "./MenuBlock/MenuBlock";
 import { useNavigate } from "react-router-dom";
+import { useAppDispatch } from "@store/hooks";
+import { setParam } from "@store/features/searchParams";
+
+type QueryType = {
+    key: string,
+    value: string
+}
 
 type SubMenuElement = {
     name: string,
-    url: string,
+    query: QueryType,
 }
 
 interface SubMenuProps {
     paths: Array<SubMenuElement>,
 }
 
-export const SubMenu: React.FC<SubMenuProps> = ({
-    paths,
-}) => {
+export const SubMenu: React.FC<SubMenuProps> = ({ paths }) => {
 
     const navigate = useNavigate();
+    const dispatch = useAppDispatch();
     const [ selectedIndex, setIndex ] = useState(0);
 
-    const onClick = (index: number, url: string) => {
+    const onClick = (index: number, query: QueryType) => {
         setIndex(index);
-        navigate(url);
+        dispatch(setParam({
+            key: query.key,
+            value: query.value
+        }));
     }
 
     return (
@@ -34,7 +43,7 @@ export const SubMenu: React.FC<SubMenuProps> = ({
                         key={index}
                         name={path.name}
                         selected={index === selectedIndex}
-                        onClick={() => { onClick(index, path.url); }}
+                        onClick={() => { onClick(index, path.query) }}
                     />
                 )
             })}

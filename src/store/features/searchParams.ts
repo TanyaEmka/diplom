@@ -14,7 +14,13 @@ type ParamType = {
 
 interface SearchParamsState {
     searchParams: OptionType,
-    actionName: 'SET' | 'DELETE' | 'APPEND' | 'GET' | 'DESTROY' | 'DEL_AREA',
+    actionName: 
+        `SET-${string}` | 
+        `DELETE-${string}` | 
+        `APPEND-${string}` | 
+        'GET' | 
+        'DESTROY' | 
+        'DEL_AREA',
 }
 
 const initialState: SearchParamsState = {
@@ -33,7 +39,7 @@ const searchParamsSlice = createSlice({
         setParam(state, action: PayloadAction<ParamType>) {
             const { key, value } = action.payload;
             state.searchParams[key] = value;
-            state.actionName = 'SET';
+            state.actionName = `SET-${key}`;
         },
         appendParam(state, action: PayloadAction<ParamType>) {
             const { key, value } = action.payload;
@@ -57,13 +63,13 @@ const searchParamsSlice = createSlice({
             } else {
                 state.searchParams[key] = value;
             }
-            state.actionName = 'APPEND';
+            state.actionName = `APPEND-${key}`;
         },
         deleteParam(state, action: PayloadAction<string>) {
             if (state.searchParams.hasOwnProperty(action.payload)) {
                 delete state.searchParams[action.payload];
             }
-            state.actionName = 'DELETE';
+            state.actionName = `DELETE-${action.payload}`;
         },
         deleteAreaId(state) {
             if (state.searchParams.hasOwnProperty('area')) {
@@ -92,6 +98,22 @@ export function getNumberParam(
     }
     const numberValue = Number(searchParams[key]);
     return isNaN(numberValue) ? null : numberValue;
+}
+
+export function getStringParam(
+    searchParams: OptionType,
+    key: string
+): string {
+    if (Array.isArray(searchParams[key])) {
+        const keyArr = searchParams[key] as ValueType[];
+        if (keyArr.length === 0) {
+            return 'none';
+        }
+        const value = keyArr[0];
+        return !value ? 'none' : value.toString();
+    }
+    const value = searchParams[key];
+    return !value ? 'none' : value.toString();
 }
 
 export function getAreaId(searchParams: OptionType) {

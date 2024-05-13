@@ -1,19 +1,26 @@
 import React from "react";
 
-import { Routes, Route } from "react-router-dom";
 import { AboutPage } from "./Pages/AboutPage/AboutPage";
 import { SettingsPage } from "./Pages/SettingPage/SettingsPage";
+
 import { AreaModeProps } from "@api/types";
+
+import { useAppSelector } from "@store/hooks";
+import { getStringParam } from "@store/features/searchParams";
 
 export const AreaMode: React.FC<AreaModeProps> = ({ areaId }) => {
 
+    const { searchParams } = useAppSelector((state) => state.searchParams);
+    const mode = getStringParam(searchParams, 'menu');
+
     return (
         <div className='menu-content-areamode'>
-            <Routes>
-                <Route path='/' element={<AboutPage areaId={areaId} />} />
-                <Route path='area/about' element={<AboutPage areaId={areaId} />} />
-                <Route path='area/settings' element={<SettingsPage areaId={areaId} />} />
-            </Routes>
+            {mode === 'none' || mode === 'about' ?
+            <AboutPage areaId={areaId} />
+            : mode === 'settings' ?
+            <SettingsPage areaId={areaId} />
+            : <></>
+            }
         </div>
     )
 }

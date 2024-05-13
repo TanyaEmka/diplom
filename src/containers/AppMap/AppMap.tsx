@@ -7,8 +7,8 @@ import { PolygonType } from "@api/types";
 
 import { useGetPolygonsQuery } from "@api/paths/polygonApi";
 import { changeState } from "@store/features/map";
-import { hiddenMenu } from "@store/features/app";
-import { setParam, getAreaId } from "@store/features/searchParams";
+import { hiddenMenu, showMenu } from "@store/features/app";
+import { setParam, deleteParam, getAreaId } from "@store/features/searchParams";
 import { useAppDispatch, useAppSelector } from "@store/hooks";
 
 interface AppMapProps {
@@ -78,6 +78,8 @@ export const AppMap: React.FC<AppMapProps> = ({
     const goToPolygon = (polygon: PolygonType) => {
         if (map.current) {
             dispatch(setParam({ key: 'area', value: polygon.id.toString() }));
+            dispatch(deleteParam('menu'));
+            dispatch(showMenu());
             const arrayX = polygon.points.map((element) => element[0]);
             const arrayY = polygon.points.map((element) => element[1]);
             const minX = Math.min(...arrayX);

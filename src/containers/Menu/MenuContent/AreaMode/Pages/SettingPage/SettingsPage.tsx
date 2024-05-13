@@ -19,9 +19,9 @@ export const SettingsPage: React.FC<AreaModeProps> = ({ areaId }) => {
     const updatedPoints = data?.polygon.points
         .map((point) => { return({ x: point[0], y: point[1] })}) || [];
 
-    const [pointArray, setPointArray] = useState(updatedPoints);
-    const [patchPolygon] = useUpdatePolygonMutation();
-    const [deletePolygon] = useDeletePolygonMutation();
+    const [ pointArray, setPointArray ] = useState(updatedPoints);
+    const [ patchPolygon ] = useUpdatePolygonMutation();
+    const [ deletePolygon ] = useDeletePolygonMutation();
 
     const dispatch = useAppDispatch();
 
@@ -33,9 +33,7 @@ export const SettingsPage: React.FC<AreaModeProps> = ({ areaId }) => {
         if (areaId) {
             patchPolygon({ 
                 id: areaId, 
-                attrs: {
-                    points: getPointArray(), 
-                }
+                attrs: { points: getPointArray() }
             });
         }
     }
@@ -43,6 +41,7 @@ export const SettingsPage: React.FC<AreaModeProps> = ({ areaId }) => {
     const deleteData = () => {
         if (areaId) {
             dispatch(deleteParam('area'));
+            dispatch(deleteParam('menu'));
             deletePolygon({ id: areaId });
         }
     }

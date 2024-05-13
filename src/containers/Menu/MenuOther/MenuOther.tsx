@@ -16,6 +16,7 @@ export const MenuOther: React.FC<ManyModesProps> = ({ areaId }) => {
     const goToMapMode = () => {
         navigate('/');
         dispatch(deleteParam('area'));
+        dispatch(deleteParam('menu'));
     }
 
     return (
