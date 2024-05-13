@@ -59,7 +59,6 @@ function App() {
 
   useEffect(() => {
     if (actionName !== 'GET') {
-      console.log(handleOptions(searchParams));
       setSearchParams(handleOptions(searchParams));
     }
   }, [ actionName, searchParams ]);

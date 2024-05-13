@@ -48,7 +48,7 @@ export const AppMap: React.FC<AppMapProps> = ({
                 case 'GO TO POLYGON':
                     if (mapStore.goToPolygonEventId) {
                         const index = data.polygons
-                            .map((element) => Number(element.id)).indexOf(mapStore.goToPolygonEventId);
+                            .map((element) => Number(element.id)).indexOf(Number(mapStore.goToPolygonEventId));
                         if (index !== -1) {
                             goToPolygon(data.polygons[index]);
                         }

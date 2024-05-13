@@ -11,8 +11,8 @@ import { PolygonType } from "@api/types";
 
 export const SearchBlock: React.FC = () => {
 
-    const [getSearch, { data = { polygon: {} as PolygonType } }] = useGetSearchPolygonsMutation();
-    const [value, setValue] = useState('');
+    const [ getSearch, { data = { polygon: {} as PolygonType } } ] = useGetSearchPolygonsMutation();
+    const [ value, setValue ] = useState('');
 
     const dispatch = useAppDispatch();
 
