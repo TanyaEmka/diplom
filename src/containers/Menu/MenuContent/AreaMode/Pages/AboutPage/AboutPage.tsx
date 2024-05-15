@@ -32,7 +32,7 @@ export const AboutPage: React.FC<AreaModeProps> = ({ areaId }) => {
                 ref={targetRef}
             >
                 <Text tag='div' type='bold-text'>
-                    Число деревьев: {isFetching ? 'загрузка...' : data.polygon.points.length}
+                    Число деревьев: {isFetching ? 'загрузка...' : data.polygon.points.length + (data.polygon.tree_count || 0)}
                 </Text>
                 <Text tag='div' color='gray'>
                     Точки полигона

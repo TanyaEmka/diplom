@@ -21,7 +21,6 @@ export const MenuOther: React.FC<ManyModesProps> = ({ areaId }) => {
 
     return (
         <div className='menu-other'>
-            <OtherButton />
             <div className='menu-other-space' ></div>
             {areaId &&
             <Button

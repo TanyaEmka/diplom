@@ -18,6 +18,7 @@ export type PolygonType = {
     id: number,
     points: Array<PointType>,
     name: string,
+    tree_count?: number,
 }
 
 export type PolygonTreesType = {

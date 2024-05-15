@@ -70,17 +70,10 @@ export const Login: React.FC = () => {
                 <Button 
                     buttonType='blue'
                     onClick={() => { loginFunction(name, password) }}
+                    style={{ width: 'auto' }}
                 >
                     Войти
                 </Button>
-                <Text 
-                    tag='div'
-                    type='text-help-link'
-                    color='link' 
-                    onClick={() => { loginFunction('user', 'user') }}
-                >
-                    Продолжить как гость
-                </Text>
             </form>
         </div>
     )

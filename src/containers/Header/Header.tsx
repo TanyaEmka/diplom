@@ -33,7 +33,6 @@ export const Header: React.FC = () => {
                     <Label name={map.center[1].toFixed(5)} labelColor='blue' />
                 </ToolBox>
                 <ToolBox gap={28}>
-                    <SettingButton size='small' />
                     <ExitButton size='small' />
                 </ToolBox>
             </div>
