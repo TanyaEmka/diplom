@@ -10,6 +10,9 @@ import { setParam } from "@store/features/searchParams";
 export const MapMode: React.FC = () => {
 
     const { menuPolygonListVisible } = useAppSelector((state) => state.app);
+    const user = useAppSelector((state) => state.user.user);
+    const status = user?.status || 'guest';
+    
     const dispatch = useAppDispatch();
 
     const getVisibleAreas = () => {
@@ -31,12 +34,14 @@ export const MapMode: React.FC = () => {
                     Видимые участки: {getVisibleAreas()}
                 </Text>
                 <ShowAllButton />
+                {status === 'admin' &&
                 <Button
                     buttonType='blue' buttonLine='line' buttonSize='small'
                     onClick={goToAddMode}
                 >
                     Добавить полигон
                 </Button>
+                }
             </div>
         </>
     )

@@ -43,7 +43,7 @@ function App() {
     const cookieInfo = cookieParser(document.cookie);
     if (cookieInfo && cookieInfo.access_token) {
       dispatch(updateToken({
-        user: { name: cookieInfo.user_name, status: cookieInfo.user_status },
+        user: { name: cookieInfo.gis_name, status: cookieInfo.gis_status },
         accessToken: cookieInfo.access_token,
       }));
     } else {
