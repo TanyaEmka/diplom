@@ -22,8 +22,7 @@ export const MapMode: React.FC = () => {
 
     const goToAddMode = () => {
         dispatch(setParam({
-            key: 'menu',
-            value: 'add'
+            key: 'menu', value: 'add'
         }));
     }
 
