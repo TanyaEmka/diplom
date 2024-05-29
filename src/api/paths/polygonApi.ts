@@ -10,7 +10,7 @@ export const polygonApi = createApi({
         'Delete-Polygons',
         'Change-Polygons'
     ],
-    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000/api/' }),
+    baseQuery: fetchBaseQuery({ baseUrl: '/api/' }),
     endpoints: (builder) => ({
         getPolygons: builder.query<{ polygons: Array<PolygonType>}, void>({
             query: () => 'polygons/',

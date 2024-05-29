@@ -3,7 +3,7 @@ import { SigninType, SigninResponse } from "@api/types";
 
 export const userApi = createApi({
     reducerPath: 'userApi',
-    baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:3000/api/' }),
+    baseQuery: fetchBaseQuery({ baseUrl: '/api/' }),
     endpoints: (builder) => ({
         login: builder.mutation<SigninResponse, SigninType>({
             query: (params: SigninType) => ({
