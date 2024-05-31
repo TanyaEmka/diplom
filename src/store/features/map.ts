@@ -4,7 +4,7 @@ import type { PayloadAction } from "@reduxjs/toolkit";
 import { NumberRange } from "@utils/numberRange";
 
 interface MapState {
-    zoom: NumberRange<9, 18>,
+    zoom: NumberRange<9, 22>,
     center: [number, number],
     duration: number,
     clickEvent: 'INC ZOOM' | 'DEC ZOOM' | 'GO TO POLYGON' | 'NONE',
@@ -12,8 +12,8 @@ interface MapState {
 }
 
 const initialState: MapState = {
-    zoom: 10,
-    center: [55.751574, 37.573856],
+    zoom: 20,
+    center: [56.11015539044307, 38.37248815474842],
     duration: 500,
     clickEvent: 'NONE',
     goToPolygonEventId: undefined,
@@ -44,8 +44,8 @@ const mapSlice = createSlice({
             const newZoom = state.zoom + action.payload;
             if (newZoom < 9) {
                 state.zoom = 9;
-            } else if (newZoom > 17) {
-                state.zoom = 17;
+            } else if (newZoom > 21) {
+                state.zoom = 21;
             } else {
                 state.zoom = newZoom as NumberRange<9, 18>;
             }
@@ -55,8 +55,8 @@ const mapSlice = createSlice({
             const newZoom = action.payload;
             if (newZoom < 9) {
                 state.zoom = 9;
-            } else if (newZoom > 17) {
-                state.zoom = 17;
+            } else if (newZoom > 21) {
+                state.zoom = 21;
             } else {
                 state.zoom = newZoom as NumberRange<9, 18>;
             }

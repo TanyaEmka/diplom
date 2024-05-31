@@ -21,7 +21,7 @@ export const AppMap: React.FC<AppMapProps> = ({
     height='100vh',
 }) => {
 
-    const dispatch = useAppDispatch();
+const dispatch = useAppDispatch();
 
     const { data = {polygons: []} } = useGetPolygonsQuery();
 
@@ -138,7 +138,7 @@ export const AppMap: React.FC<AppMapProps> = ({
                             <span key={index} ></span>
                         )
                     })
-                : areaId && menuPolygonListVisible.length !== 0 ?
+                : areaId && menuPolygonListVisible.length !== 0 &&
                     [0].map((value) => {
                         const polygonIndex = getPolygonIndexById(areaId);
 
@@ -151,7 +151,6 @@ export const AppMap: React.FC<AppMapProps> = ({
                             />
                         )
                     })
-                : <></>
                 }
             </Map>
         </div>
