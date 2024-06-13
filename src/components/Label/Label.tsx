@@ -3,21 +3,37 @@ import React from "react";
 import './Label.scss';
 import { Text } from "../Text/Text";
 
-interface LabelProps extends React.LabelHTMLAttributes<HTMLLabelElement> {
+export type LabelColorType = 'blue' | 'accent' | 'fill-blue' | 'auto';
+ 
+interface LabelProps extends React.HTMLAttributes<HTMLDivElement> {
     name: string,
+    shadow?: boolean,
+    labelColor?: LabelColorType,
 }
 
 export const Label: React.FC<LabelProps> = ({
     name,
+    shadow=false,
+    labelColor='auto',
     ...props
 }) => {
+
+    const LabelClass = 'map-label';
+    const LabelShadowClass = (shadow) ? 'component-shadow' : '';
+    const LabelColorClass = (labelColor !== 'auto') ? LabelClass + '-' + labelColor : '';
+
     return (
-        <label 
-            className={('map-label ' + props.className).trim()}
-            {...props}
+        <Text 
+            tag='div' 
+            color='inherit'
+            type='small-text'
+            class={[LabelClass, 
+                    LabelShadowClass, 
+                    LabelColorClass, 
+                    props.className].join(' ').trim()}
         >
-            <Text color='inherit'>{name}</Text>
-        </label>
+            {name}
+        </Text>
     )
 }
 

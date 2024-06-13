@@ -19,13 +19,6 @@ $scale-switch-radius: 8px;
     position: relative;
     background-color: colors.$background-color;
 
-    &-line {
-        height: $scale-line-height;
-        width: 66%;
-        margin: 0 auto;
-        background-color: colors.$shadow-color;
-    }
-
     &-switch {
         position: absolute;
         left: 50%;
@@ -35,8 +28,4 @@ $scale-switch-radius: 8px;
         width: $scale-switch-width;
         height: $scale-switch-height;
     }
-
-    -webkit-box-shadow: 0px 4px 9px 0px colors.$dark-shadow-color;
-    -moz-box-shadow: 0px 4px 9px 0px colors.$dark-shadow-color;
-    box-shadow: 0px 4px 9px 0px colors.$dark-shadow-color;
 }

@@ -1,9 +1,11 @@
 import React from "react";
 
 import './MapTools.scss';
-import { Navigate } from "../../components/Navigate/Navigate";
-import { ScaleButton } from "../../components/ScaleComponents/ScaleButton/ScaleButton";
-import { Scale } from "../../components/ScaleComponents/Scale/Scale";
+import { 
+    Navigate, 
+    ScaleButton, 
+    Scale 
+} from "@components/onMapComponents";
 
 export const MapTools: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
     ...props
@@ -15,7 +17,6 @@ export const MapTools: React.FC<React.HTMLAttributes<HTMLDivElement>> = ({
         >
             <Navigate />
             <ScaleButton type='inc' />
-            <Scale />
             <ScaleButton type='dec' />
         </div>
     )

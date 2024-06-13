@@ -8,6 +8,7 @@ export type TextType = 'h1' |
                     'text' | 
                     'bold-text' | 
                     'text-link' | 
+                    'text-help-link' |
                     'small-text';
 
 export type TextTag = 'span' | 'div' | 'p';
@@ -17,6 +18,7 @@ export type TextColor = 'base' |
                         'other' | 
                         'header' | 
                         'link' |
+                        'error' |
                         'inherit';
  
 interface TextProps {
@@ -25,6 +27,9 @@ interface TextProps {
     color?: TextColor,
     type?: TextType,
     class?: string,
+    onClick?: (e: any) => void,
+    onMouseEnter?: (e: any) => void,
+    onMouseLeave?: (e: any) => void,
 }
 
 export const Text: React.FC<TextProps> = (props) => {
@@ -44,6 +49,9 @@ export const Text: React.FC<TextProps> = (props) => {
     return (
         <Tag
             className={textClass}
+            onClick={props.onClick}
+            onMouseEnter={props.onMouseEnter}
+            onMouseLeave={props.onMouseLeave}
         >
             {children}
         </Tag>

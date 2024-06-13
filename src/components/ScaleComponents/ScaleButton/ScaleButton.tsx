@@ -19,7 +19,7 @@ export const ScaleButton: React.FC<ScaleButtonProps> = ({
 
     const dispatch = useAppDispatch();
 
-    const buttonFunction = (e: any) => {
+    const buttonFunction = () => {
         if (type === 'inc') {
             dispatch(incrementZoom());
             return;
@@ -29,7 +29,7 @@ export const ScaleButton: React.FC<ScaleButtonProps> = ({
     }
 
     return (
-        <button className='scalebutton' onClick={buttonFunction}>
+        <button className='scalebutton component-shadow' onClick={buttonFunction}>
             {type === 'inc' ?
                 <img src={inc} alt='inc' />
                 :

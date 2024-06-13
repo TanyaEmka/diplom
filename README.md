@@ -1,46 +1,28 @@
-# Getting Started with Create React App
+# Диплом "Система геосервиса 2-d карт"
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app), using the [Redux](https://redux.js.org/) and [Redux Toolkit](https://redux-toolkit.js.org/) TS template.
+Данное приложение предназначено для работы с лесными областями, представленными на онлайн карте в виде полигонов.
 
-## Available Scripts
+[Макет Figma](https://www.figma.com/file/vsiQlZRC9J7BVUnRFtZ7cw/%D0%93%D0%98%D0%A1-2D-%D0%B2%D0%B8%D0%B7%D1%83%D0%B0%D0%BB%D0%B8%D0%B7%D0%B0%D1%86%D0%B8%D1%8F?type=design&node-id=0-1&mode=design&t=5rQV8WjpFTmrhRtE-0)
 
-In the project directory, you can run:
+## Команды
 
-### `npm start`
+Сборка проекта:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### `npm build`
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Запуск проекта:
 
-### `npm test`
+### `npm serve`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Публикация проекта:
 
-### `npm run build`
+### `npm deploy`
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Документация компонентов:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### `npm run storybook`
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Контакты
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+### телеграм: @jupi_abri
+### почта: tanyaemelyanovajuly@gmail.com

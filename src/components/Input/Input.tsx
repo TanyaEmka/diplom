@@ -19,7 +19,7 @@ export const Input: React.FC<InputProps> = ({
     ...props
 }) => {
 
-    const [ isVisible, setVisible ] = useState(true);
+    const [ isVisible, setVisible ] = useState(false);
     const inputClass = (inputType + '-input ' + 'text ' + props.className).trim();
 
     if (inputType == 'base') {

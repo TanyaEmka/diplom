@@ -11,7 +11,7 @@ const meta = {
     tags: ['autodocs'],
     argTypes: {
         type: { control: 'select',
-                options: ['h1', 'h2', 'h3', 'text', 'bold-text', 'text-link', 'small-text'],
+                options: ['h1', 'h2', 'h3', 'text', 'bold-text', 'text-link', 'text-help-link', 'small-text'],
                 defaultValue: 'text', },
         color: { control: 'select', 
                 options: ['base', 'gray', 'other', 'header', 'link'],
@@ -74,4 +74,12 @@ export const TextLink: Story = {
       children: 'Текст',
       tag: 'span',
     },
+};
+
+export const TextHelpLink: Story = {
+  args: {
+    type: 'text-help-link',
+    children: 'Текст',
+    tag: 'span',
+  },
 };
