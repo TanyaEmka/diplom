@@ -2,7 +2,7 @@
 "name": "map",
 "version": "0.1.0",
 "private": true,
-  "homepage": "https://TanyaEmka.github.io/diplom",
+  "homepage": "https://iu5git.github.io/MapViewApp",
   "dependencies": {
     "@babel/plugin-transform-runtime": "^7.24.3",
     "@babel/preset-env": "^7.24.5",
