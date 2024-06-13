@@ -8,19 +8,19 @@
 
 Сборка проекта:
 
-### `npm build`
+### `yarn build`
 
 Запуск проекта:
 
-### `npm serve`
+### `yarn serve`
 
 Публикация проекта:
 
-### `npm deploy`
+### `yarn deploy`
 
 Документация компонентов:
 
-### `npm run storybook`
+### `yarn storybook`
 
 ## Контакты
 
