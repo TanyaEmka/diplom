@@ -28,12 +28,12 @@
 
 ### Вход
 
-![Authorization](https://github.com/iu5git/MapViewApp/raw/main/src/assets/demonstration/auth.jpg)
+![Authorization](/src/assets/demonstration/auth.jpg)
 
 ### Просмотр всех областей
 
-![All areas](https://github.com/iu5git/MapViewApp/raw/main/src/assets/demonstration/all.jpg)
+![All areas](/src/assets/demonstration/all.jpg)
 
 ### Просмотр отдельной области
 
-![One area](https://github.com/iu5git/MapViewApp/raw/main/src/assets/demonstration/one_area.jpg)
+![One area](/src/assets/demonstration/one_area.jpg)
