@@ -27,7 +27,7 @@ const mapSlice = createSlice({
         // в этом случае нужно менять не сам zoom, а обозначить событие
         // так как для плавного изменения масштаба нужно вызвать внутреннюю функцию карты
         incrementZoom(state) {
-            if (state.zoom < 17) {
+            if (state.zoom < 21) {
                 state.clickEvent = 'INC ZOOM';
             }
         },
@@ -71,7 +71,7 @@ const mapSlice = createSlice({
         changeState(state, action: PayloadAction<{zoom: number, center: Array<number>}>) {
             state.center[0] = action.payload.center[0];
             state.center[1] = action.payload.center[1];
-            state.zoom = action.payload.zoom as NumberRange<9, 18>;
+            state.zoom = action.payload.zoom as NumberRange<9, 22>;
             state.clickEvent = 'NONE';
             state.goToPolygonEventId = undefined;
         },

@@ -2,6 +2,7 @@ import React from "react";
 
 import { AboutPage } from "./Pages/AboutPage/AboutPage";
 import { SettingsPage } from "./Pages/SettingPage/SettingsPage";
+import { ScrollBox } from "@containers/ScrollBox/ScrollBox";
 
 import { AreaModeProps } from "@api/types";
 
@@ -15,12 +16,13 @@ export const AreaMode: React.FC<AreaModeProps> = ({ areaId }) => {
 
     return (
         <div className='menu-content-areamode'>
-            {mode === 'none' || mode === 'about' ?
-            <AboutPage areaId={areaId} />
-            : mode === 'settings' ?
-            <SettingsPage areaId={areaId} />
-            : <></>
-            }
+            <ScrollBox>
+                {mode === 'none' || mode === 'about' ?
+                <AboutPage areaId={areaId} />
+                : mode === 'settings' &&
+                <SettingsPage areaId={areaId} />
+                }
+            </ScrollBox>
         </div>
     )
 }

@@ -31,6 +31,8 @@ function App() {
 
   const { data = { polygons: [] }, isFetching } = useGetPolygonsQuery();
 
+  const demostrationMode = true;
+
     useEffect(() => {
         if (!isFetching) {
             dispatch(updatePolygonList({
@@ -47,7 +49,12 @@ function App() {
         accessToken: cookieInfo.access_token,
       }));
     } else {
-      if (accessToken === '') {
+      if (demostrationMode) {
+        dispatch(updateToken({
+          user: { name: 'demo', status: 'admin' },
+          accessToken: 'demostration',
+        }));
+      } else if (accessToken === '') {
         navigate('/login');
       }
     }

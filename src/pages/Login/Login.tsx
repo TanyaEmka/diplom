@@ -48,7 +48,14 @@ export const Login: React.FC = () => {
     }
 
     return (
-        <div className='login-page'>
+        <div 
+            className='login-page'
+            onKeyDown={(e) => {
+                if (e.key === 'Enter') {
+                    loginFunction(name, password);      
+                }
+            }}
+        >
             <Text type='h1'>Вход</Text>
             <form action='login-action' method='post'>
                 <Input 

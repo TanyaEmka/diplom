@@ -18,9 +18,9 @@ $aboutpage-gap: 16px;
         row-gap: 6px;
 
         &-unit {
-            width: 50%;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+            display: flex;
+            justify-content: start;
+            gap: 10px;
         }
     }
 }
