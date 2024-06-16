@@ -7,11 +7,11 @@ $header-tools-gap: 24px;
 .header {
 
     &-big {
-        @media screen and (max-width: 460px) {
+        @media screen and (max-width: 565px) {
             display: none;
         }
 
-        @media screen and (min-width: 461px) {
+        @media screen and (min-width: 564px) {
             box-sizing: border-box;
             width: 100%;
             height: $header-height;
@@ -54,11 +54,11 @@ $header-tools-gap: 24px;
     }
 
     &-small {
-        @media screen and (min-width: 461px) {
+        @media screen and (min-width: 565px) {
             display: none;
         }
 
-        @media screen and (max-width: 460px) {
+        @media screen and (max-width: 564px) {
             display: grid;
             justify-content: space-between;
             column-gap: 12px;
@@ -78,7 +78,7 @@ $header-tools-gap: 24px;
             grid-template-columns: 35px 200px 40px;
         }
 
-        @media screen and (min-width: 401px) and (max-width: 460px) {
+        @media screen and (min-width: 401px) and (max-width: 564px) {
             grid-template-columns: 35px 250px 40px;
         }
     }

@@ -56,13 +56,29 @@ $menu-width: 412px;
                 visibility: visible;
                 transition-timing-function: ease-out;
                 transition-duration: 0.3s;
+
+                @media screen and (min-width: 565px) {
+                    transition-duration: 0.3s;
+                }
+            
+                @media screen and (max-width: 564px) {
+                    transition-duration: 0.5s;
+                }
             }
 
             &-menu-hidden {
-                left: -50%;
                 visibility: hidden;
                 transition-timing-function: ease-out;
-                transition-duration: 0.3s;
+
+                @media screen and (min-width: 565px) {
+                    left: -50%;
+                    transition-duration: 0.3s;
+                }
+            
+                @media screen and (max-width: 564px) {
+                    left: -100%;
+                    transition-duration: 0.5s;
+                }
             }
 
             &-map {
