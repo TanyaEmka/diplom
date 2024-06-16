@@ -17,7 +17,7 @@ export const NavigateButton: React.FC<NavigateButtonProps> = ({
 }) => {
 
     const dispatch = useAppDispatch();
-    const navigateStep = 0.02;
+    const navigateStep = 0.0002;
 
     const changeCenter = (e: any) => {
         if (type === 'bottom') {

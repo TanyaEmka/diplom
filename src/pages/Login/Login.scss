@@ -1,4 +1,4 @@
-@use '../../assets/css/colors.scss';
+@use '@assets/css/colors.scss';
 
 $form-width: 400px;
 $form-gap: 25px;
@@ -18,10 +18,17 @@ $login-page-gap: 20px;
 
     form {
         margin: 0 auto;
-        width: $form-width;
         display: grid;
         flex-direction: column;
         gap: $form-gap;
+
+        @media screen and (min-width: 441px) {
+            width: $form-width;
+        }
+    
+        @media screen and (max-width: 440px) {
+            width: 80%;
+        }
 
         button span {
             text-align: center;

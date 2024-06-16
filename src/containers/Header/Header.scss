@@ -5,36 +5,81 @@ $header-horizontal-padding: 32px;
 $header-tools-gap: 24px;
 
 .header {
-    box-sizing: border-box;
-    width: 100%;
-    height: $header-height;
-    padding-left: $header-horizontal-padding;
-    padding-right: $header-horizontal-padding;
-    background-color: colors.$background-color;
-    position: relative;
-    
-    z-index: 100;
 
-    display: flex;
-    justify-content: space-between;
+    &-big {
+        @media screen and (max-width: 460px) {
+            display: none;
+        }
 
-    &-left, &-right {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        align-content: center;
-    }
+        @media screen and (min-width: 461px) {
+            box-sizing: border-box;
+            width: 100%;
+            height: $header-height;
+            padding-left: $header-horizontal-padding;
+            padding-right: $header-horizontal-padding;
+            background-color: colors.$background-color;
+            position: relative;
+            
+            z-index: 100;
 
-    &-left {
-        gap: $header-horizontal-padding;
-        width: calc(412px - 2 * #{$header-horizontal-padding});
+            display: flex;
+            justify-content: space-between;
 
-        div {
-            flex: 1;
+            &-left, &-right {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                align-content: center;
+            }
+
+            &-left {
+                gap: $header-horizontal-padding;
+                width: calc(412px - 2 * #{$header-horizontal-padding});
+
+                div {
+                    flex: 1;
+                }
+            }
+
+            &-right {
+                gap: $header-tools-gap;
+
+                .map-state {
+                    @media screen and (max-width: 904px) {
+                        display: none;
+                    }
+                }
+            }
         }
     }
 
-    &-right {
-        gap: $header-tools-gap;
+    &-small {
+        @media screen and (min-width: 461px) {
+            display: none;
+        }
+
+        @media screen and (max-width: 460px) {
+            display: grid;
+            justify-content: space-between;
+            column-gap: 12px;
+            align-items: center;
+            align-content: center;
+            width: 100%;
+
+            box-sizing: border-box;
+            width: 100%;
+            height: $header-height;
+            padding-left: $header-horizontal-padding;
+            padding-right: $header-horizontal-padding;
+            background-color: colors.$background-color;
+        }
+
+        @media screen and (max-width: 400px) {
+            grid-template-columns: 35px 200px 40px;
+        }
+
+        @media screen and (min-width: 401px) and (max-width: 460px) {
+            grid-template-columns: 35px 250px 40px;
+        }
     }
 }

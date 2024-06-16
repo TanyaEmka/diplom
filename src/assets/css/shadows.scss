@@ -7,6 +7,15 @@ $component-shadow-offset: 4px;
 $box-shadow-color: rgba(0, 0, 0, 0.2);
 $component-shadow-color: rgba(0, 0, 0, 0.35);
 
+.box-shadow-bottom-responsive {
+
+    @media screen and (min-width: 905px) {
+        -webkit-box-shadow: 0px $box-shadow-offset $box-shadow-blur 0px $box-shadow-color;
+        -moz-box-shadow: 0px $box-shadow-offset $box-shadow-blur 0px $box-shadow-color;
+        box-shadow: 0px $box-shadow-offset $box-shadow-blur 0px $box-shadow-color;
+    }
+}
+
 .box-shadow-bottom {
     -webkit-box-shadow: 0px $box-shadow-offset $box-shadow-blur 0px $box-shadow-color;
     -moz-box-shadow: 0px $box-shadow-offset $box-shadow-blur 0px $box-shadow-color;
