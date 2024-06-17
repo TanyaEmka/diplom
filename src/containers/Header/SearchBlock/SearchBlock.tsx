@@ -89,7 +89,8 @@ export const SearchBlock: React.FC = () => {
                 <Text
                     color='base' type='text-help-link'
                     onClick={() => {
-                        dispatch(goToPolygon(data.polygon.id))
+                        setOpened(false);
+                        dispatch(goToPolygon(data.polygon.id));
                     }}
                 >
                     {data.polygon.name}

@@ -2,7 +2,7 @@
 
 $menu-padding-right: 10%;
 $menu-padding-left: 14%;
-$menu-padding-top: 70px;
+$menu-padding-top: 50px;
 $menu-padding-bottom: 8%;
 $menu-gap: 24px;
 
@@ -28,10 +28,10 @@ $menu-gap: 24px;
     }
 
     @media screen and (max-width: 564px) {
-        height: 100vh;
+        height: 100svh;
         position: absolute;
         top: -110px;
         left: 0;
-        padding-top: calc(#{$menu-padding-top} + 20px);
+        padding-top: calc(#{$menu-padding-top} + 40px);
     }
 }
